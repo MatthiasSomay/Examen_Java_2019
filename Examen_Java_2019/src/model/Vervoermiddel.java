@@ -5,8 +5,6 @@
  * @Purpose: Vervoermiddel klasse
  */
 
-
-
 package model;
 
 public class Vervoermiddel {
