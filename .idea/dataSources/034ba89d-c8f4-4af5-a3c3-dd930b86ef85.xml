@@ -1107,598 +1107,313 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="278" parent="2" name="Cruiseship"/>
-    <table id="279" parent="2" name="Locatie"/>
-    <table id="280" parent="2" name="Luchthaven"/>
-    <table id="281" parent="2" name="Seaking"/>
-    <table id="282" parent="2" name="Speedboot"/>
-    <table id="283" parent="2" name="Tanker"/>
-    <table id="284" parent="2" name="Vrachtschip"/>
-    <table id="285" parent="2" name="Vuurtoren"/>
-    <table id="286" parent="2" name="Zeehaven"/>
-    <table id="287" parent="2" name="Zeepolitie"/>
-    <table id="288" parent="2" name="Zeilboot"/>
-    <column id="289" parent="278" name="ID">
+    <table id="278" parent="2" name="Actor"/>
+    <table id="279" parent="2" name="GeregistreerdeSchepenVerkeerstoren"/>
+    <table id="280" parent="2" name="Hulpdienst"/>
+    <table id="281" parent="2" name="HulpdienstenVerkeerstoren"/>
+    <table id="282" parent="2" name="Locatie"/>
+    <table id="283" parent="2" name="Schip"/>
+    <table id="284" parent="2" name="Verkeerstoren"/>
+    <table id="285" parent="2" name="Vervoermiddel"/>
+    <column id="286" parent="278" name="actorID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="278" name="snelheid">
+    <column id="287" parent="278" name="locatieID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="288" parent="278" name="Actor_Locatie_FK">
+      <ColNames>locatieID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="289" parent="278" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>actorID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="290" parent="278" name="Actor_Locatie_FK">
+      <ColNames>locatieID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Locatie</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="291" parent="279" name="verkeerstorenID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="279" name="schipID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="293" parent="279" name="GeregistreerdeSchepenVerkeerstoren_Verkeerstoren_FK">
+      <ColNames>verkeerstorenID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="294" parent="279" name="GeregistreerdeSchepenVerkeerstoren_Schip_FK">
+      <ColNames>schipID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="295" parent="279" name="GeregistreerdeSchepenVerkeerstoren_Verkeerstoren_FK">
+      <ColNames>verkeerstorenID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Verkeerstoren</RefTableName>
+      <RefColNames>verkeerstorenid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="296" parent="279" name="GeregistreerdeSchepenVerkeerstoren_Schip_FK">
+      <ColNames>schipID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Schip</RefTableName>
+      <RefColNames>schipid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="297" parent="280" name="hulpdienstID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="298" parent="280" name="vervoermiddelID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="299" parent="280" name="Hulpdienst_Vervoermiddel_FK">
+      <ColNames>vervoermiddelID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="300" parent="280" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>hulpdienstID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="301" parent="280" name="Hulpdienst_Vervoermiddel_FK">
+      <ColNames>vervoermiddelID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Vervoermiddel</RefTableName>
+      <RefColNames>vervoermiddelid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="302" parent="281" name="verkeerstorenID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="303" parent="281" name="hulpdienstID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="304" parent="281" name="HulpdienstenVerkeerstoren_Verkeerstoren_FK">
+      <ColNames>verkeerstorenID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="305" parent="281" name="HulpdienstenVerkeerstoren_Hulpdienst_FK">
+      <ColNames>hulpdienstID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="306" parent="281" name="HulpdienstenVerkeerstoren_Verkeerstoren_FK">
+      <ColNames>verkeerstorenID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Verkeerstoren</RefTableName>
+      <RefColNames>verkeerstorenid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="307" parent="281" name="HulpdienstenVerkeerstoren_Hulpdienst_FK">
+      <ColNames>hulpdienstID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Hulpdienst</RefTableName>
+      <RefColNames>hulpdienstid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="308" parent="282" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="282" name="lengte">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="278" name="grootte">
+    <column id="310" parent="282" name="breedte">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="278" name="wendbaarheid">
+    <key id="311" parent="282" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="312" parent="283" name="schipID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="313" parent="283" name="vervoermiddelID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="314" parent="283" name="type">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="283" name="status">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="316" parent="283" name="Schip_Vervoermiddel_FK">
+      <ColNames>vervoermiddelID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="317" parent="283" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>schipID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="318" parent="283" name="Schip_Vervoermiddel_FK">
+      <ColNames>vervoermiddelID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Vervoermiddel</RefTableName>
+      <RefColNames>vervoermiddelid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="319" parent="284" name="verkeerstorenID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="284" name="actorID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="321" parent="284" name="type">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="322" parent="284" name="Verkeerstoren_Actor_FK">
+      <ColNames>actorID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="323" parent="284" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>verkeerstorenID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="324" parent="284" name="Verkeerstoren_Actor_FK">
+      <ColNames>actorID</ColNames>
+      <RefSchemaName>Examen_Java</RefSchemaName>
+      <RefTableName>Actor</RefTableName>
+      <RefColNames>actorid</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="325" parent="285" name="vervoermiddelID">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="326" parent="285" name="actorID">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="285" name="snelheid">
+      <Position>3</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="328" parent="285" name="grootte">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="278" name="capaciteit">
+    <column id="329" parent="285" name="wendbaarheid">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="278" name="personenAanBoord">
+    <column id="330" parent="285" name="capaciteit">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="278" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="296" parent="278" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="297" parent="278" name="Cruiseship_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="298" parent="278" name="Cruiseship_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="299" parent="278" name="Cruiseship_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="300" parent="278" name="Cruiseship_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="301" parent="279" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="302" parent="279" name="lengte">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="303" parent="279" name="breedte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="304" parent="279" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="305" parent="280" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="306" parent="280" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="307" parent="280" name="Luchthaven_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="308" parent="281" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="309" parent="281" name="snelheid">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="310" parent="281" name="grootte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="311" parent="281" name="wendbaarheid">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="312" parent="281" name="capaciteit">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="313" parent="281" name="personenAanBoord">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="314" parent="281" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="315" parent="281" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="316" parent="281" name="Seaking_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="317" parent="281" name="Seaking_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="318" parent="281" name="Seaking_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="319" parent="281" name="Seaking_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="320" parent="282" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="321" parent="282" name="snelheid">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="322" parent="282" name="grootte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="323" parent="282" name="wendbaarheid">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="324" parent="282" name="capaciteit">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="325" parent="282" name="personenAanBoord">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="326" parent="282" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="327" parent="282" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="328" parent="282" name="Speedboot_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="329" parent="282" name="Speedboot_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="330" parent="282" name="Speedboot_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="331" parent="282" name="Speedboot_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="332" parent="283" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="333" parent="283" name="snelheid">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="334" parent="283" name="grootte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="335" parent="283" name="wendbaarheid">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="336" parent="283" name="capaciteit">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="337" parent="283" name="personenAanBoord">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="338" parent="283" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="339" parent="283" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="340" parent="283" name="Tanker_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="341" parent="283" name="Tanker_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="342" parent="283" name="Tanker_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="343" parent="283" name="Tanker_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="344" parent="284" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="345" parent="284" name="snelheid">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="346" parent="284" name="grootte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="347" parent="284" name="wendbaarheid">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="348" parent="284" name="capaciteit">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="349" parent="284" name="personenAanBoord">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="350" parent="284" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="351" parent="284" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="352" parent="284" name="Vrachtschip_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="353" parent="284" name="Vrachtschip_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="354" parent="284" name="Vrachtschip_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="355" parent="284" name="Vrachtschip_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="356" parent="285" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="357" parent="285" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="358" parent="285" name="Vuurtoren_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="359" parent="286" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="360" parent="286" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="361" parent="286" name="Zeehaven_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="362" parent="287" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="363" parent="287" name="snelheid">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="364" parent="287" name="grootte">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="365" parent="287" name="wendbaarheid">
-      <Position>4</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="366" parent="287" name="capaciteit">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="367" parent="287" name="personenAanBoord">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="368" parent="287" name="koers">
-      <Position>7</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="369" parent="287" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="370" parent="287" name="Zeepolitie_Locatie_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="371" parent="287" name="Zeepolitie_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="372" parent="287" name="Zeepolitie_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="373" parent="287" name="Zeepolitie_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="374" parent="288" name="snelheid">
-      <Position>1</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="375" parent="288" name="grootte">
-      <Position>2</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="376" parent="288" name="wendbaarheid">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="377" parent="288" name="capaciteit">
-      <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="378" parent="288" name="personenAanBoord">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="379" parent="288" name="koers">
-      <Position>6</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="380" parent="288" name="ID">
+    <column id="331" parent="285" name="personenAanBoord">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="381" parent="288" name="PRIMARY">
+    <column id="332" parent="285" name="koers">
+      <Position>8</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="333" parent="285" name="Vervoermiddel_Actor_FK">
+      <ColNames>actorID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="334" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
+      <ColNames>vervoermiddelID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="382" parent="288" name="Zeilboot_Locatie_FK">
-      <ColNames>ID</ColNames>
+    <foreign-key id="335" parent="285" name="Vervoermiddel_Actor_FK">
+      <ColNames>actorID</ColNames>
       <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Locatie</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="383" parent="288" name="Zeilboot_Luchthaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Luchthaven</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="384" parent="288" name="Zeilboot_Vuurtoren_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Vuurtoren</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="385" parent="288" name="Zeilboot_Zeehaven_FK">
-      <ColNames>ID</ColNames>
-      <RefSchemaName>Examen_Java</RefSchemaName>
-      <RefTableName>Zeehaven</RefTableName>
-      <RefColNames>id</RefColNames>
+      <RefTableName>Actor</RefTableName>
+      <RefColNames>actorID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
   </database-model>
 </dataSource>
