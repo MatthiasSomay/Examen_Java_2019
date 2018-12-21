@@ -9,7 +9,7 @@ package model;
 
 public interface IVerkeerstorenObserver {
 
-    public void noodsituatieBericht();
-    public void stuurLaatsteVaargegevens();
+    void noodsituatieBericht();
+    void stuurLaatsteVaargegevens();
 
 }

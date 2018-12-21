@@ -9,5 +9,5 @@ package model;
 
 public interface IVerleenHulp {
 
-    public void verleenHulp();
+    void verleenHulp();
 }

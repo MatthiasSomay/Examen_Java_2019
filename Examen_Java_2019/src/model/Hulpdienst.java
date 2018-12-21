@@ -30,7 +30,7 @@ public class Hulpdienst extends Vervoermiddel {
         return 0;
     }
 
-    // TODO: 2018-12-19  
+    // TODO: 2018-12-19
     @Override
     public void verleenHulp() {
 

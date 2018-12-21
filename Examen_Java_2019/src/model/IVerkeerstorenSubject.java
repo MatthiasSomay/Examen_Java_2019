@@ -11,7 +11,7 @@ package model;
 
 public interface IVerkeerstorenSubject {
 
-    public void addSchipObserver();
-    public void removeSchipObserver();
-    public void noodsituatieBroadcastBericht();
+    void addSchipObserver();
+    void removeSchipObserver();
+    void noodsituatieBroadcastBericht();
 }
