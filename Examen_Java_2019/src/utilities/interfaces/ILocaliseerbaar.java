@@ -11,5 +11,5 @@ import model.Actor;
 
 public interface ILocaliseerbaar {
 
-    public double berekendAfstand(Actor actor);
+    public double berekenAfstand(Actor actor);
 }
