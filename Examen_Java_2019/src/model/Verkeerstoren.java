@@ -17,8 +17,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Schip> schepen;
     private String type;
 
-
-    public Verkeerstoren(List<Hulpdienst> hulpdiensten, List<Schip> schepen, String type) {
+    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, List<Hulpdienst> hulpdiensten, List<Schip> schepen, String type) {
+        super(locatie, verkeerstorens);
         this.hulpdiensten = hulpdiensten;
         this.schepen = schepen;
         this.type = type;
@@ -46,7 +46,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     // TODO: 2018-12-19  
     @Override
-    public double berekendAfstand(Actor actor) {
+    public double berekenAfstand(Actor actor) {
         return 0;
     }
 

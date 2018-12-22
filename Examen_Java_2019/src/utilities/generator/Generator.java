@@ -79,6 +79,25 @@ public class Generator {
         }
     }
 
+    public int generateCapaciteit(String Type) {
+        DecimalFormat df = new DecimalFormat("#");
+        df.setRoundingMode(RoundingMode.CEILING);
+        switch (Type) {
+            case "Tanker": return Integer.parseInt(df.format(40+ (Math.random()*10)));
+            case "Cruiseschip": return Integer.parseInt(df.format(700+ (Math.random()*6000)));
+            case "ContainerSchip": return Integer.parseInt(df.format(60+ (Math.random()*15)));
+            case "Zeilboot": return Integer.parseInt(df.format(3+ (Math.random()*8)));
+            case "Speedboot": return Integer.parseInt(df.format(4+ (Math.random()*8)));
+            case "Vissersboot": return Integer.parseInt(df.format(15+ (Math.random()*5)));
+            case "Seaking": return Integer.parseInt(df.format(5+ (Math.random()*2)));
+            case "Zeepolitie": return Integer.parseInt(df.format(10+ (Math.random()*3)));
+            case "Marine": return Integer.parseInt(df.format(2500+ (Math.random()*500)));
+            case "Zeebrandweer": return Integer.parseInt(df.format(10+ (Math.random()*10)));
+            default: return 0;
+        }
+
+    }
+
     public int generatePersonenAanBoord(String Type){
         DecimalFormat df = new DecimalFormat("#");
         df.setRoundingMode(RoundingMode.CEILING);

@@ -23,8 +23,7 @@ public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
     public Actor() {
     }
 
-    public Actor(int id, Coördinaten locatie, List<Verkeerstoren> verkeerstorens) {
-        this.id = id;
+    public Actor(Coördinaten locatie, List<Verkeerstoren> verkeerstorens) {
         this.locatie = locatie;
         this.verkeerstorens = verkeerstorens;
     }
