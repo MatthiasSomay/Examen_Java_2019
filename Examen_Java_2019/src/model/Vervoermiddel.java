@@ -35,7 +35,7 @@ public abstract class Vervoermiddel extends Actor {
 
     // TODO: 2018-12-19
     public double berekenReactietijd(Actor actor) {
-
+        return 0;
     }
 
     @Override

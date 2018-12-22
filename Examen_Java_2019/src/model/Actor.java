@@ -31,6 +31,7 @@ public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
 
     // TODO: 2018-12-19
     public double berekenAfstand(Actor actor) {
+        return 0;
 
     }
 

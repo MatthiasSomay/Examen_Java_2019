@@ -7,12 +7,14 @@
 
 package model;
 
+import java.util.List;
+
 public class Hulpdienst extends Vervoermiddel {
 
     private String type;
 
-    public Hulpdienst(int id, Coördinaten locatie, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type) {
-        super(id, locatie, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
+    public Hulpdienst(int id, Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type) {
+        super(id, locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
         this.type = type;
     }
 
