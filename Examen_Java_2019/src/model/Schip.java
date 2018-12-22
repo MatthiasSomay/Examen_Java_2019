@@ -13,6 +13,8 @@ import java.util.List;
 
 public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
+    //TEST commit
+
     private String type;
     private Status status;
 
