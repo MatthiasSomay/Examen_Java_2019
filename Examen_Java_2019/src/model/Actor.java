@@ -8,6 +8,9 @@
 
 package model;
 
+import utilities.interfaces.ILocaliseerbaar;
+import utilities.interfaces.IVerleenHulp;
+
 import java.util.List;
 
 public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {

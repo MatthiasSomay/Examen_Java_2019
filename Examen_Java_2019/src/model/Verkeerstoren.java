@@ -7,6 +7,8 @@
 
 package model;
 
+import utilities.interfaces.IVerkeerstorenSubject;
+
 import java.util.List;
 
 public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
