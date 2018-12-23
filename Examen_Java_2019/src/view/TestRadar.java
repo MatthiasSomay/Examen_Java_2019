@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Hulpdienst;
+import model.Schip;
 import model.Verkeerstoren;
 import utilities.generator.Generator;
 
@@ -15,7 +17,8 @@ import java.util.List;
 public class TestRadar extends Application {
 
     private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
-    private List<Verkeerstoren> hulpdiensten = new ArrayList<Verkeerstoren>();
+    private List<Hulpdienst> hulpdiensten = new ArrayList<>();
+    private List<Schip> schepen = new ArrayList<>();
     private Generator generator = new Generator();
 
     public void setUp() {
