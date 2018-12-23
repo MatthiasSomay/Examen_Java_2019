@@ -17,8 +17,8 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
     private String type;
     private Status status;
 
-    public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status) {
-        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
+    public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
+        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers);
         this.type = type;
         this.status = status;
     }

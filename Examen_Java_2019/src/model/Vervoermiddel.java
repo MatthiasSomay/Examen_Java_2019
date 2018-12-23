@@ -14,7 +14,6 @@ public abstract class Vervoermiddel extends Actor {
     private double snelheid;
     private double grootte;
     private double wendbaarheid;
-    private int capaciteit;
     private int personenAanBoord;
     private double koers;
 
@@ -23,12 +22,11 @@ public abstract class Vervoermiddel extends Actor {
 
 
 
-    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers) {
+    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers) {
         super(locatie, verkeerstorens );
         this.snelheid = snelheid;
         this.grootte = grootte;
         this.wendbaarheid = wendbaarheid;
-        this.capaciteit = capaciteit;
         this.personenAanBoord = personenAanBoord;
         this.koers = koers;
     }
@@ -44,7 +42,7 @@ public abstract class Vervoermiddel extends Actor {
                 "snelheid=" + snelheid +
                 ", grootte=" + grootte +
                 ", wendbaarheid=" + wendbaarheid +
-                ", capaciteit=" + capaciteit +
+                ", capaciteit=" + /*capaciteit +*/
                 ", personenAanBoord=" + personenAanBoord +
                 ", koers=" + koers +
                 '}';
@@ -72,14 +70,6 @@ public abstract class Vervoermiddel extends Actor {
 
     public void setWendbaarheid(double wendbaarheid) {
         this.wendbaarheid = wendbaarheid;
-    }
-
-    public int getCapaciteit() {
-        return capaciteit;
-    }
-
-    public void setCapaciteit(int capaciteit) {
-        this.capaciteit = capaciteit;
     }
 
     public int getPersonenAanBoord() {
