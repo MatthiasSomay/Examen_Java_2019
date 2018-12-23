@@ -7,6 +7,8 @@
 
 package model;
 
+import utilities.states.Status;
+
 import java.util.List;
 
 public abstract class Vervoermiddel extends Actor {
@@ -46,7 +48,9 @@ public abstract class Vervoermiddel extends Actor {
                 "\nGrootte: " + getGrootte() +
                 "\nWendbaarheid: " + getWendbaarheid() +
                 "\nAantal personen aan boord: " + getPersonenAanBoord() +
-                "\nKoers: " + getKoers()
+                "\nKoers: " + getKoers() +
+                "\nType: " + getType() +
+                "\nStatus: " + getStatus()
         );
     }
 

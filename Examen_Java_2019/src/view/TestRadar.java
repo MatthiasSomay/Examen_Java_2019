@@ -10,10 +10,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Hulpdienst;
 import model.Schip;
-import model.Status;
 import model.Verkeerstoren;
 import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
+import utilities.states.Status;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

@@ -14,10 +14,6 @@ import java.util.List;
 
 public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
-
-    private String type;
-    private Status status;
-
     public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
         super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
     }
