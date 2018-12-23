@@ -23,8 +23,8 @@ public abstract class Vervoermiddel extends Actor {
 
 
 
-    public Vervoermiddel(int id, Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers) {
-        super(id, locatie, verkeerstorens );
+    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers) {
+        super(locatie, verkeerstorens );
         this.snelheid = snelheid;
         this.grootte = grootte;
         this.wendbaarheid = wendbaarheid;

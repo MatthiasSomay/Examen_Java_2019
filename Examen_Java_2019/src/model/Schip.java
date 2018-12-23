@@ -13,13 +13,12 @@ import java.util.List;
 
 public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
-    //TEST commit
 
     private String type;
     private Status status;
 
-    public Schip(int id, Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status) {
-        super(id, locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
+    public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status) {
+        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
         this.type = type;
         this.status = status;
     }
