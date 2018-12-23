@@ -8,8 +8,6 @@
 
 package utilities.states;
 
-import model.Status;
-
 public class Context {
 
     private Status status;

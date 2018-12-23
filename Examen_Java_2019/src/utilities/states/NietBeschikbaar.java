@@ -8,8 +8,6 @@
 
 package utilities.states;
 
-import model.Status;
-
 public class NietBeschikbaar extends Status {
     @Override
     public void doeActie() {
