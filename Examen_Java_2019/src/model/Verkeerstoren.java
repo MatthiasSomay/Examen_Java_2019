@@ -56,7 +56,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     @Override
     public String toString() {
-        return ("Verkeerstoren: " +
+        return ("\nVerkeerstoren: " +
                 "\nID: " + getId() +
                 "\nLocatie: " + getLocatie().toString() +
                 "\nType: " + getType()

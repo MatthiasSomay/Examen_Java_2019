@@ -28,7 +28,7 @@ public class Generator {
     }
 
     public Coördinaten generateLocatie(){
-        return new Coördinaten(((1+ (Math.random()*10))), ((1+ (Math.random()*10))));
+        return new Coördinaten((1+ (Math.random()*10)), (1+ (Math.random()*10)));
     }
 
     public double generateSnelheid(String Type){

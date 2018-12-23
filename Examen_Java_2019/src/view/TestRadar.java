@@ -11,6 +11,7 @@ import model.Schip;
 import model.Verkeerstoren;
 import utilities.generator.Generator;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class TestRadar extends Application {
             TestRadar radar = new TestRadar();
             radar.setUp();
             radar.print();
-            launch(args);
+            /*launch(args);*/
         }
         catch (Exception e){
             System.out.println(e.getStackTrace());
