@@ -7,15 +7,20 @@
 
 package model;
 
+import utilities.interfaces.IStatus;
+
 import java.util.List;
 
 public class Hulpdienst extends Vervoermiddel {
 
     private String type;
+    private IStatus status;
 
-    public Hulpdienst(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type) {
+
+    public Hulpdienst(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, IStatus status) {
         super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
         this.type = type;
+        this.status = status;
     }
 
     public String getType() {
@@ -26,7 +31,15 @@ public class Hulpdienst extends Vervoermiddel {
         this.type = type;
     }
 
-    // TODO: 2018-12-19  
+    public IStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(IStatus status) {
+        this.status = status;
+    }
+
+    // TODO: 2018-12-19
     @Override
     public double berekenAfstand(Actor actor) {
         return 0;
@@ -36,5 +49,10 @@ public class Hulpdienst extends Vervoermiddel {
     @Override
     public void verleenHulp() {
 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
