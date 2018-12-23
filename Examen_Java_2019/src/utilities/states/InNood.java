@@ -8,9 +8,9 @@
 
 package utilities.states;
 
-import utilities.interfaces.IStatus;
+import model.Status;
 
-public class InNood implements IStatus {
+public class InNood extends Status {
     @Override
     public void doeActie() {
 

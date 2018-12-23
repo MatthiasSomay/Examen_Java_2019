@@ -7,9 +7,9 @@
 
 package utilities.states;
 
-import utilities.interfaces.IStatus;
+import model.Status;
 
-public class Beschikbaar implements IStatus {
+public class Beschikbaar extends Status {
     @Override
     public void doeActie() {
 

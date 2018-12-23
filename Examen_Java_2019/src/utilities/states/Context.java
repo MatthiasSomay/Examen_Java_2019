@@ -8,21 +8,21 @@
 
 package utilities.states;
 
-import utilities.interfaces.IStatus;
+import model.Status;
 
 public class Context {
 
-    private IStatus status;
+    private Status status;
 
     public Context() {
         status = null;
     }
 
-    public IStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(IStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

@@ -8,9 +8,9 @@
 
 package utilities.states;
 
-import utilities.interfaces.IStatus;
+import model.Status;
 
-public class NietBeschikbaar implements IStatus {
+public class NietBeschikbaar extends Status {
     @Override
     public void doeActie() {
 

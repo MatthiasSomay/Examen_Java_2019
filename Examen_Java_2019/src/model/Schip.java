@@ -7,7 +7,6 @@
 
 package model;
 
-import utilities.interfaces.IStatus;
 import utilities.interfaces.IVerkeerstorenObserver;
 
 import java.util.List;
@@ -16,9 +15,9 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
 
     private String type;
-    private IStatus status;
+    private Status status;
 
-    public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, IStatus status) {
+    public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status) {
         super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers);
         this.type = type;
         this.status = status;
@@ -59,11 +58,11 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         this.type = type;
     }
 
-    public IStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(IStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

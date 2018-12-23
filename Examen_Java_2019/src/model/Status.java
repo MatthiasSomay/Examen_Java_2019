@@ -7,5 +7,6 @@
 
 package model;
 
-public class Status {
+public abstract class Status {
+    public abstract  void doeActie();
 }
