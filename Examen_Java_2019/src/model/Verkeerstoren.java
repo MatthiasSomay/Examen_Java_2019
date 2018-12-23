@@ -17,10 +17,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Schip> schepen;
     private String type;
 
-    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, List<Hulpdienst> hulpdiensten, List<Schip> schepen, String type) {
+    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
         super(locatie, verkeerstorens);
-        this.hulpdiensten = hulpdiensten;
-        this.schepen = schepen;
         this.type = type;
     }
 
