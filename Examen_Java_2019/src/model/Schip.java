@@ -18,9 +18,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
     private Status status;
 
     public Schip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
-        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers);
-        this.type = type;
-        this.status = status;
+        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
     }
 
     // TODO: 2018-12-19
@@ -48,22 +46,6 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
     @Override
     public void verleenHulp() {
 
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     @Override

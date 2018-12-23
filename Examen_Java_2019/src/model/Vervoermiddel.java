@@ -16,19 +16,21 @@ public abstract class Vervoermiddel extends Actor {
     private double wendbaarheid;
     private int personenAanBoord;
     private double koers;
+    private String type;
+    private Status status;
 
     public Vervoermiddel() {
     }
 
-
-
-    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers) {
+    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
         super(locatie, verkeerstorens );
         this.snelheid = snelheid;
         this.grootte = grootte;
         this.wendbaarheid = wendbaarheid;
         this.personenAanBoord = personenAanBoord;
         this.koers = koers;
+        this.type = type;
+        this.status = status;
     }
 
     // TODO: 2018-12-19
@@ -38,14 +40,14 @@ public abstract class Vervoermiddel extends Actor {
 
     @Override
     public String toString() {
-        return "Vervoermiddel{" +
-                "snelheid=" + snelheid +
-                ", grootte=" + grootte +
-                ", wendbaarheid=" + wendbaarheid +
-                ", capaciteit=" + /*capaciteit +*/
-                ", personenAanBoord=" + personenAanBoord +
-                ", koers=" + koers +
-                '}';
+        return ("\nID: " + getId() +
+                "\nLocatie: " + getLocatie().toString() +
+                "\nSnelheid: " + getSnelheid() +
+                "\nGrootte: " + getGrootte() +
+                "\nWendbaarheid: " + getWendbaarheid() +
+                "\nAantal personen aan boord: " + getPersonenAanBoord() +
+                "\nKoers: " + getKoers()
+        );
     }
 
     public double getSnelheid() {
@@ -86,5 +88,21 @@ public abstract class Vervoermiddel extends Actor {
 
     public void setKoers(double koers) {
         this.koers = koers;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
