@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SchipFactory {
 
-    public static Schip createSchip(int y, Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status)
+    public static Schip createSchip(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int capaciteit, int personenAanBoord, double koers, String type, Status status)
     {
         return new Schip(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, capaciteit, personenAanBoord, koers, type, status);
     }
