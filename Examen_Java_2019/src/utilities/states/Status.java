@@ -5,7 +5,7 @@
  * @Purpose: IStatus klasse
  */
 
-package model;
+package utilities.states;
 
 public abstract class Status {
     public abstract  void doeActie();

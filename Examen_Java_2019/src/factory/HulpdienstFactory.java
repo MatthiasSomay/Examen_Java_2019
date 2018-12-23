@@ -2,8 +2,8 @@ package factory;
 
 import model.Coördinaten;
 import model.Hulpdienst;
-import model.Status;
 import model.Verkeerstoren;
+import utilities.states.Status;
 
 import java.util.List;
 

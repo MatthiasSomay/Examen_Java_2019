@@ -8,8 +8,6 @@
 
 package utilities.states;
 
-import model.Status;
-
 public class InNood extends Status {
     @Override
     public void doeActie() {

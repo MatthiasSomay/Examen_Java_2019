@@ -7,8 +7,6 @@
 
 package utilities.states;
 
-import model.Status;
-
 public class Beschikbaar extends Status {
     @Override
     public void doeActie() {

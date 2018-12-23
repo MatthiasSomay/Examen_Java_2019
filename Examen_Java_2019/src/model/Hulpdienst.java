@@ -7,6 +7,8 @@
 
 package model;
 
+import utilities.states.Status;
+
 import java.util.List;
 
 public class Hulpdienst extends Vervoermiddel {

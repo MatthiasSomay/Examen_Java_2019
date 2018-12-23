@@ -8,6 +8,7 @@
 package model;
 
 import utilities.interfaces.IVerkeerstorenObserver;
+import utilities.states.Status;
 
 import java.util.List;
 

@@ -3,6 +3,7 @@ package model;
 import java.text.DecimalFormat;
 
 public class Coördinaten {
+
     private double lengte;
     private double breedte;
 
@@ -34,5 +35,14 @@ public class Coördinaten {
 
     public void setBreedte(double breedte) {
         this.breedte = breedte;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coördinaten)) return false;
+        Coördinaten that = (Coördinaten) o;
+        return Double.compare(that.getLengte(), getLengte()) == 0 &&
+                Double.compare(that.getBreedte(), getBreedte()) == 0;
     }
 }
