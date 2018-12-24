@@ -11,6 +11,8 @@ import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.states.Status;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public abstract class Vervoermiddel extends Actor {
@@ -22,6 +24,7 @@ public abstract class Vervoermiddel extends Actor {
     private double koers;
     private String type;
     private Status status;
+    DecimalFormat df = new DecimalFormat("0.00");
 
     public Vervoermiddel() {
     }
@@ -64,7 +67,9 @@ public abstract class Vervoermiddel extends Actor {
         if (snelheid < 0) {
             throw new IllegalArgumentException("Ongeldige snelheid");
         }
-        this.snelheid = snelheid;
+        String s = df.format(snelheid);
+        Double d = Double.parseDouble(s.replace(",", "."));
+        this.snelheid = Double.parseDouble(df.format(snelheid).replace(",", "."));
     }
 
     public double getGrootte() {

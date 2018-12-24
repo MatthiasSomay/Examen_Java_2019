@@ -6,6 +6,7 @@ public class Coördinaten {
 
     private double lengte;
     private double breedte;
+    DecimalFormat df = new DecimalFormat("0.00");
 
     public Coördinaten(double lengte, double breedte) {
         setLengte(lengte);
@@ -14,7 +15,6 @@ public class Coördinaten {
 
     @Override
     public String toString() {
-        DecimalFormat df = new DecimalFormat("0.00");
         return ("Coördinaten(" +
                 "Lengte: " + df.format(getLengte()) + "; " +
                 "Breedte: " + df.format(getBreedte()) + ")"
