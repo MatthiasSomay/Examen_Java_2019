@@ -44,11 +44,11 @@ public abstract class Vervoermiddel extends Actor {
     public String toString() {
         return ("ID: " + getId() +
                 "\nLocatie: " + getLocatie().toString() +
-                "\nSnelheid: " + getSnelheid() +
-                "\nGrootte: " + getGrootte() +
-                "\nWendbaarheid: " + getWendbaarheid() +
+                "\nSnelheid: " + getSnelheid() + " knopen" +
+                "\nGrootte: " + getGrootte() + " m²" +
+                "\nWendbaarheid: " + getWendbaarheid() + " sec/graad" +
                 "\nAantal personen aan boord: " + getPersonenAanBoord() +
-                "\nKoers: " + getKoers() +
+                "\nKoers: " + getKoers() + " graden" +
                 "\nType: " + getType() +
                 "\nStatus: " + getStatus() + "\n"
         );
