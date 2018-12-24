@@ -15,6 +15,9 @@ import java.util.List;
 
 public abstract class Vervoermiddel extends Actor {
 
+    HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
+    SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
+
     private double snelheid;
     private double grootte;
     private double wendbaarheid;
@@ -115,9 +118,6 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public void setType(String type) throws IllegalArgumentException {
-
-        HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
-        SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
 
         if (hulpdienstTypeLijst.hulpdienstType.contains(type) || schipTypeLijst.schipType.contains(type)) {
             this.type = type;
