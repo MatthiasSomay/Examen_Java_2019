@@ -7,6 +7,8 @@
 
 package model;
 
+import utilities.demodata.HulpdienstTypeLijst;
+import utilities.demodata.SchipTypeLijst;
 import utilities.states.Status;
 
 import java.util.List;
@@ -25,14 +27,14 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
-        super(locatie, verkeerstorens );
-        this.snelheid = snelheid;
-        this.grootte = grootte;
-        this.wendbaarheid = wendbaarheid;
-        this.personenAanBoord = personenAanBoord;
-        this.koers = koers;
-        this.type = type;
-        this.status = status;
+        super(locatie, verkeerstorens);
+        setSnelheid(snelheid);
+        setGrootte(grootte);
+        setWendbaarheid(wendbaarheid);
+        setPersonenAanBoord(personenAanBoord);
+        setKoers(koers);
+        setType(type);
+        setStatus(status);
     }
 
     // TODO: 2018-12-19
@@ -58,7 +60,10 @@ public abstract class Vervoermiddel extends Actor {
         return snelheid;
     }
 
-    public void setSnelheid(double snelheid) {
+    public void setSnelheid(double snelheid) throws IllegalArgumentException {
+        if (snelheid < 0) {
+            throw new IllegalArgumentException("Ongeldige snelheid");
+        }
         this.snelheid = snelheid;
     }
 
@@ -66,7 +71,10 @@ public abstract class Vervoermiddel extends Actor {
         return grootte;
     }
 
-    public void setGrootte(double grootte) {
+    public void setGrootte(double grootte) throws IllegalArgumentException{
+        if (grootte < 0) {
+            throw new IllegalArgumentException("Ongeldige grootte");
+        }
         this.grootte = grootte;
     }
 
@@ -74,15 +82,20 @@ public abstract class Vervoermiddel extends Actor {
         return wendbaarheid;
     }
 
-    public void setWendbaarheid(double wendbaarheid) {
-        this.wendbaarheid = wendbaarheid;
+    public void setWendbaarheid(double wendbaarheid) throws IllegalArgumentException {
+        if (wendbaarheid <= 0) {
+            throw new IllegalArgumentException("Ongeldige wendbaarheid");
+        }
     }
 
     public int getPersonenAanBoord() {
         return personenAanBoord;
     }
 
-    public void setPersonenAanBoord(int personenAanBoord) {
+    public void setPersonenAanBoord(int personenAanBoord) throws IllegalArgumentException {
+        if (personenAanBoord <= 0) {
+            throw new IllegalArgumentException("Personen aan boord mag niet nul of negatief zijn");
+        }
         this.personenAanBoord = personenAanBoord;
     }
 
@@ -90,7 +103,10 @@ public abstract class Vervoermiddel extends Actor {
         return koers;
     }
 
-    public void setKoers(double koers) {
+    public void setKoers(double koers) throws IllegalArgumentException {
+        if (koers < 0) {
+            throw new IllegalArgumentException("Ongeldige koers");
+        }
         this.koers = koers;
     }
 
@@ -98,8 +114,18 @@ public abstract class Vervoermiddel extends Actor {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String type) throws IllegalArgumentException {
+
+        HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
+        SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
+
+        if (hulpdienstTypeLijst.hulpdienstType.contains(type) || schipTypeLijst.schipType.contains(type)) {
+            this.type = type;
+
+        } else {
+            throw new IllegalArgumentException("Ongeldig type");
+
+        }
     }
 
     public Status getStatus() {

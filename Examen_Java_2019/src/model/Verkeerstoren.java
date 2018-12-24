@@ -7,6 +7,7 @@
 
 package model;
 
+import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.interfaces.IVerkeerstorenSubject;
 
 import java.util.List;
@@ -17,9 +18,11 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Schip> schepen;
     private String type;
 
-    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
+    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, List<Hulpdienst> hulpdiensten, List<Schip> schepen, String type) {
         super(locatie, verkeerstorens);
-        this.type = type;
+        setHulpdiensten(hulpdiensten);
+        setSchepen(schepen);
+        setType(type);
     }
 
     // TODO: 2018-12-19
@@ -66,7 +69,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         return hulpdiensten;
     }
 
-    public void setHulpdiensten(List<Hulpdienst> hulpdiensten) {
+    public void setHulpdiensten(List<Hulpdienst> hulpdiensten) throws IllegalArgumentException {
+        if (hulpdiensten.isEmpty() || hulpdiensten == null) {
+            throw new IllegalArgumentException("Lijst hulpdiensten mag niet leeg zijn");
+        }
         this.hulpdiensten = hulpdiensten;
     }
 
@@ -74,7 +80,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         return schepen;
     }
 
-    public void setSchepen(List<Schip> schepen) {
+    public void setSchepen(List<Schip> schepen) throws IllegalArgumentException {
+        if (schepen.isEmpty() || schepen == null) {
+            throw new IllegalArgumentException("Lijst schepen mag niet leeg zijn");
+        }
         this.schepen = schepen;
     }
 
@@ -82,8 +91,17 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String type) throws IllegalArgumentException {
+
+        VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
+
+        if (verkeerstorenTypeLijst.verkeerstorenType.contains(type)) {
+            this.type = type;
+        } else {
+            throw new IllegalArgumentException("Ongeldig type");
+
+        }
+
     }
 
 
