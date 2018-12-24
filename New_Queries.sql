@@ -31,16 +31,17 @@ CREATE TABLE `Vervoermiddel` (
   `capaciteit` int(11) NOT NULL,
   `personenAanBoord` int(11) NOT NULL,
   `koers` double NOT NULL,
+  `type` varchar(100) NOT NULL,
   PRIMARY KEY (`vervoermiddelID`),
   KEY `Vervoermiddel_Actor_FK` (`actorID`),
   CONSTRAINT `Vervoermiddel_Actor_FK` FOREIGN KEY (`actorID`) REFERENCES `actor` (`actorID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+
 CREATE TABLE `Schip` (
   `schipID` int(11) NOT NULL AUTO_INCREMENT,
   `vervoermiddelID` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   PRIMARY KEY (`schipID`),
   KEY `Schip_Vervoermiddel_FK` (`vervoermiddelID`),
