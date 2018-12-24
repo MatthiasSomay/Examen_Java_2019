@@ -18,10 +18,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Schip> schepen;
     private String type;
 
-    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, List<Hulpdienst> hulpdiensten, List<Schip> schepen, String type) {
+    public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
         super(locatie, verkeerstorens);
-        setHulpdiensten(hulpdiensten);
-        setSchepen(schepen);
         setType(type);
     }
 
@@ -70,8 +68,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void setHulpdiensten(List<Hulpdienst> hulpdiensten) throws IllegalArgumentException {
-        if (hulpdiensten.isEmpty() || hulpdiensten == null) {
-            throw new IllegalArgumentException("Lijst hulpdiensten mag niet leeg zijn");
+        if (hulpdiensten == null) {
+            throw new IllegalArgumentException("Lijst hulpdiensten ongeldig");
         }
         this.hulpdiensten = hulpdiensten;
     }
@@ -81,8 +79,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void setSchepen(List<Schip> schepen) throws IllegalArgumentException {
-        if (schepen.isEmpty() || schepen == null) {
-            throw new IllegalArgumentException("Lijst schepen mag niet leeg zijn");
+        if (schepen == null) {
+            throw new IllegalArgumentException("Lijst schepen ongeldig");
         }
         this.schepen = schepen;
     }

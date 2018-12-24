@@ -55,8 +55,8 @@ public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
     }
 
     public void setVerkeerstorens(List<Verkeerstoren> verkeerstorens) throws IllegalArgumentException {
-        if (verkeerstorens.isEmpty() || verkeerstorens == null) {
-            throw new IllegalArgumentException("Lijst verkeerstorens mag niet leeg zijn");
+        if (verkeerstorens == null) {
+            throw new IllegalArgumentException("Lijst verkeerstorens ongeldig");
         }
         this.verkeerstorens = verkeerstorens;
     }
