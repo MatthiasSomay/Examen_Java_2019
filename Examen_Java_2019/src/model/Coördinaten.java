@@ -1,12 +1,12 @@
 package model;
 
-import java.text.DecimalFormat;
+import utilities.afronden.Afronden;
 
 public class Coördinaten {
 
     private double lengte;
     private double breedte;
-    DecimalFormat df = new DecimalFormat("0.00");
+    Afronden afronden = new Afronden();
 
     public Coördinaten(double lengte, double breedte) {
         setLengte(lengte);
@@ -16,8 +16,8 @@ public class Coördinaten {
     @Override
     public String toString() {
         return ("Coördinaten(" +
-                "Lengte: " + df.format(getLengte()) + "; " +
-                "Breedte: " + df.format(getBreedte()) + ")"
+                "Lengte: " + getLengte() + "; " +
+                "Breedte: " + getBreedte() + ")"
         );
     }
 
@@ -30,7 +30,7 @@ public class Coördinaten {
             throw new IllegalArgumentException("Ongeldige lengte");
 
         }
-        this.lengte = lengte;
+        this.lengte = afronden.RondAfNaarTweeNaKomma(lengte);
     }
 
     public double getBreedte() {
