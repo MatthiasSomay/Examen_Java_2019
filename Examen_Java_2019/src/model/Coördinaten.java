@@ -6,7 +6,7 @@ public class Coördinaten {
 
     private double lengte;
     private double breedte;
-    Afronden afronden = new Afronden();
+    private Afronden afronden = new Afronden();
 
     public Coördinaten(double lengte, double breedte) {
         setLengte(lengte);
@@ -42,7 +42,7 @@ public class Coördinaten {
             throw new IllegalArgumentException("Ongeldige breedte");
 
         }
-        this.breedte = breedte;
+        this.breedte = afronden.RondAfNaarTweeNaKomma(breedte);
     }
 
     @Override

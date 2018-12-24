@@ -17,7 +17,7 @@ public abstract class Vervoermiddel extends Actor {
 
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
-    Afronden afronden = new Afronden();
+    private Afronden afronden = new Afronden();
 
     private double snelheid;
     private double grootte;

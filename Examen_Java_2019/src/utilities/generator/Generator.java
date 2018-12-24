@@ -1,6 +1,7 @@
 package utilities.generator;
 
 import model.Coördinaten;
+import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
@@ -11,6 +12,7 @@ public class Generator {
     private HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     private SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
     private VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
+    private Afronden afronden = new Afronden();
 
     public String generateTypeHulpdienst(){
         return (hulpdienstTypeLijst.hulpdienstType.get(RANDOM.nextInt(hulpdienstTypeLijst.hulpdienstType.size())));
@@ -76,35 +78,18 @@ public class Generator {
         }
     }
 
-    public double generateCapaciteit(String Type) {
+    public int generatePersonenAanBoord(String Type){
         switch (Type) {
-            case "Tanker": return (40+ (Math.random()*10));
-            case "Cruiseschip": return (700+ (Math.random()*6000));
-            case "ContainerSchip": return (60+ (Math.random()*15));
-            case "Zeilboot": return (3+ (Math.random()*8));
-            case "Speedboot": return (4+ (Math.random()*8));
-            case "Vissersboot": return (15+ (Math.random()*5));
-            case "Seaking": return (5+ (Math.random()*2));
-            case "Zeepolitie": return (10+ (Math.random()*3));
-            case "Marine": return (2500+ (Math.random()*500));
-            case "Zeebrandweer": return (10+ (Math.random()*10));
-            default: return 0;
-        }
-
-    }
-
-    public double generatePersonenAanBoord(String Type){
-        switch (Type) {
-            case "Tanker": return (20+ (Math.random()*10));
-            case "Cruiseschip": return (500+ (Math.random()*6000));
-            case "ContainerSchip": return (30+ (Math.random()*15));
-            case "Zeilboot": return (2+ (Math.random()*8));
-            case "Speedboot": return (2+ (Math.random()*8));
-            case "Vissersboot": return (10+ (Math.random()*5));
-            case "Seaking": return (3+ (Math.random()*2));
-            case "Zeepolitie": return (7+ (Math.random()*3));
-            case "Marine": return (1500+ (Math.random()*500));
-            case "Zeebrandweer": return (7+ (Math.random()*10));
+            case "Tanker": return afronden.RondAfNaarGeheelGetal(20+ (Math.random()*10));
+            case "Cruiseschip": return afronden.RondAfNaarGeheelGetal(500+ (Math.random()*6000));
+            case "ContainerSchip": return afronden.RondAfNaarGeheelGetal(30+ (Math.random()*15));
+            case "Zeilboot": return afronden.RondAfNaarGeheelGetal(2+ (Math.random()*8));
+            case "Speedboot": return afronden.RondAfNaarGeheelGetal(2+ (Math.random()*8));
+            case "Vissersboot": return afronden.RondAfNaarGeheelGetal(10+ (Math.random()*5));
+            case "Seaking": return afronden.RondAfNaarGeheelGetal(3+ (Math.random()*2));
+            case "Zeepolitie": return afronden.RondAfNaarGeheelGetal(7+ (Math.random()*3));
+            case "Marine": return afronden.RondAfNaarGeheelGetal(1500+ (Math.random()*500));
+            case "Zeebrandweer": return afronden.RondAfNaarGeheelGetal(7+ (Math.random()*10));
             default: return 0;
         }
     }
