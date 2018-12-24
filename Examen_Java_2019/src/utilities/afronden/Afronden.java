@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class Afronden {
 
 
-        DecimalFormat dfGeheelGetal = new DecimalFormat("0.00");
+        DecimalFormat dfGeheelGetal = new DecimalFormat("0");
         DecimalFormat dfTweeNaKomma = new DecimalFormat("0.00");
 
         public int RondAfNaarGeheelGetal(double d){
