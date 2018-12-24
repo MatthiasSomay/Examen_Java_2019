@@ -8,8 +8,8 @@ public class Coördinaten {
     private double breedte;
 
     public Coördinaten(double lengte, double breedte) {
-        this.lengte = lengte;
-        this.breedte = breedte;
+        setLengte(lengte);
+        setBreedte(breedte);
     }
 
     @Override
@@ -25,7 +25,11 @@ public class Coördinaten {
         return lengte;
     }
 
-    public void setLengte(double lengte) {
+    public void setLengte(double lengte) throws IllegalArgumentException {
+        if (lengte <= 0) {
+            throw new IllegalArgumentException("Ongeldige lengte");
+
+        }
         this.lengte = lengte;
     }
 
@@ -34,6 +38,10 @@ public class Coördinaten {
     }
 
     public void setBreedte(double breedte) {
+        if (breedte <= 0) {
+            throw new IllegalArgumentException("Ongeldige breedte");
+
+        }
         this.breedte = breedte;
     }
 
