@@ -14,6 +14,8 @@ import java.util.List;
 
 public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
+    VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
+
     private List<Hulpdienst> hulpdiensten;
     private List<Schip> schepen;
     private String type;
@@ -90,8 +92,6 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void setType(String type) throws IllegalArgumentException {
-
-        VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
 
         if (verkeerstorenTypeLijst.verkeerstorenType.contains(type)) {
             this.type = type;
