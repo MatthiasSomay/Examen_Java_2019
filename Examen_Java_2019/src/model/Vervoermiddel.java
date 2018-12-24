@@ -119,13 +119,10 @@ public abstract class Vervoermiddel extends Actor {
 
     public void setType(String type) throws IllegalArgumentException {
 
-        if (hulpdienstTypeLijst.hulpdienstType.contains(type) || schipTypeLijst.schipType.contains(type)) {
-            this.type = type;
-
-        } else {
+        if (!hulpdienstTypeLijst.hulpdienstType.contains(type) && !schipTypeLijst.schipType.contains(type)) {
             throw new IllegalArgumentException("Ongeldig type");
-
         }
+        this.type = type;
     }
 
     public Status getStatus() {
