@@ -42,7 +42,7 @@ public abstract class Vervoermiddel extends Actor {
 
     @Override
     public String toString() {
-        return ("\nID: " + getId() +
+        return ("ID: " + getId() +
                 "\nLocatie: " + getLocatie().toString() +
                 "\nSnelheid: " + getSnelheid() +
                 "\nGrootte: " + getGrootte() +
@@ -50,7 +50,7 @@ public abstract class Vervoermiddel extends Actor {
                 "\nAantal personen aan boord: " + getPersonenAanBoord() +
                 "\nKoers: " + getKoers() +
                 "\nType: " + getType() +
-                "\nStatus: " + getStatus()
+                "\nStatus: " + getStatus() + "\n"
         );
     }
 

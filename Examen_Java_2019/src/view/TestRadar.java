@@ -14,8 +14,6 @@ import model.Verkeerstoren;
 import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
 import utilities.states.Status;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,10 +69,15 @@ public class TestRadar extends Application {
 
     public void print() {
         System.out.println("VERKEERSTORENS:");
+        System.out.println("---------------");
         for(int i=0; i<verkeerstorens.size(); i++)
             System.out.println(verkeerstorens.get(i));
+        System.out.println("HULPDIENSTEN:");
+        System.out.println("-------------");
         for(int i=0; i<hulpdiensten.size(); i++)
             System.out.println(hulpdiensten.get(i));
+        System.out.println("SCHEPEN:");
+        System.out.println("--------");
         for(int i=0; i<schepen.size(); i++)
             System.out.println(schepen.get(i));
     }
