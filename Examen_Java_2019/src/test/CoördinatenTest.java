@@ -14,6 +14,14 @@ public class CoördinatenTest {
     private Coördinaten andereCoordinaat = new Coördinaten(30, 40);
 
     @Test
+    public void test_Constructor_Object_Wordt_Aangemaakt() {
+        Coördinaten c = new Coördinaten(30, 40);
+
+        assertEquals(30, c.getLengte(), 0);
+        assertEquals(40, c.getBreedte(), 0);
+    }
+
+    @Test
     public void test_toString() {
         DecimalFormat df = new DecimalFormat("0.00");
         String expected = "Coördinaten(" + "Lengte: " + df.format(coordinaat.getLengte()) + "; " + "Breedte: " + df.format(coordinaat.getBreedte()) + ")";
@@ -34,11 +42,25 @@ public class CoördinatenTest {
 
     @Test
     public void test_setLengte_Geldige_Waarde_Wordt_Aanvaard() {
+        coordinaat.setLengte(80);
 
-
+        assertEquals(80, coordinaat.getLengte(), 0 );
     }
 
     @Test
     public void test_setBreedte_Geldige_Waarde_Wordt_Aanvaard() {
+        coordinaat.setBreedte(70);
+
+        assertEquals(70, coordinaat.getBreedte(), 0);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_setLengte_Exception_Ongeldige_Waarde() {
+        coordinaat.setLengte(-20);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_setBreedte_Exception_Ongeldige_Waarde() {
+        coordinaat.setBreedte(-20);
     }
 }
