@@ -13,4 +13,9 @@ public class NietBeschikbaar extends Status {
     public void doeActie() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Niet beschikbaar";
+    }
 }

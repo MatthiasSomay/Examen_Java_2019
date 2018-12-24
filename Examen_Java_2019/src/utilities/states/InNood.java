@@ -13,4 +13,9 @@ public class InNood extends Status {
     public void doeActie() {
 
     }
+
+    @Override
+    public String toString() {
+        return "In nood";
+    }
 }
