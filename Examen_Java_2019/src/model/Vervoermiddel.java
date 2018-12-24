@@ -7,18 +7,17 @@
 
 package model;
 
+import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.states.Status;
-
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.List;
 
 public abstract class Vervoermiddel extends Actor {
 
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
+    Afronden afronden = new Afronden();
 
     private double snelheid;
     private double grootte;
@@ -27,7 +26,6 @@ public abstract class Vervoermiddel extends Actor {
     private double koers;
     private String type;
     private Status status;
-    DecimalFormat df = new DecimalFormat("0.00");
 
     public Vervoermiddel() {
     }
@@ -70,9 +68,7 @@ public abstract class Vervoermiddel extends Actor {
         if (snelheid < 0) {
             throw new IllegalArgumentException("Ongeldige snelheid");
         }
-        String s = df.format(snelheid);
-        Double d = Double.parseDouble(s.replace(",", "."));
-        this.snelheid = Double.parseDouble(df.format(snelheid).replace(",", "."));
+        this.snelheid = afronden.RondAfNaarTweeNaKomma(snelheid);
     }
 
     public double getGrootte() {
@@ -83,7 +79,7 @@ public abstract class Vervoermiddel extends Actor {
         if (grootte < 0) {
             throw new IllegalArgumentException("Ongeldige grootte");
         }
-        this.grootte = grootte;
+        this.grootte = afronden.RondAfNaarTweeNaKomma(grootte);
     }
 
     public double getWendbaarheid() {
@@ -94,6 +90,7 @@ public abstract class Vervoermiddel extends Actor {
         if (wendbaarheid <= 0) {
             throw new IllegalArgumentException("Ongeldige wendbaarheid");
         }
+        this.wendbaarheid = afronden.RondAfNaarTweeNaKomma(wendbaarheid);
     }
 
     public int getPersonenAanBoord() {
@@ -104,7 +101,7 @@ public abstract class Vervoermiddel extends Actor {
         if (personenAanBoord <= 0) {
             throw new IllegalArgumentException("Personen aan boord mag niet nul of negatief zijn");
         }
-        this.personenAanBoord = personenAanBoord;
+        this.personenAanBoord = afronden.RondAfNaarGeheelGetal(personenAanBoord);
     }
 
     public double getKoers() {
@@ -115,7 +112,7 @@ public abstract class Vervoermiddel extends Actor {
         if (koers < 0) {
             throw new IllegalArgumentException("Ongeldige koers");
         }
-        this.koers = koers;
+        this.koers = afronden.RondAfNaarTweeNaKomma(koers);
     }
 
     public String getType() {
