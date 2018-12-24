@@ -12,4 +12,10 @@ public class Beschikbaar extends Status {
     public void doeActie() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Beschikbaar";
+    }
+
 }
