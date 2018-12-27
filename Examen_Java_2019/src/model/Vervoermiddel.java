@@ -11,6 +11,7 @@ import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.states.Status;
+
 import java.util.List;
 
 public abstract class Vervoermiddel extends Actor {
@@ -43,6 +44,17 @@ public abstract class Vervoermiddel extends Actor {
 
     // TODO: 2018-12-19
     public double berekenReactietijd(Actor actor) {
+        return 0;
+    }
+
+    public double berekenWendbaarheidstijd () {
+        return 0;
+    }
+
+    public double berekenVolgendeLocatie () {
+        if (this.getKoers() >= 0 || this.getKoers() <= 90){
+            this.getLocatie().setLengte(this.getLocatie().getLengte() * (this.getKoers()));
+        }
         return 0;
     }
 
