@@ -1,3 +1,11 @@
+/**
+ * @Autor: Matthias Somay & Kenneth Van De Borne
+ * @Date: 21/12/2018
+ * @Project: Examen_Java_2019
+ * @Purpose: Coördinaten testklasse
+ */
+
+
 package test;
 
 import model.Coördinaten;
