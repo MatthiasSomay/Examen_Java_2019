@@ -47,12 +47,6 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     // TODO: 2018-12-19  
     @Override
-    public double berekenAfstand(Actor actor) {
-        return 0;
-    }
-
-    // TODO: 2018-12-19  
-    @Override
     public void verleenHulp() {
 
     }
@@ -92,14 +86,11 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void setType(String type) throws IllegalArgumentException {
-
         if (verkeerstorenTypeLijst.verkeerstorenType.contains(type)) {
             this.type = type;
         } else {
             throw new IllegalArgumentException("Ongeldig type");
-
         }
-
     }
 
 
