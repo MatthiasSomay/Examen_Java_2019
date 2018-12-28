@@ -14,6 +14,7 @@ import model.Verkeerstoren;
 import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
 import utilities.states.Status;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +98,7 @@ public class TestRadar extends Application {
             TestRadar radar = new TestRadar();
             radar.setUp();
             radar.print();
+
             /*launch(args);*/
         }
         catch (Exception e){

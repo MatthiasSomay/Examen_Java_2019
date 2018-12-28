@@ -42,20 +42,12 @@ public abstract class Vervoermiddel extends Actor {
         setStatus(status);
     }
 
-    // TODO: 2018-12-19
-    public double berekenReactietijd(Actor actor) {
-        return 0;
+    public double berekenReactietijd(Actor actorInNood, double draaicirkel) {
+        return (berekenWendbaarheidstijd(draaicirkel) + (berekenAfstand(actorInNood)/this.getSnelheid()));
     }
 
-    public double berekenWendbaarheidstijd () {
-        return 0;
-    }
-
-    public double berekenVolgendeLocatie () {
-        if (this.getKoers() >= 0 || this.getKoers() <= 90){
-            this.getLocatie().setLengte(this.getLocatie().getLengte() * (this.getKoers()));
-        }
-        return 0;
+    public double berekenWendbaarheidstijd (double draaicirkel) {
+        return (draaicirkel * this.getWendbaarheid());
     }
 
     @Override
