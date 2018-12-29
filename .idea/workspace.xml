@@ -3,9 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="79a2fcb6-8805-46ff-b915-9e6e5155eee9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/model/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/model/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/model/Hulpdienst.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/model/Hulpdienst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/model/Schip.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/model/Schip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/model/Verkeerstoren.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/model/Verkeerstoren.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/model/Vervoermiddel.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/model/Vervoermiddel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/test/CoördinatenTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/test/CoördinatenTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/generator/Generator.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/generator/Generator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/interfaces/IVerkeerstorenSubject.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/interfaces/IVerkeerstorenSubject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/interfaces/IVerleenHulp.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/utilities/interfaces/IVerleenHulp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Examen_Java_2019/view/TestRadar.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Examen_Java_2019/view/TestRadar.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,22 +55,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="996" />
+          <entry key="java" value="1140" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="996" />
+          <entry key="JAVA" value="1140" />
+          <entry key="PLAIN_TEXT" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
+          <entry key="java" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
+          <entry key="JAVA" value="7" />
         </counts>
       </usages-collector>
     </session>
@@ -67,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Actor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="391">
               <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -77,11 +92,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="50" column="49" lean-forward="true" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+            <state relative-caret-position="307">
+              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -102,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+              <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4626#4627#0" expanded="true" />
@@ -117,8 +144,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+            <state relative-caret-position="1071">
+              <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -126,24 +153,12 @@
                 <element signature="e#824#825#0" expanded="true" />
                 <element signature="e#900#901#0" expanded="true" />
                 <element signature="e#937#938#0" expanded="true" />
-                <element signature="e#2073#2074#0" expanded="true" />
-                <element signature="e#2108#2109#0" expanded="true" />
-                <element signature="e#2418#2419#0" expanded="true" />
-                <element signature="e#2448#2449#0" expanded="true" />
-                <element signature="e#2715#2716#0" expanded="true" />
-                <element signature="e#2742#2743#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/afronden/Afronden.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#2327#2328#0" expanded="true" />
+                <element signature="e#2362#2363#0" expanded="true" />
+                <element signature="e#2672#2673#0" expanded="true" />
+                <element signature="e#2702#2703#0" expanded="true" />
+                <element signature="e#2969#2970#0" expanded="true" />
+                <element signature="e#2996#2997#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,12 +167,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+            <state relative-caret-position="388">
+              <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -206,7 +243,6 @@
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/factory/ActorFactory.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IStatus.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Status.java" />
-        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/states/Context.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/states/InNood.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/states/NietBeschikbaar.java" />
@@ -215,11 +251,15 @@
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/test/CoördinatenTest.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/afronden/Afronden.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Actor.java" />
-        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java" />
-        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenSubject.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java" />
       </list>
     </option>
   </component>
@@ -283,7 +323,7 @@
               <item name="Examen_Java_2019" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utilities" type="462c0819:PsiDirectoryNode" />
-              <item name="generator" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Examen_Java2019" type="b2602c69:ProjectViewProjectNode" />
@@ -310,7 +350,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546079255026" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546079810182" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -568,7 +608,7 @@
       <workItem from="1545592417312" duration="2516000" />
       <workItem from="1545597841351" duration="206000" />
       <workItem from="1545656503854" duration="9602000" />
-      <workItem from="1545728815127" duration="12246000" />
+      <workItem from="1545728815127" duration="12848000" />
     </task>
     <task id="LOCAL-00001" summary="Aanmaak packages en JavaFX files">
       <created>1544874502493</created>
@@ -759,7 +799,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546018400074</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="afronden package">
+      <created>1546079268852</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1546079268852</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update">
+      <created>1546079307827</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1546079307827</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -795,11 +849,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48676000" />
+    <option name="totallyTimeSpent" value="49278000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18389262" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -816,11 +869,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49928468" visible="true" weight="0.28368795" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49928468" visible="true" weight="0.28368795" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49928468" weight="0.32891566" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49928468" weight="0.32765958" />
       <window_info anchor="bottom" id="SQL Generator" order="13" weight="0.32891566" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32891566" />
       <window_info anchor="right" id="Maven Projects" />
@@ -895,7 +948,8 @@
     <MESSAGE value="setters 2.0 + fix verkeerstoren" />
     <MESSAGE value="coordinaattest" />
     <MESSAGE value="afronden package" />
-    <option name="LAST_COMMIT_MESSAGE" value="afronden package" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -964,17 +1018,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/factory/VerkeerstorenFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1010,31 +1053,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/ILocaliseerbaar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenSubject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
@@ -1088,17 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/demodata/VerkeerstorenTypeLijst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1109,9 +1117,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4626#4627#0" expanded="true" />
+            <element signature="e#4670#4671#0" expanded="true" />
+            <element signature="e#4714#4715#0" expanded="true" />
+            <element signature="e#4758#4759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1511#1512#0" expanded="true" />
+            <element signature="e#1535#1536#0" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
+            <element signature="e#4449#4450#0" expanded="true" />
+            <element signature="e#4490#4491#0" expanded="true" />
+            <element signature="e#4558#4559#0" expanded="true" />
+            <element signature="e#4618#4619#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="391">
           <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -1120,16 +1161,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/generator/Generator.java">
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerleenHulp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+        <state relative-caret-position="85">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/IVerkeerstorenSubject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#4626#4627#0" expanded="true" />
-            <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4714#4715#0" expanded="true" />
-            <element signature="e#4758#4759#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#2327#2328#0" expanded="true" />
+            <element signature="e#2362#2363#0" expanded="true" />
+            <element signature="e#2672#2673#0" expanded="true" />
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2969#2970#0" expanded="true" />
+            <element signature="e#2996#2997#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1144,43 +1219,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java">
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+        <state relative-caret-position="388">
+          <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#900#901#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#2073#2074#0" expanded="true" />
-            <element signature="e#2108#2109#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
-            <element signature="e#2448#2449#0" expanded="true" />
-            <element signature="e#2715#2716#0" expanded="true" />
-            <element signature="e#2742#2743#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="50" column="49" lean-forward="true" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+        <state relative-caret-position="408">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
-            <element signature="e#1535#1536#0" expanded="true" />
-            <element signature="e#1696#1697#0" expanded="true" />
-            <element signature="e#1767#1768#0" expanded="true" />
-            <element signature="e#4449#4450#0" expanded="true" />
-            <element signature="e#4490#4491#0" expanded="true" />
-            <element signature="e#4558#4559#0" expanded="true" />
-            <element signature="e#4618#4619#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>

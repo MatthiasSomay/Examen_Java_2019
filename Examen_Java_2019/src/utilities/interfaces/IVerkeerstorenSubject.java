@@ -9,9 +9,11 @@
 
 package utilities.interfaces;
 
+import model.Schip;
+
 public interface IVerkeerstorenSubject {
 
-    void addSchipObserver();
-    void removeSchipObserver();
+    void addSchipObserver(Schip schip);
+    void removeSchipObserver(Schip schip);
     void noodsituatieBroadcastBericht();
 }

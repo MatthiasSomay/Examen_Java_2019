@@ -25,7 +25,7 @@ public class Hulpdienst extends Vervoermiddel {
 
     // TODO: 2018-12-19
     @Override
-    public void verleenHulp() {
+    public void verleenHulp(Schip schipInNood) {
 
     }
 }

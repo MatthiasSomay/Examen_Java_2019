@@ -35,7 +35,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
     // TODO: 2018-12-19
     @Override
-    public void verleenHulp() {
+    public void verleenHulp(Schip schipInNood) {
 
     }
 

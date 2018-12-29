@@ -7,7 +7,9 @@
 
 package utilities.interfaces;
 
+import model.Schip;
+
 public interface IVerleenHulp {
 
-    void verleenHulp();
+    void verleenHulp(Schip schipInNood);
 }

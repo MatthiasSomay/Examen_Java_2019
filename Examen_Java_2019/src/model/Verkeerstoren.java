@@ -63,7 +63,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         for (Schip schip : schepen) {
             if (personenTeRedden > 0){
                 schip.setStatus(new NietBeschikbaar());
-                personenTeRedden -= schip.ber
+                personenTeRedden -= schip.berekenCapaciteit();
+            }
+            else if (personenTeRedden <= 0){
+                break;
             }
         }
     }

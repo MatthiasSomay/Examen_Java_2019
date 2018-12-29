@@ -8,13 +8,12 @@
 package test;
 
 import model.Coördinaten;
-import model.Verkeerstoren;
 import org.junit.Test;
 
 public class VerkeerstorenTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
-    private Verkeerstoren verkeerstoren = new Verkeerstoren();
+    /*private Verkeerstoren verkeerstoren = new Verkeerstoren(); Komt niet overeen met constructor*/
 
     @Test
     public void addSchipObserver() {
