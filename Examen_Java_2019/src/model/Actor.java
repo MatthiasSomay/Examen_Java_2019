@@ -11,13 +11,14 @@ package model;
 import utilities.interfaces.ILocaliseerbaar;
 import utilities.interfaces.IVerleenHulp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
 
     private int id;
     private Coördinaten locatie;
-    private List<Verkeerstoren> verkeerstorens;
+    private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     private IVerleenHulp hulpverlening;
 
     public Actor() {

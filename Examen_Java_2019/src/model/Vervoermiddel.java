@@ -65,13 +65,14 @@ public abstract class Vervoermiddel extends Actor {
         }
         for (Verkeerstoren verkeerstoren : getVerkeerstorens()
         ) {
-            if (oldVerkeerstoren == null){
+            double afstandTemp = berekenAfstand(verkeerstoren);
+            if (oldVerkeerstoren == null && afstand == 0){
                 newVerkeerstoren = verkeerstoren;
-                afstand = berekenAfstand(newVerkeerstoren);
+                afstand = afstandTemp;
             }
-            else if (afstand > berekenAfstand(verkeerstoren)){
+            else if (afstand > afstandTemp){
                 newVerkeerstoren = verkeerstoren;
-                afstand = berekenAfstand(newVerkeerstoren);
+                afstand = afstandTemp;
             }
         }
         if (newVerkeerstoren != oldVerkeerstoren){

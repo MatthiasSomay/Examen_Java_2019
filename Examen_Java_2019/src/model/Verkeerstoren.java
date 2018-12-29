@@ -13,6 +13,7 @@ import utilities.interfaces.IVerkeerstorenSubject;
 import utilities.states.Beschikbaar;
 import utilities.states.NietBeschikbaar;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -22,10 +23,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     Generator generator = new Generator();
 
-    private List<Hulpdienst> hulpdiensten;
-    private List<Schip> schepen;
+    private List<Hulpdienst> hulpdiensten = new ArrayList<>();
+    private List<Schip> schepen = new ArrayList<>();
     private String type;
-    private List<Vervoermiddel> beschikbareHulpverleners;
+    private List<Vervoermiddel> beschikbareHulpverleners = new ArrayList<>();
 
     public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
         super(locatie, verkeerstorens);

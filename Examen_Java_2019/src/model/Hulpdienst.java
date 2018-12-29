@@ -25,11 +25,6 @@ public class Hulpdienst extends Vervoermiddel {
         }
     }
 
-    // TODO: 2018-12-19
-    @Override
-    public double berekenAfstand(Actor actor) {
-        return 0;
-    }
 
     // TODO: 2018-12-19
     @Override

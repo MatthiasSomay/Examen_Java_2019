@@ -29,17 +29,18 @@ public class TestRadar extends Application {
         String hulpdienstTypeTemp;
         String schipTypeTemp;
 
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<2; i++) {
             verkeerstorens.add(VerkeerstorenFactory.createVerkeerstoren(
                     generator.generateLocatie(),
                     verkeerstorens,
                     generator.generateTypeVerkeerstoren()
             ));
+
         }
         for(int i=0; i<10; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
             Status statusTemp = new Beschikbaar();
-            hulpdiensten.add(HulpdienstFactory.createHulpdienst(
+            Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
                     generator.generateLocatie(),
                     verkeerstorens,
                     generator.generateSnelheid(hulpdienstTypeTemp),
@@ -49,12 +50,14 @@ public class TestRadar extends Application {
                     generator.generateKoers(),
                     hulpdienstTypeTemp,
                     statusTemp
-            ));
+            );
+            hulpdiensten.add(hulpdienstTemp);
+            hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
         for(int i=0; i<10; i++){
             schipTypeTemp = generator.generateTypeSchip();
             Status statusTemp = new Beschikbaar();
-            schepen.add(SchipFactory.createSchip(
+            Schip schipTemp = SchipFactory.createSchip(
                     generator.generateLocatie(),
                     verkeerstorens,
                     generator.generateSnelheid(schipTypeTemp),
@@ -64,7 +67,9 @@ public class TestRadar extends Application {
                     generator.generateKoers(),
                     schipTypeTemp,
                     statusTemp
-            ));
+            );
+            schepen.add(schipTemp);
+            schipTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
     }
 
@@ -94,17 +99,14 @@ public class TestRadar extends Application {
     }
 
     public static void main(String[] args) {
-        try {
+
             TestRadar radar = new TestRadar();
             radar.setUp();
             radar.print();
-            
+
 
             /*launch(args);*/
-        }
-        catch (Exception e){
-            System.out.println(e.getStackTrace());
-        }
+
     }
 
 
