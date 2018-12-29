@@ -28,6 +28,7 @@ public abstract class Vervoermiddel extends Actor {
     private String type;
     private Status status;
     private double laatsteReactieTijd;
+    private Verkeerstoren dichtstbijzijndeVerkeerstoren;
 
     public Vervoermiddel() {
     }
@@ -56,19 +57,25 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public void berekenDichtstbijzijndeVerkeerstoren(){
+        Verkeerstoren oldVerkeerstoren = getDichtstbijzijndeVerkeerstoren();
+        Verkeerstoren newVerkeerstoren = null;
         double afstand = 0;
-        Verkeerstoren dichtstbijzijndeVerkeerstoren = null;
+        if (oldVerkeerstoren != null){
+            afstand = berekenAfstand(oldVerkeerstoren);
+        }
         for (Verkeerstoren verkeerstoren : getVerkeerstorens()
-             ) {
-            if (dichtstbijzijndeVerkeerstoren == null){
-                dichtstbijzijndeVerkeerstoren = verkeerstoren;
-                afstand = berekenAfstand(verkeerstoren);
+        ) {
+            if (oldVerkeerstoren == null){
+                newVerkeerstoren = verkeerstoren;
+                afstand = berekenAfstand(newVerkeerstoren);
             }
             else if (afstand > berekenAfstand(verkeerstoren)){
-                dichtstbijzijndeVerkeerstoren = verkeerstoren;
-                afstand = berekenAfstand(verkeerstoren);
+                newVerkeerstoren = verkeerstoren;
+                afstand = berekenAfstand(newVerkeerstoren);
             }
         }
+        if (newVerkeerstoren != oldVerkeerstoren)
+        setDichtstbijzijndeVerkeerstoren(newVerkeerstoren);
     }
 
     @Override
@@ -166,5 +173,13 @@ public abstract class Vervoermiddel extends Actor {
 
     public void setLaatsteReactieTijd(double laatsteReactieTijd) {
         this.laatsteReactieTijd = laatsteReactieTijd;
+    }
+
+    public Verkeerstoren getDichtstbijzijndeVerkeerstoren() {
+        return dichtstbijzijndeVerkeerstoren;
+    }
+
+    public void setDichtstbijzijndeVerkeerstoren(Verkeerstoren dichtstbijzijndeVerkeerstoren) {
+        this.dichtstbijzijndeVerkeerstoren = dichtstbijzijndeVerkeerstoren;
     }
 }

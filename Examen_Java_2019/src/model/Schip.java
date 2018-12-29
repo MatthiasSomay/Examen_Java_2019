@@ -18,6 +18,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
     }
 
+
     // TODO: 2018-12-19
     public void noodsituatieBericht() {
 
@@ -29,14 +30,18 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
     }
 
     // TODO: 2018-12-19
-    public void berekenDichtsteVerkeerstoren() {
-
-    }
-
-    // TODO: 2018-12-19
     @Override
     public void verleenHulp(Schip schipInNood) {
 
+    }
+
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren originalVerkeerstoren){
+        if (getDichtstbijzijndeVerkeerstoren() != originalVerkeerstoren){
+            getDichtstbijzijndeVerkeerstoren().addSchipObserver(this);
+            if (originalVerkeerstoren != null){
+                originalVerkeerstoren.removeSchipObserver(this);
+            }
+        }
     }
 
     @Override
