@@ -35,14 +35,14 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
     }
 
-    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren originalVerkeerstoren){
-        if (getDichtstbijzijndeVerkeerstoren() != originalVerkeerstoren){
-            getDichtstbijzijndeVerkeerstoren().addSchipObserver(this);
-            if (originalVerkeerstoren != null){
-                originalVerkeerstoren.removeSchipObserver(this);
-            }
+    @Override
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){
+        getDichtstbijzijndeVerkeerstoren().addSchipObserver(this);
+        if (oldVerkeerstoren != null){
+            oldVerkeerstoren.removeSchipObserver(this);
         }
     }
+
 
     @Override
     public String toString() {

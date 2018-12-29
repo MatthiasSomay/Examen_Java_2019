@@ -17,6 +17,14 @@ public class Hulpdienst extends Vervoermiddel {
         super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
     }
 
+    @Override
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){
+        getDichtstbijzijndeVerkeerstoren().getHulpdiensten().add(this);
+        if (oldVerkeerstoren != null){
+            getDichtstbijzijndeVerkeerstoren().getHulpdiensten().remove(this);
+        }
+    }
+
     // TODO: 2018-12-19
     @Override
     public double berekenAfstand(Actor actor) {

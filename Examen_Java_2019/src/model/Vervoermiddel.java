@@ -74,9 +74,14 @@ public abstract class Vervoermiddel extends Actor {
                 afstand = berekenAfstand(newVerkeerstoren);
             }
         }
-        if (newVerkeerstoren != oldVerkeerstoren)
-        setDichtstbijzijndeVerkeerstoren(newVerkeerstoren);
+        if (newVerkeerstoren != oldVerkeerstoren){
+            setDichtstbijzijndeVerkeerstoren(newVerkeerstoren);
+            aanmeldenDichtstbijzijndeVerkeerstoren(oldVerkeerstoren);
+        }
+
     }
+
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){}
 
     @Override
     public String toString() {
