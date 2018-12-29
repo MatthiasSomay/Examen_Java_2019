@@ -7,6 +7,7 @@
 
 package utilities.interfaces;
 
+
 public interface IVerkeerstorenObserver {
 
     void noodsituatieBericht();

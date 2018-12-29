@@ -15,5 +15,5 @@ public interface IVerkeerstorenSubject {
 
     void addSchipObserver(Schip schip);
     void removeSchipObserver(Schip schip);
-    void noodsituatieBroadcastBericht();
+    void noodsituatieBroadcastBericht(Schip schipInNood);
 }

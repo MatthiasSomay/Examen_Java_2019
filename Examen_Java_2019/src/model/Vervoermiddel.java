@@ -55,6 +55,22 @@ public abstract class Vervoermiddel extends Actor {
         return (int) Math.round(getGrootte() - getPersonenAanBoord());
     }
 
+    public void berekenDichtstbijzijndeVerkeerstoren(){
+        double afstand = 0;
+        Verkeerstoren dichtstbijzijndeVerkeerstoren = null;
+        for (Verkeerstoren verkeerstoren : getVerkeerstorens()
+             ) {
+            if (dichtstbijzijndeVerkeerstoren == null){
+                dichtstbijzijndeVerkeerstoren = verkeerstoren;
+                afstand = berekenAfstand(verkeerstoren);
+            }
+            else if (afstand > berekenAfstand(verkeerstoren)){
+                dichtstbijzijndeVerkeerstoren = verkeerstoren;
+                afstand = berekenAfstand(verkeerstoren);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return ("ID: " + getId() +

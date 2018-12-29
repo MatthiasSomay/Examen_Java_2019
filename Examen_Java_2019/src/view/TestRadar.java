@@ -98,6 +98,7 @@ public class TestRadar extends Application {
             TestRadar radar = new TestRadar();
             radar.setUp();
             radar.print();
+            
 
             /*launch(args);*/
         }

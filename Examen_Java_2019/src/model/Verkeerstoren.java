@@ -10,6 +10,7 @@ package model;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
+import utilities.states.Beschikbaar;
 import utilities.states.NietBeschikbaar;
 
 import java.util.Collections;
@@ -24,6 +25,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Hulpdienst> hulpdiensten;
     private List<Schip> schepen;
     private String type;
+    private List<Vervoermiddel> beschikbareHulpverleners;
 
     public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
         super(locatie, verkeerstorens);
@@ -38,9 +40,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         schepen.remove(schip);
     }
 
-    // TODO: 2018-12-19
-    public void noodsituatieBroadcastBericht() {
-
+    public void noodsituatieBroadcastBericht(Schip schipInNood) {
+        for (Vervoermiddel beschikbareHulpverlener : beschikbareHulpverleners) {
+            beschikbareHulpverlener.setLaatsteReactieTijd(beschikbareHulpverlener.berekenReactietijd(schipInNood, generator.generateDraaicirkel()));
+        }
     }
 
     // TODO: 2018-12-19
@@ -48,22 +51,38 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     }
 
+    public void maakLijstBeschikbareHulpverleners(){
+        for (Schip schip : schepen
+        ) {
+            if (schip.getStatus().equals(Beschikbaar.class)){
+                beschikbareHulpverleners.add(schip);
+            }
+        }
+        for (Hulpdienst hulpdienst : hulpdiensten
+        ) {
+            if (hulpdienst.getStatus().equals(Beschikbaar.class)){
+                beschikbareHulpverleners.add(hulpdienst);
+            }
+        }
+    }
+
     @Override
     public void verleenHulp(Schip schipInNood) {
-        for (Schip schip : schepen) {
-            schip.setLaatsteReactieTijd(schip.berekenReactietijd(schipInNood, generator.generateDraaicirkel()));
-        }
-        Collections.sort(schepen, new Comparator<Schip>() {
-            @Override
-            public int compare(Schip o1, Schip o2) {
-                return Double.compare(o1.getLaatsteReactieTijd(),o2.getLaatsteReactieTijd());
-            }
-        });
+        maakLijstBeschikbareHulpverleners();
+        noodsituatieBroadcastBericht(schipInNood);
+
+        Collections.sort(beschikbareHulpverleners, Comparator.comparingDouble(Vervoermiddel::getLaatsteReactieTijd));
+
         int personenTeRedden = schipInNood.getPersonenAanBoord();
-        for (Schip schip : schepen) {
+        for (Vervoermiddel beschikbareHulpverlener : beschikbareHulpverleners) {
             if (personenTeRedden > 0){
-                schip.setStatus(new NietBeschikbaar());
-                personenTeRedden -= schip.berekenCapaciteit();
+                beschikbareHulpverlener.setStatus(new NietBeschikbaar());
+                personenTeRedden -= beschikbareHulpverlener.berekenCapaciteit();
+                System.out.println(
+                        beschikbareHulpverlener.getType() +
+                        ", ID: " + beschikbareHulpverlener.getId() +
+                                " voegt zich bij de reddingsactie, reactietijd: " +
+                                beschikbareHulpverlener.getLaatsteReactieTijd());
             }
             else if (personenTeRedden <= 0){
                 break;
