@@ -27,6 +27,7 @@ public abstract class Vervoermiddel extends Actor {
     private double koers;
     private String type;
     private Status status;
+    private double laatsteReactieTijd;
 
     public Vervoermiddel() {
     }
@@ -43,11 +44,15 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public double berekenReactietijd(Actor actorInNood, double draaicirkel) {
-        return (berekenWendbaarheidstijd(draaicirkel) + (berekenAfstand(actorInNood)/this.getSnelheid()));
+        return (berekenWendbaarheidstijd(draaicirkel) + (berekenAfstand(actorInNood)/getSnelheid()));
     }
 
     public double berekenWendbaarheidstijd (double draaicirkel) {
-        return (draaicirkel * this.getWendbaarheid());
+        return (draaicirkel * getWendbaarheid());
+    }
+
+    public int berekenCapaciteit () {
+        return (int) Math.round(getGrootte() - getPersonenAanBoord());
     }
 
     @Override
@@ -137,5 +142,13 @@ public abstract class Vervoermiddel extends Actor {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public double getLaatsteReactieTijd() {
+        return laatsteReactieTijd;
+    }
+
+    public void setLaatsteReactieTijd(double laatsteReactieTijd) {
+        this.laatsteReactieTijd = laatsteReactieTijd;
     }
 }

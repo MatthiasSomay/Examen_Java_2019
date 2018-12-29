@@ -5,6 +5,7 @@ import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
+
 import java.util.Random;
 
 public class Generator {
@@ -97,4 +98,9 @@ public class Generator {
     public double generateKoers(){
         return ((Math.random()*360));
     }
+
+    public double generateDraaicirkel(){
+        return ((Math.random()*360));
+    }
+
 }

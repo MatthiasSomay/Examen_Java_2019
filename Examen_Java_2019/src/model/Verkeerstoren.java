@@ -8,13 +8,18 @@
 package model;
 
 import utilities.demodata.VerkeerstorenTypeLijst;
+import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
+import utilities.states.NietBeschikbaar;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
+    Generator generator = new Generator();
 
     private List<Hulpdienst> hulpdiensten;
     private List<Schip> schepen;
@@ -25,14 +30,12 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         setType(type);
     }
 
-    // TODO: 2018-12-19
-    public void addSchipObserver() {
-
+    public void addSchipObserver(Schip schip) {
+        schepen.add(schip);
     }
 
-    // TODO: 2018-12-19
-    public void removeSchipObserver() {
-
+    public void removeSchipObserver(Schip schip) {
+        schepen.remove(schip);
     }
 
     // TODO: 2018-12-19
@@ -45,10 +48,24 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     }
 
-    // TODO: 2018-12-19  
     @Override
-    public void verleenHulp() {
-
+    public void verleenHulp(Schip schipInNood) {
+        for (Schip schip : schepen) {
+            schip.setLaatsteReactieTijd(schip.berekenReactietijd(schipInNood, generator.generateDraaicirkel()));
+        }
+        Collections.sort(schepen, new Comparator<Schip>() {
+            @Override
+            public int compare(Schip o1, Schip o2) {
+                return Double.compare(o1.getLaatsteReactieTijd(),o2.getLaatsteReactieTijd());
+            }
+        });
+        int personenTeRedden = schipInNood.getPersonenAanBoord();
+        for (Schip schip : schepen) {
+            if (personenTeRedden > 0){
+                schip.setStatus(new NietBeschikbaar());
+                personenTeRedden -= schip.ber
+            }
+        }
     }
 
     @Override
