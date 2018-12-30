@@ -1,11 +1,13 @@
 package utilities.generator;
 
 import model.Coördinaten;
+import model.Schip;
 import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
 
+import java.util.List;
 import java.util.Random;
 
 public class Generator {
@@ -27,8 +29,12 @@ public class Generator {
         return (verkeerstorenTypeLijst.verkeerstorenType.get(RANDOM.nextInt(verkeerstorenTypeLijst.verkeerstorenType.size())));
     }
 
+    public Schip generateRandomSchip(List<Schip> schepen){
+        return (schepen.get(RANDOM.nextInt(schepen.size())));
+    }
+
     public Coördinaten generateLocatie(){
-        return new Coördinaten((1+ (Math.random()*10)), (1+ (Math.random()*10)));
+        return new Coördinaten((1+ (Math.random()*1000)), (1+ (Math.random()*1000)));
     }
 
     public double generateSnelheid(String Type){

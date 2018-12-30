@@ -9,9 +9,10 @@
 package utilities.states;
 
 public class NietBeschikbaar extends Status {
-    @Override
-    public void doeActie() {
 
+    @Override
+    public int beschikbaarheid(){
+        return 0;
     }
 
     @Override

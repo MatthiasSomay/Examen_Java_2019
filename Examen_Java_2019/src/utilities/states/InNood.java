@@ -9,9 +9,10 @@
 package utilities.states;
 
 public class InNood extends Status {
-    @Override
-    public void doeActie() {
 
+    @Override
+    public int beschikbaarheid(){
+        return 1;
     }
 
     @Override

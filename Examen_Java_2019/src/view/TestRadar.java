@@ -29,15 +29,15 @@ public class TestRadar extends Application {
         String hulpdienstTypeTemp;
         String schipTypeTemp;
 
-        for(int i=0; i<2; i++) {
-            verkeerstorens.add(VerkeerstorenFactory.createVerkeerstoren(
+        for(int i=0; i<10; i++) {
+            Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
                     generator.generateLocatie(),
                     verkeerstorens,
                     generator.generateTypeVerkeerstoren()
-            ));
-
+            );
+            verkeerstorens.add(verkeerstorenTemp);
         }
-        for(int i=0; i<10; i++){
+        for(int i=0; i<20; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
             Status statusTemp = new Beschikbaar();
             Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
@@ -54,7 +54,7 @@ public class TestRadar extends Application {
             hulpdiensten.add(hulpdienstTemp);
             hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
-        for(int i=0; i<10; i++){
+        for(int i=0; i<20; i++){
             schipTypeTemp = generator.generateTypeSchip();
             Status statusTemp = new Beschikbaar();
             Schip schipTemp = SchipFactory.createSchip(
@@ -88,6 +88,10 @@ public class TestRadar extends Application {
             System.out.println(schepen.get(i));
     }
 
+    public void randomReddingsactie(){
+        generator.generateRandomSchip(schepen).noodsituatieBericht();
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -100,12 +104,12 @@ public class TestRadar extends Application {
 
     public static void main(String[] args) {
 
-            TestRadar radar = new TestRadar();
-            radar.setUp();
-            radar.print();
+        TestRadar radar = new TestRadar();
+        radar.setUp();
+        radar.print();
+        radar.randomReddingsactie();
 
-
-            /*launch(args);*/
+        /*launch(args);*/
 
     }
 

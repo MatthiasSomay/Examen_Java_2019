@@ -8,9 +8,10 @@
 package utilities.states;
 
 public class Beschikbaar extends Status {
-    @Override
-    public void doeActie() {
 
+    @Override
+    public int beschikbaarheid(){
+        return 2;
     }
 
     @Override

@@ -24,11 +24,4 @@ public class Hulpdienst extends Vervoermiddel {
             getDichtstbijzijndeVerkeerstoren().getHulpdiensten().remove(this);
         }
     }
-
-
-    // TODO: 2018-12-19
-    @Override
-    public void verleenHulp(Schip schipInNood) {
-
-    }
 }

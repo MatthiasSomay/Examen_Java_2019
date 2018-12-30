@@ -10,11 +10,12 @@ package model;
 import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
+import utilities.interfaces.IVerleenHulp;
 import utilities.states.Status;
 
 import java.util.List;
 
-public abstract class Vervoermiddel extends Actor {
+public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
 
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
@@ -27,7 +28,7 @@ public abstract class Vervoermiddel extends Actor {
     private double koers;
     private String type;
     private Status status;
-    private double laatsteReactieTijd;
+    private int laatsteReactieTijd;
     private Verkeerstoren dichtstbijzijndeVerkeerstoren;
 
     public Vervoermiddel() {
@@ -45,11 +46,11 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public double berekenReactietijd(Actor actorInNood, double draaicirkel) {
-        return (berekenWendbaarheidstijd(draaicirkel) + (berekenAfstand(actorInNood)/getSnelheid()));
+        return (berekenWendbaarheidstijd(draaicirkel) + ((berekenAfstand(actorInNood)/getSnelheid())*60));
     }
 
     public double berekenWendbaarheidstijd (double draaicirkel) {
-        return (draaicirkel * getWendbaarheid());
+        return ((draaicirkel * getWendbaarheid())/60);
     }
 
     public int berekenCapaciteit () {
@@ -79,7 +80,36 @@ public abstract class Vervoermiddel extends Actor {
             setDichtstbijzijndeVerkeerstoren(newVerkeerstoren);
             aanmeldenDichtstbijzijndeVerkeerstoren(oldVerkeerstoren);
         }
+    }
 
+    public void verleenHulp(Schip schipInNood) {
+        switch (getStatus().beschikbaarheid()){
+            case 0:
+                System.out.println(
+                            getType() +
+                            ", ID: " + getId() +
+                            " is momenteel niet beschikbaar.");
+            case 1:
+                System.out.println(
+                            getType() +
+                            ", ID: " + getId() +
+                            " is in nood.");
+            case 2:
+                System.out.println(
+                        getType() +
+                                ", ID: " + getId() +
+                                " voegt zich bij de reddingsactie, reactietijd: " +
+                                getLaatsteReactieTijd() + " minuten");
+                if (berekenCapaciteit() > schipInNood.getPersonenAanBoord()){
+                    setPersonenAanBoord(getPersonenAanBoord() + schipInNood.getPersonenAanBoord());
+                    schipInNood.setPersonenAanBoord(0);
+                }
+                else {
+                    schipInNood.setPersonenAanBoord(schipInNood.getPersonenAanBoord() - berekenCapaciteit());
+                    setPersonenAanBoord(getPersonenAanBoord() + berekenCapaciteit());
+                }
+                default: break;
+        }
     }
 
     public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){}
@@ -136,8 +166,8 @@ public abstract class Vervoermiddel extends Actor {
     }
 
     public void setPersonenAanBoord(int personenAanBoord) throws IllegalArgumentException {
-        if (personenAanBoord <= 0) {
-            throw new IllegalArgumentException("Personen aan boord mag niet nul of negatief zijn");
+        if (personenAanBoord < 0) {
+            throw new IllegalArgumentException("Personen aan boord mag niet negatief zijn");
         }
         this.personenAanBoord = afronden.RondAfNaarGeheelGetal(personenAanBoord);
     }
@@ -173,12 +203,12 @@ public abstract class Vervoermiddel extends Actor {
         this.status = status;
     }
 
-    public double getLaatsteReactieTijd() {
+    public int getLaatsteReactieTijd() {
         return laatsteReactieTijd;
     }
 
     public void setLaatsteReactieTijd(double laatsteReactieTijd) {
-        this.laatsteReactieTijd = laatsteReactieTijd;
+        this.laatsteReactieTijd = afronden.RondAfNaarGeheelGetal(laatsteReactieTijd);
     }
 
     public Verkeerstoren getDichtstbijzijndeVerkeerstoren() {

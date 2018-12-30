@@ -8,6 +8,5 @@
 package utilities.states;
 
 public abstract class Status {
-    public abstract  void doeActie();
-
+    public abstract int beschikbaarheid();
 }

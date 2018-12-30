@@ -10,7 +10,6 @@ package model;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
-import utilities.states.Beschikbaar;
 import utilities.states.NietBeschikbaar;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private List<Hulpdienst> hulpdiensten = new ArrayList<>();
     private List<Schip> schepen = new ArrayList<>();
     private String type;
-    private List<Vervoermiddel> beschikbareHulpverleners = new ArrayList<>();
+    private List<Vervoermiddel> hulpverleners = new ArrayList<>();
 
     public Verkeerstoren(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, String type) {
         super(locatie, verkeerstorens);
@@ -42,8 +41,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void noodsituatieBroadcastBericht(Schip schipInNood) {
-        for (Vervoermiddel beschikbareHulpverlener : beschikbareHulpverleners) {
-            beschikbareHulpverlener.setLaatsteReactieTijd(beschikbareHulpverlener.berekenReactietijd(schipInNood, generator.generateDraaicirkel()));
+        for (Vervoermiddel hulpverlener : hulpverleners) {
+            hulpverlener.setLaatsteReactieTijd(hulpverlener.berekenReactietijd(schipInNood, generator.generateDraaicirkel()));
         }
     }
 
@@ -52,41 +51,51 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     }
 
-    public void maakLijstBeschikbareHulpverleners(){
+    public void maakLijstHulpverleners(Schip schipInNood){
         for (Schip schip : schepen
         ) {
-            if (schip.getStatus().equals(Beschikbaar.class)){
-                beschikbareHulpverleners.add(schip);
-            }
+            hulpverleners.add(schip);
         }
         for (Hulpdienst hulpdienst : hulpdiensten
         ) {
-            if (hulpdienst.getStatus().equals(Beschikbaar.class)){
-                beschikbareHulpverleners.add(hulpdienst);
-            }
+            hulpverleners.add(hulpdienst);
         }
+        hulpverleners.remove(schipInNood);
     }
 
     @Override
     public void verleenHulp(Schip schipInNood) {
-        maakLijstBeschikbareHulpverleners();
+        maakLijstHulpverleners(schipInNood);
         noodsituatieBroadcastBericht(schipInNood);
 
-        Collections.sort(beschikbareHulpverleners, Comparator.comparingDouble(Vervoermiddel::getLaatsteReactieTijd));
+        Collections.sort(hulpverleners, Comparator.comparingDouble(Vervoermiddel::getLaatsteReactieTijd));
 
-        int personenTeRedden = schipInNood.getPersonenAanBoord();
-        for (Vervoermiddel beschikbareHulpverlener : beschikbareHulpverleners) {
-            if (personenTeRedden > 0){
-                beschikbareHulpverlener.setStatus(new NietBeschikbaar());
-                personenTeRedden -= beschikbareHulpverlener.berekenCapaciteit();
-                System.out.println(
-                        beschikbareHulpverlener.getType() +
-                        ", ID: " + beschikbareHulpverlener.getId() +
-                                " voegt zich bij de reddingsactie, reactietijd: " +
-                                beschikbareHulpverlener.getLaatsteReactieTijd());
+        if (hulpverleners.size() == 0){
+            System.out.println(
+                        "Geen hulpverleners beschikbaar bij verkeerstoren " +
+                        "ID: " + getId() +
+                        ", Type: " + getType());
+        }
+        else {
+            System.out.println(
+                    hulpverleners.size() +
+                    " mogelijke hulpverlener(s) beschikbaar bij verkeerstoren " +
+                    "ID: " + getId() +
+                    ", Type: " + getType());
+
+            int opvarendenTeRedden = schipInNood.getPersonenAanBoord();
+            for (Vervoermiddel hulpverlener : hulpverleners) {
+                if (schipInNood.getPersonenAanBoord() > 0) {
+                    hulpverlener.verleenHulp(schipInNood);
+                    hulpverlener.setStatus(new NietBeschikbaar());
+                }
+                else {break;}
             }
-            else if (personenTeRedden <= 0){
-                break;
+            if (schipInNood.getPersonenAanBoord() > 0){
+                System.out.println((opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
+            }
+            else{
+                System.out.println("Alle " + (opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
             }
         }
     }

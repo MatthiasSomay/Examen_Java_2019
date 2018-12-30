@@ -19,19 +19,18 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
     }
 
 
-    // TODO: 2018-12-19
     public void noodsituatieBericht() {
-
+        System.out.println(
+                    getType() +
+                    ", ID: " + getId() +
+                    " is in nood, " +
+                    getLocatie().toString() +
+                    " SOS!");
+        getDichtstbijzijndeVerkeerstoren().verleenHulp(this);
     }
 
     // TODO: 2018-12-19
     public void stuurLaatsteVaargegevens() {
-
-    }
-
-    // TODO: 2018-12-19
-    @Override
-    public void verleenHulp(Schip schipInNood) {
 
     }
 
@@ -41,11 +40,5 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         if (oldVerkeerstoren != null){
             oldVerkeerstoren.removeSchipObserver(this);
         }
-    }
-
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
