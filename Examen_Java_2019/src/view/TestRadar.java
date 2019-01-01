@@ -36,8 +36,9 @@ public class TestRadar extends Application {
                     generator.generateTypeVerkeerstoren()
             );
             verkeerstorens.add(verkeerstorenTemp);
+            verkeerstorenTemp.setId(i);
         }
-        for(int i=0; i<20; i++){
+        for(int i=0; i<5; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
             Status statusTemp = new Beschikbaar();
             Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
@@ -52,9 +53,10 @@ public class TestRadar extends Application {
                     statusTemp
             );
             hulpdiensten.add(hulpdienstTemp);
+            hulpdienstTemp.setId(i);
             hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
-        for(int i=0; i<20; i++){
+        for(int i=0; i<5; i++){
             schipTypeTemp = generator.generateTypeSchip();
             Status statusTemp = new Beschikbaar();
             Schip schipTemp = SchipFactory.createSchip(
@@ -69,6 +71,7 @@ public class TestRadar extends Application {
                     statusTemp
             );
             schepen.add(schipTemp);
+            schipTemp.setId(i);
             schipTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
     }

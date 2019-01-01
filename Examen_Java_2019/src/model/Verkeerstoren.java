@@ -51,22 +51,46 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     }
 
-    public void maakLijstHulpverleners(Schip schipInNood){
-        for (Schip schip : schepen
+    public void maakLijstHulpverleners(Verkeerstoren hoofdVerkeerstoren, Verkeerstoren hulpVerkeerstoren){
+        for (Schip schip : hulpVerkeerstoren.schepen
         ) {
-            hulpverleners.add(schip);
+            hoofdVerkeerstoren.hulpverleners.add(schip);
         }
-        for (Hulpdienst hulpdienst : hulpdiensten
+        for (Hulpdienst hulpdienst : hulpVerkeerstoren.hulpdiensten
         ) {
-            hulpverleners.add(hulpdienst);
+            hoofdVerkeerstoren.hulpverleners.add(hulpdienst);
         }
-        hulpverleners.remove(schipInNood);
+        System.out.println("Verkeerstoren " + hulpVerkeerstoren.getId());
+    }
+
+    public void berekenHulpverleners(Verkeerstoren hoofdVerkeerstoren, Schip schipInNood){
+        maakLijstHulpverleners(hoofdVerkeerstoren,hoofdVerkeerstoren);
+        List<Verkeerstoren> verkeerstorensTemp = getVerkeerstorens();
+        verkeerstorensTemp.remove(hoofdVerkeerstoren);
+
+        for(int i=0; i<2; i++) {
+            Verkeerstoren hulpVerkeerstoren = null;
+            double afstand = 0;
+            for (Verkeerstoren verkeerstoren : verkeerstorensTemp) {
+                double afstandTemp = berekenAfstand(verkeerstoren);
+                if (hulpVerkeerstoren == null && afstand == 0) {
+                    hulpVerkeerstoren = verkeerstoren;
+                    afstand = afstandTemp;
+                } else if (afstand > afstandTemp) {
+                    hulpVerkeerstoren = verkeerstoren;
+                    afstand = afstandTemp;
+                }
+            }
+            maakLijstHulpverleners(hoofdVerkeerstoren,hulpVerkeerstoren);
+            verkeerstorensTemp.remove(hulpVerkeerstoren);
+        }
     }
 
     @Override
     public void verleenHulp(Schip schipInNood) {
-        maakLijstHulpverleners(schipInNood);
+        berekenHulpverleners(this, schipInNood);
         noodsituatieBroadcastBericht(schipInNood);
+        hulpverleners.remove(schipInNood);
 
         Collections.sort(hulpverleners, Comparator.comparingDouble(Vervoermiddel::getLaatsteReactieTijd));
 

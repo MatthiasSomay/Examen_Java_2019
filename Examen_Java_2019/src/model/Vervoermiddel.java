@@ -83,17 +83,20 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
     }
 
     public void verleenHulp(Schip schipInNood) {
+        System.out.println(getStatus().toString());
         switch (getStatus().beschikbaarheid()){
             case 0:
                 System.out.println(
                             getType() +
                             ", ID: " + getId() +
                             " is momenteel niet beschikbaar.");
+                break;
             case 1:
                 System.out.println(
                             getType() +
                             ", ID: " + getId() +
                             " is in nood.");
+                break;
             case 2:
                 System.out.println(
                         getType() +
@@ -108,6 +111,7 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
                     schipInNood.setPersonenAanBoord(schipInNood.getPersonenAanBoord() - berekenCapaciteit());
                     setPersonenAanBoord(getPersonenAanBoord() + berekenCapaciteit());
                 }
+                break;
                 default: break;
         }
     }
