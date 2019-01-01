@@ -51,22 +51,15 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     }
 
-    public void maakLijstHulpverleners(Verkeerstoren hoofdVerkeerstoren, Verkeerstoren hulpVerkeerstoren){
-        for (Schip schip : hulpVerkeerstoren.schepen
-        ) {
-            hoofdVerkeerstoren.hulpverleners.add(schip);
-        }
-        for (Hulpdienst hulpdienst : hulpVerkeerstoren.hulpdiensten
-        ) {
-            hoofdVerkeerstoren.hulpverleners.add(hulpdienst);
-        }
-        System.out.println("Verkeerstoren " + hulpVerkeerstoren.getId());
+    public void maakLijstHulpverleners(Verkeerstoren verkeerstoren){
+        hulpverleners.addAll(verkeerstoren.schepen);
+        hulpverleners.addAll(verkeerstoren.hulpdiensten);
     }
 
     public void berekenHulpverleners(Verkeerstoren hoofdVerkeerstoren, Schip schipInNood){
-        maakLijstHulpverleners(hoofdVerkeerstoren,hoofdVerkeerstoren);
+        maakLijstHulpverleners(this);
         List<Verkeerstoren> verkeerstorensTemp = getVerkeerstorens();
-        verkeerstorensTemp.remove(hoofdVerkeerstoren);
+        verkeerstorensTemp.remove(this);
 
         for(int i=0; i<2; i++) {
             Verkeerstoren hulpVerkeerstoren = null;
@@ -81,7 +74,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
                     afstand = afstandTemp;
                 }
             }
-            maakLijstHulpverleners(hoofdVerkeerstoren,hulpVerkeerstoren);
+            maakLijstHulpverleners(hulpVerkeerstoren);
             verkeerstorensTemp.remove(hulpVerkeerstoren);
         }
     }
@@ -96,16 +89,12 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
         if (hulpverleners.size() == 0){
             System.out.println(
-                        "Geen hulpverleners beschikbaar bij verkeerstoren " +
-                        "ID: " + getId() +
-                        ", Type: " + getType());
+                        "Geen hulpverleners beschikbaar bij de drie dichtsbijzijnde verkeerstorens.");
         }
         else {
             System.out.println(
                     hulpverleners.size() +
-                    " mogelijke hulpverlener(s) beschikbaar bij verkeerstoren " +
-                    "ID: " + getId() +
-                    ", Type: " + getType());
+                    " mogelijke hulpverlener(s) beschikbaar bij de drie dichtsbijzijnde verkeerstorens.");
 
             int opvarendenTeRedden = schipInNood.getPersonenAanBoord();
             for (Vervoermiddel hulpverlener : hulpverleners) {

@@ -36,7 +36,7 @@ public class TestRadar extends Application {
                     generator.generateTypeVerkeerstoren()
             );
             verkeerstorens.add(verkeerstorenTemp);
-            verkeerstorenTemp.setId(i);
+            verkeerstorenTemp.setId(i+1);
         }
         for(int i=0; i<5; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
@@ -53,7 +53,7 @@ public class TestRadar extends Application {
                     statusTemp
             );
             hulpdiensten.add(hulpdienstTemp);
-            hulpdienstTemp.setId(i);
+            hulpdienstTemp.setId(i+1);
             hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
         for(int i=0; i<5; i++){
@@ -71,7 +71,7 @@ public class TestRadar extends Application {
                     statusTemp
             );
             schepen.add(schipTemp);
-            schipTemp.setId(i);
+            schipTemp.setId(i+1);
             schipTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
     }
@@ -98,7 +98,7 @@ public class TestRadar extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../utilities/MainWindow.fxml"));
         primaryStage.setTitle("Main");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
