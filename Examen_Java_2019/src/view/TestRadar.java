@@ -98,7 +98,7 @@ public class TestRadar extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../utilities/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../utilities/Window/MainWindow.fxml"));
         primaryStage.setTitle("Main");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();

@@ -7,11 +7,10 @@
 
 package db;
 
-import model.Schip;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class DatabaseQueries {
     private static final String URL = "jdbc:mysql://localhost:3306/Examen_Java";
@@ -66,7 +65,7 @@ public class DatabaseQueries {
 
         }
 
-        public List<Schip> getAllShips() {
+        /*public List<Schip> getAllShips() {
             try (ResultSet resultSet = selectAllShips.executeQuery()) {
                 List<Schip> schips = new ArrayList<Schip>();
 
@@ -85,7 +84,7 @@ public class DatabaseQueries {
                 e.printStackTrace();
 
             }
-        }
+        }*/
 
 
 
