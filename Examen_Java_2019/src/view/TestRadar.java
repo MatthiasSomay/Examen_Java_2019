@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TestRadar extends Application {
 
-    private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
+    public List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     public List<Hulpdienst> hulpdiensten = new ArrayList<>();
     private List<Schip> schepen = new ArrayList<>();
     private Generator generator = new Generator();

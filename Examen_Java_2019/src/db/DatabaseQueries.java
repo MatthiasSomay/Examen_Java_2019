@@ -189,13 +189,13 @@ public class DatabaseQueries {
                 insertNewVerkeerstoren.setDouble(1, lengteLocatie);
                 insertNewVerkeerstoren.setDouble(2, breedtelocatie);
                 insertNewVerkeerstoren.setString(3, detailType);
+
+                return insertNewVerkeerstoren.executeUpdate();
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
                 return 0;
 
             }
-
-            return 0;
         }
 
 

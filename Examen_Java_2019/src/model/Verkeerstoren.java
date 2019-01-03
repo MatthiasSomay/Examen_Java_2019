@@ -49,6 +49,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     // TODO: 2018-12-19
     private void detecteerNoodsituatie() {
 
+
     }
 
     public void maakLijstHulpverleners(Verkeerstoren verkeerstoren){
