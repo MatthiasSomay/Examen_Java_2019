@@ -7,8 +7,6 @@
 
 package model;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
 import utilities.Log;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
@@ -85,10 +83,6 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
 
     @Override
     public void verleenHulp(Schip schipInNood) {
-        BasicConfigurator.configure();
-        Log.logger.setLevel(Level.WARN);
-
-
         berekenHulpverleners(this, schipInNood);
         noodsituatieBroadcastBericht(schipInNood);
         hulpverleners.remove(schipInNood);

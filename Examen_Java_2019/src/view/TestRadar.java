@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 import model.Hulpdienst;
 import model.Schip;
 import model.Verkeerstoren;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import utilities.Log;
 import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
 import utilities.states.Status;
@@ -98,7 +101,7 @@ public class TestRadar extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../utilities/Window/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Window/MainWindow.fxml"));
         primaryStage.setTitle("Main");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
@@ -106,6 +109,8 @@ public class TestRadar extends Application {
     }
 
     public static void main(String[] args) {
+        BasicConfigurator.configure();
+        Log.logger.setLevel(Level.WARN);
         TestRadar radar = new TestRadar();
         radar.setUp();
         radar.print();
