@@ -7,6 +7,7 @@
 
 package model;
 
+import utilities.Log;
 import utilities.interfaces.IVerkeerstorenObserver;
 import utilities.states.Status;
 
@@ -18,7 +19,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
 
 
     public void noodsituatieBericht() {
-        System.out.println(
+        Log.logger.warn(
                     getType() +
                     ", ID: " + getId() +
                     " is in nood, " +
