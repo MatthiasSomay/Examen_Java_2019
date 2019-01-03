@@ -67,6 +67,7 @@ public class DatabaseQueries {
             deleteVervoermiddel = connection.prepareStatement(
                     "DELETE FROM vervoermiddel WHERE ID = ?");
 
+
             deleteVerkeerstoren = connection.prepareStatement(
                     "DELETE FROM verkeerstoren WHERE ID = ?");
 
@@ -89,31 +90,31 @@ public class DatabaseQueries {
         }
     }
 
-    public List<Schip> getAllSchip() {
-        try (ResultSet resultSet = selectAllSchip.executeQuery()) {
-            List<Schip> results = new ArrayList<Schip>();
+        public List<Schip> getAllSchip() {
+            try (ResultSet resultSet = selectAllSchip.executeQuery()) {
+                List<Schip> results = new ArrayList<Schip>();
 
-            while (resultSet.next()) {
-                results.add(new Schip(
-                        new Coördinaten(
-                                resultSet.getDouble("lengteLocatie"),
-                                resultSet.getDouble("breedteLocatie")
-                        ),
-                        resultSet.getDouble("snelheid"),
-                        resultSet.getDouble("grootte"),
-                        resultSet.getDouble("wendbaarheid"),
-                        resultSet.getInt("pesonenAanBoord"),
-                        resultSet.getDouble("koers"),
-                        resultSet.getString("detailType"),
-                        CalculateState(resultSet.getString("status"))
-                ));
+                while (resultSet.next()) {
+                    results.add(new Schip(
+                            new Coördinaten(
+                                    resultSet.getDouble("lengteLocatie"),
+                                    resultSet.getDouble("breedteLocatie")
+                            ),
+                            resultSet.getDouble("snelheid"),
+                            resultSet.getDouble("grootte"),
+                            resultSet.getDouble("wendbaarheid"),
+                            resultSet.getInt("pesonenAanBoord"),
+                            resultSet.getDouble("koers"),
+                            resultSet.getString("detailType"),
+                            CalculateState(resultSet.getString("status"))
+                    ));
+                }
+                return results;
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
             }
-            return results;
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+            return null;
         }
-        return null;
-    }
 
     public List<Hulpdienst> getAllHulpdienst() {
         try (ResultSet resultSet = selectAllHulpdienst.executeQuery()) {
@@ -161,49 +162,64 @@ public class DatabaseQueries {
         return null;
     }
 
-    public int addVervoermiddel(double lengteLocatie, double breedteLocatie,String type, String detailType, double snelheid, double wendbaarheid, double grootte, int pesonenAanBoord, double koers, String status, int verkeestorenID) {
-        try {
-            insertNewVervoermiddel.setDouble(1, lengteLocatie);
-            insertNewVervoermiddel.setDouble(2, breedteLocatie);
-            insertNewVervoermiddel.setString(2, type);
-            insertNewVervoermiddel.setString(4, detailType);
-            insertNewVervoermiddel.setDouble(5, snelheid);
-            insertNewVervoermiddel.setDouble(6, wendbaarheid);
-            insertNewVervoermiddel.setDouble(7, grootte);
-            insertNewVervoermiddel.setInt(8, pesonenAanBoord);
-            insertNewVervoermiddel.setDouble(9, koers);
-            insertNewVervoermiddel.setString(10, status);
-            insertNewVervoermiddel.setInt(11, verkeestorenID);
 
-            return insertNewVervoermiddel.executeUpdate();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+        public int addVervoermiddel(double lengteLocatie, double breedteLocatie, String type, String detailType, double snelheid, double wendbaarheid, double grootte, int pesonenAanBoord, double koers, String status, int verkeestorenID) {
+            try {
+                insertNewVervoermiddel.setDouble(1, lengteLocatie);
+                insertNewVervoermiddel.setDouble(2, breedteLocatie);
+                insertNewVervoermiddel.setString(3, type);
+                insertNewVervoermiddel.setString(4, detailType);
+                insertNewVervoermiddel.setDouble(5, snelheid);
+                insertNewVervoermiddel.setDouble(6, wendbaarheid);
+                insertNewVervoermiddel.setDouble(7, grootte);
+                insertNewVervoermiddel.setInt(8, pesonenAanBoord);
+                insertNewVervoermiddel.setDouble(9, koers);
+                insertNewVervoermiddel.setString(10, status);
+                insertNewVervoermiddel.setInt(11, verkeestorenID);
+
+                return insertNewVervoermiddel.executeUpdate();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+                return 0;
+            }
+        }
+
+        public int addVerkeerstoren(double lengteLocatie, double breedtelocatie, String detailType) {
+            try {
+                insertNewVerkeerstoren.setDouble(1, lengteLocatie);
+                insertNewVerkeerstoren.setDouble(2, breedtelocatie);
+                insertNewVerkeerstoren.setString(3, detailType);
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+                return 0;
+
+            }
+
             return 0;
         }
-    }
 
-    public int deleteVervoermiddel(int ID) {
-        try {
-            deleteVervoermiddel.setInt(1, ID);
 
-            return deleteVervoermiddel.executeUpdate();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-            return 0;
+        public int deleteVervoermiddel(int ID) {
+            try {
+                deleteVervoermiddel.setInt(1, ID);
+
+                return deleteVervoermiddel.executeUpdate();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+                return 0;
+            }
         }
-    }
 
-    public int deleteVerkeerstoren(int ID) {
-        try {
-            deleteVerkeerstoren.setInt(1, ID);
+        public int deleteVerkeerstoren(int ID) {
+            try {
+                deleteVerkeerstoren.setInt(1, ID);
 
-            return deleteVerkeerstoren.executeUpdate();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-            return 0;
+                return deleteVerkeerstoren.executeUpdate();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+                return 0;
+            }
         }
+
+
     }
-
-
-
-}
