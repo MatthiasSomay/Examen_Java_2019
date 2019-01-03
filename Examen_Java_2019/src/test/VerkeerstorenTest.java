@@ -8,12 +8,24 @@
 package test;
 
 import model.Coördinaten;
+import model.Verkeerstoren;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class VerkeerstorenTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
-    /*private Verkeerstoren verkeerstoren = new Verkeerstoren(); Komt niet overeen met constructor*/
+    private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven");
+
+
+    @Test
+    public void test_Constructor_Object_Wordt_Aangemaakt() {
+        Verkeerstoren v = new Verkeerstoren(coordinaat, "Vuurtoren");
+
+        assertEquals(coordinaat, v.getLocatie());
+        assertEquals("Vuurtoren", v.getType());
+    }
 
     @Test
     public void addSchipObserver() {
@@ -45,6 +57,16 @@ public class VerkeerstorenTest {
 
     @Test
     public void test_setType_Geldige_Waarde_Wordt_Aanvaard() {
+        verkeerstoren.setType("Vuurtoren");
+
+        assertEquals("Vuurtoren", verkeerstoren.getType());
+
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_setType_Exception_Bij_Ongeldige_Waarde() {
+        verkeerstoren.setType("Toren");
+
 
     }
 }
