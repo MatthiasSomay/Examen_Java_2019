@@ -13,8 +13,6 @@ import utilities.demodata.SchipTypeLijst;
 import utilities.interfaces.IVerleenHulp;
 import utilities.states.Status;
 
-import java.util.List;
-
 public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
 
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
@@ -31,11 +29,9 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
     private int laatsteReactieTijd;
     private Verkeerstoren dichtstbijzijndeVerkeerstoren;
 
-    public Vervoermiddel() {
-    }
 
-    public Vervoermiddel(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
-        super(locatie, verkeerstorens);
+    public Vervoermiddel(Coördinaten locatie, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
+        super(locatie);
         setSnelheid(snelheid);
         setGrootte(grootte);
         setWendbaarheid(wendbaarheid);
@@ -43,6 +39,7 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         setKoers(koers);
         setType(type);
         setStatus(status);
+        berekenDichtstbijzijndeVerkeerstoren();
     }
 
     public double berekenReactietijd(Actor actorInNood, double draaicirkel) {

@@ -14,9 +14,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import model.Hulpdienst;
-import view.TestRadar;
 
 public class MainWindowController {
 
@@ -113,12 +110,6 @@ public class MainWindowController {
 
     @FXML
     void toonAllehulpdienstenButtonPressed(ActionEvent event) {
-        for (Hulpdienst hulpdienst: TestRadar.hulpdiensten
-             ) {
-
-        }
-        Circle newCircle = new Circle(event.getX(), event.getY(),radius.getRadius(),brushColor);
-        drawingAreaPane.getChildren().add(newCircle);
     }
 
     @FXML

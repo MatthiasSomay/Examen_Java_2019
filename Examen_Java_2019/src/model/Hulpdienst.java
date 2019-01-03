@@ -9,12 +9,10 @@ package model;
 
 import utilities.states.Status;
 
-import java.util.List;
-
 public class Hulpdienst extends Vervoermiddel {
 
-    public Hulpdienst(Coördinaten locatie, List<Verkeerstoren> verkeerstorens, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
-        super(locatie, verkeerstorens, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
+    public Hulpdienst(Coördinaten locatie, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status) {
+        super(locatie, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status);
     }
 
     @Override

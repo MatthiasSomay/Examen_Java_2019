@@ -21,12 +21,8 @@ public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
     private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     private IVerleenHulp hulpverlening;
 
-    public Actor() {
-    }
-
-    public Actor(Coördinaten locatie, List<Verkeerstoren> verkeerstorens) {
+    public Actor(Coördinaten locatie) {
         setLocatie(locatie);
-        setVerkeerstorens(verkeerstorens);
     }
 
     public double berekenAfstand(Actor actor) {
