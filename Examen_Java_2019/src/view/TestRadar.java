@@ -36,6 +36,7 @@ public class TestRadar extends Application {
             );
             verkeerstorens.add(verkeerstorenTemp);
             verkeerstorenTemp.setId(i+1);
+            verkeerstorenTemp.setVerkeerstorens(verkeerstorens);
         }
         for(int i=0; i<5; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
@@ -52,6 +53,7 @@ public class TestRadar extends Application {
             );
             hulpdiensten.add(hulpdienstTemp);
             hulpdienstTemp.setId(i+1);
+            hulpdienstTemp.setVerkeerstorens(verkeerstorens);
             hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
         for(int i=0; i<5; i++){
@@ -69,6 +71,7 @@ public class TestRadar extends Application {
             );
             schepen.add(schipTemp);
             schipTemp.setId(i+1);
+            schipTemp.setVerkeerstorens(verkeerstorens);
             schipTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
     }

@@ -80,6 +80,7 @@
                   <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -108,22 +109,22 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Snelheid:" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Label fx:id="labelSnelheid" text="Snelheid:" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Koers:" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                  <Label fx:id="labelKoers" text="Koers:" GridPane.columnIndex="1" GridPane.rowIndex="12">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Personen aan boord:" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                  <Label fx:id="labelPersonenAanBoord" text="Personen aan boord:" GridPane.columnIndex="1" GridPane.rowIndex="11">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Capaciteit:" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                  <Label fx:id="labelCapaciteit" text="Capaciteit:" GridPane.columnIndex="1" GridPane.rowIndex="13">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -138,12 +139,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Wendbaarheid:" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Label fx:id="labelWendbaarheid" text="Wendbaarheid:" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Status" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                  <Label fx:id="labelStatus" text="Status" GridPane.columnIndex="1" GridPane.rowIndex="14">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -198,7 +199,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Label text="Grootte:" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                  <Label fx:id="labelGrootte" text="Grootte:" GridPane.columnIndex="1" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -208,22 +209,22 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Zeemijl/uur" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                  <Label fx:id="labelZeemijlUur" text="Zeemijl/uur" GridPane.columnIndex="3" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Seconde/graad" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                  <Label fx:id="labelSecondeGraad" text="Seconde/graad" GridPane.columnIndex="3" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="m²" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                  <Label fx:id="labelM" text="m²" GridPane.columnIndex="3" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Graden tov noorden" GridPane.columnIndex="3" GridPane.rowIndex="12">
+                  <Label fx:id="labelGradenTovNoorden" text="Graden tov noorden" GridPane.columnIndex="3" GridPane.rowIndex="12">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -233,12 +234,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <ComboBox fx:id="hoofdType" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <ComboBox fx:id="hoofdType" onAction="#hoofdTypeClicked" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Label text="Personen" GridPane.columnIndex="3" GridPane.rowIndex="13">
+                  <Label fx:id="labelPersonen" text="Personen" GridPane.columnIndex="3" GridPane.rowIndex="13">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
