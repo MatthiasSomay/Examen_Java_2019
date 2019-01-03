@@ -194,7 +194,6 @@ public class DatabaseQueries {
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
                 return 0;
-
             }
         }
 

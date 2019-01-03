@@ -32,7 +32,6 @@ public class TestRadar extends Application {
         for(int i=0; i<10; i++) {
             Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
                     generator.generateLocatie(),
-                    verkeerstorens,
                     generator.generateTypeVerkeerstoren()
             );
             verkeerstorens.add(verkeerstorenTemp);
@@ -43,7 +42,6 @@ public class TestRadar extends Application {
             Status statusTemp = new Beschikbaar();
             Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
                     generator.generateLocatie(),
-                    verkeerstorens,
                     generator.generateSnelheid(hulpdienstTypeTemp),
                     generator.generateGrootte(hulpdienstTypeTemp),
                     generator.generateWendbaarheid(hulpdienstTypeTemp),
@@ -61,7 +59,6 @@ public class TestRadar extends Application {
             Status statusTemp = new Beschikbaar();
             Schip schipTemp = SchipFactory.createSchip(
                     generator.generateLocatie(),
-                    verkeerstorens,
                     generator.generateSnelheid(schipTypeTemp),
                     generator.generateGrootte(schipTypeTemp),
                     generator.generateWendbaarheid(schipTypeTemp),
