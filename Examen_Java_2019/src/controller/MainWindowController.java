@@ -7,15 +7,26 @@
 
 package controller;
 
+import db.DatabaseQueries;
+import factory.VerkeerstorenFactory;
+import factory.VervoermiddelFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import model.Coördinaten;
+import model.Verkeerstoren;
+import model.Vervoermiddel;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
 
 public class MainWindowController {
+
+    SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
+    HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
+    VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
+    DatabaseQueries db = new DatabaseQueries();
 
     @FXML
     private Pane mapDisplay;
@@ -43,9 +54,6 @@ public class MainWindowController {
 
     @FXML
     private Label labelPersonenAanBoord;
-
-    @FXML
-    private Label labelCapaciteit;
 
     @FXML
     private Label labelWendbaarheid;
@@ -83,8 +91,6 @@ public class MainWindowController {
     @FXML
     private Label labelStatus;
 
-    @FXML
-    private TextField capaciteit;
 
     @FXML
     private Label labelZeemijlUur;
@@ -104,8 +110,6 @@ public class MainWindowController {
     @FXML
     private ComboBox<String> hoofdType;
 
-    @FXML
-    private Label labelPersonen;
 
     @FXML
     private Button slaOp;
@@ -121,13 +125,39 @@ public class MainWindowController {
 
     @FXML
     void maakLeegButtonPressed(ActionEvent event) {
-        clearInputData();
-        clearInputLocatiePlusType();
+
     }
 
     @FXML
     void slaOpButtonPressed(ActionEvent event) {
-
+        if (hoofdType.getValue() != null){
+            if (hoofdType.getValue() == "Verkeerstoren"){
+                if (checkInputBasis() == 0){
+                    Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
+                            new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
+                            detailType.getValue());
+                    db.addVerkeerstoren(verkeerstorenTemp);
+                }
+            }
+            else {
+                if (checkInputBasis() == 0){
+                    if (checkInputVervoermiddel() == 0){
+                         Vervoermiddel vervoermiddelTemp = VervoermiddelFactory.createVervoermiddel(
+                                 new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
+                                 Double.parseDouble(snelheid.getText()),
+                                 Double.parseDouble(grootte.getText()),
+                                 Double.parseDouble(wendbaarheid.getText()),
+                                 Integer.parseInt(personenAanboord.getText()),
+                                 Double.parseDouble(koers.getText()),
+                                 detailType.getValue(),
+                                 db.CalculateState(status.getValue()),
+                                 hoofdType.getValue());
+                        db.addVervoermiddel(vervoermiddelTemp, hoofdType.getValue());
+                    }
+                }
+            }
+        }
+        else checkInputBasis();
     }
 
     @FXML
@@ -157,32 +187,24 @@ public class MainWindowController {
 
     @FXML
     void verwijderButtonPressed(ActionEvent event) {
-
     }
-
-    SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
-    HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
-    VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
 
     public void initialize(){
         hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
         status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
     }
 
-    public void visibility(Boolean bool){
+    public void visibilityVervoermiddel(Boolean bool){
         snelheid.setVisible(bool);
         wendbaarheid.setVisible(bool);
         grootte.setVisible(bool);
         personenAanboord.setVisible(bool);
         koers.setVisible(bool);
-        capaciteit.setVisible(bool);
         status.setVisible(bool);
-        labelCapaciteit.setVisible(bool);
         labelGradenTovNoorden.setVisible(bool);
         labelGrootte.setVisible(bool);
         labelKoers.setVisible(bool);
         labelM.setVisible(bool);
-        labelPersonen.setVisible(bool);
         labelPersonenAanBoord.setVisible(bool);
         labelWendbaarheid.setVisible(bool);
         labelZeemijlUur.setVisible(bool);
@@ -191,18 +213,17 @@ public class MainWindowController {
         labelStatus.setVisible(bool);
     }
 
-    public void clearInputData(){
+    public void clearInputVervoermiddel(){
         snelheid.clear();
         wendbaarheid.clear();
         grootte.clear();
         personenAanboord.clear();
         koers.clear();
-        capaciteit.clear();
         detailType.getSelectionModel().clearSelection();
         status.getSelectionModel().clearSelection();
     }
 
-    public void clearInputLocatiePlusType(){
+    public void clearInputBasis(){
         locatieBreedte.clear();
         locatieLengte.clear();
         hoofdType.getSelectionModel().clearSelection();
@@ -213,39 +234,87 @@ public class MainWindowController {
         if (hoofdType.getValue() != null){
             switch (hoofdType.getValue()) {
                 case "Verkeerstoren":
+                    clearInputVervoermiddel();
                     detailType.getItems().setAll(verkeerstorenTypeLijst.getVerkeerstorenType());
-                    visibility(false);
+                    visibilityVervoermiddel(false);
                     break;
                 case "Schip":
+                    clearInputVervoermiddel();
                     detailType.getItems().setAll(schipTypeLijst.getSchipType());
-                    visibility(true);
+                    visibilityVervoermiddel(true);
                     break;
                 case "Hulpdienst":
+                    clearInputVervoermiddel();
                     detailType.getItems().setAll(hulpdienstTypeLijst.getHulpdienstType());
-                    visibility(true);
+                    visibilityVervoermiddel(true);
                     break;
                 default:
                     break;
             }
         }
+        else {visibilityVervoermiddel(true);}
     }
 
-   /* private int checkInput(){
-        if (    carColor.getText().equals("") ||
-                carConstructor.getText().equals("") ||
-                carField.getText().equals("") ||
-                carModel.getText().equals("") ||
-                carYear.getText().equals("") ||
-                carMemberNumber.getText().equals(""))
+    private int validatieVervoermiddel(){
+        try {
+            Double.parseDouble(snelheid.getText().replace(",","."));
+            Double.parseDouble(wendbaarheid.getText().replace(",","."));
+            Double.parseDouble(grootte.getText().replace(",","."));
+            Double.parseDouble(personenAanboord.getText().replace(",","."));
+            Double.parseDouble(koers.getText().replace(",","."));
+            return 0;
+        }
+        catch (Exception e) {
+            displayAlert(Alert.AlertType.INFORMATION, "Input is incorrect",
+                    "Inputvelden zijn allemaal numerieke waardes.");
+            return 1;
+        }
+    }
+
+   private int checkInputVervoermiddel(){
+       if (    snelheid.getText().equals("") ||
+               wendbaarheid.getText().equals("") ||
+               grootte.getText().equals("") ||
+               personenAanboord.getText().equals("") ||
+               koers.getText().equals("") ||
+               detailType.getValue() == null ||
+               status.getValue() == null)
         {
-            displayAlert(Alert.AlertType.INFORMATION, "Please fill in all fields",
-                    "All fields are required.");
+            displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",
+                    "Alle inputvelden zijn vereist.");
             return 1;
         }
         else {
-            return checkCarYear();
+            return validatieVervoermiddel();
         }
-    }*/
+    }
+
+    private int validatieBasis(){
+        try {
+            Double.parseDouble(locatieLengte.getText().replace(",","."));
+            Double.parseDouble(locatieBreedte.getText().replace(",","."));
+            return 0;
+        }
+        catch (Exception e) {
+            displayAlert(Alert.AlertType.INFORMATION, "Input is incorrect",
+                    "Inputvelden zijn allemaal numerieke waardes.");
+            return 1;
+        }
+    }
+
+    private int checkInputBasis(){
+        if (    locatieLengte.getText().equals("") ||
+                locatieBreedte.getText().equals("") ||
+                hoofdType.getValue() == null)
+        {
+            displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",
+                    "Alle inputvelden zijn vereist.");
+            return 1;
+        }
+        else {
+            return validatieBasis();
+        }
+    }
 
     private void displayAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);

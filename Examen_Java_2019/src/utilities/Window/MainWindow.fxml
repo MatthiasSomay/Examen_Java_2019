@@ -79,7 +79,6 @@
                   <RowConstraints vgrow="SOMETIMES" />
                   <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
-                <RowConstraints vgrow="SOMETIMES" />
                   <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
@@ -124,11 +123,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="labelCapaciteit" text="Capaciteit:" GridPane.columnIndex="1" GridPane.rowIndex="13">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </Label>
                   <Label text="ID:" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -144,7 +138,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="labelStatus" text="Status" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                  <Label fx:id="labelStatus" text="Status" GridPane.columnIndex="1" GridPane.rowIndex="13">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -204,11 +198,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="capaciteit" editable="false" focusTraversable="false" GridPane.columnIndex="2" GridPane.rowIndex="13">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </TextField>
                   <Label fx:id="labelZeemijlUur" text="Zeemijl/uur" GridPane.columnIndex="3" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -229,7 +218,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="status" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                  <ComboBox fx:id="status" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="13">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -239,11 +228,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Label fx:id="labelPersonen" text="Personen" GridPane.columnIndex="3" GridPane.rowIndex="13">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </Label>
                </children>
             </GridPane>
             <GridPane>

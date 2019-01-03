@@ -7,10 +7,7 @@
 
 package db;
 
-import model.Coördinaten;
-import model.Hulpdienst;
-import model.Schip;
-import model.Verkeerstoren;
+import model.*;
 import utilities.states.Beschikbaar;
 import utilities.states.InNood;
 import utilities.states.NietBeschikbaar;
@@ -163,19 +160,19 @@ public class DatabaseQueries {
     }
 
 
-        public int addVervoermiddel(double lengteLocatie, double breedteLocatie, String type, String detailType, double snelheid, double wendbaarheid, double grootte, int pesonenAanBoord, double koers, String status, int verkeestorenID) {
+        public int addVervoermiddel(Vervoermiddel vervoermiddel, String hoofdType) {
             try {
-                insertNewVervoermiddel.setDouble(1, lengteLocatie);
-                insertNewVervoermiddel.setDouble(2, breedteLocatie);
-                insertNewVervoermiddel.setString(3, type);
-                insertNewVervoermiddel.setString(4, detailType);
-                insertNewVervoermiddel.setDouble(5, snelheid);
-                insertNewVervoermiddel.setDouble(6, wendbaarheid);
-                insertNewVervoermiddel.setDouble(7, grootte);
-                insertNewVervoermiddel.setInt(8, pesonenAanBoord);
-                insertNewVervoermiddel.setDouble(9, koers);
-                insertNewVervoermiddel.setString(10, status);
-                insertNewVervoermiddel.setInt(11, verkeestorenID);
+                insertNewVervoermiddel.setDouble(1, vervoermiddel.getLocatie().getLengte());
+                insertNewVervoermiddel.setDouble(2, vervoermiddel.getLocatie().getBreedte());
+                insertNewVervoermiddel.setString(3, hoofdType);
+                insertNewVervoermiddel.setString(4, vervoermiddel.getType());
+                insertNewVervoermiddel.setDouble(5, vervoermiddel.getSnelheid());
+                insertNewVervoermiddel.setDouble(6, vervoermiddel.getWendbaarheid());
+                insertNewVervoermiddel.setDouble(7, vervoermiddel.getGrootte());
+                insertNewVervoermiddel.setInt(8, vervoermiddel.getPersonenAanBoord());
+                insertNewVervoermiddel.setDouble(9, vervoermiddel.getKoers());
+                insertNewVervoermiddel.setString(10, vervoermiddel.getStatus().toString());
+                insertNewVervoermiddel.setInt(11, vervoermiddel.getDichtstbijzijndeVerkeerstoren().getId());
 
                 return insertNewVervoermiddel.executeUpdate();
             } catch (SQLException sqlException) {
@@ -196,6 +193,19 @@ public class DatabaseQueries {
                 return 0;
             }
         }
+
+    public int addVerkeerstoren(Verkeerstoren verkeerstoren) {
+        try {
+            insertNewVerkeerstoren.setDouble(1, verkeerstoren.getLocatie().getLengte());
+            insertNewVerkeerstoren.setDouble(2, verkeerstoren.getLocatie().getBreedte());
+            insertNewVerkeerstoren.setString(3, verkeerstoren.getType());
+
+            return insertNewVerkeerstoren.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return 0;
+        }
+    }
 
 
         public int deleteVervoermiddel(int ID) {
