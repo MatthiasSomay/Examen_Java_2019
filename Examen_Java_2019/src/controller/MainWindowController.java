@@ -8,15 +8,17 @@
 package controller;
 
 import db.DatabaseQueries;
+import factory.HulpdienstFactory;
+import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
-import factory.VervoermiddelFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import model.Coördinaten;
+import model.Hulpdienst;
+import model.Schip;
 import model.Verkeerstoren;
-import model.Vervoermiddel;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
@@ -139,10 +141,10 @@ public class MainWindowController {
                     db.addVerkeerstoren(verkeerstorenTemp);
                 }
             }
-            else {
+            else if (hoofdType.getValue() == "Schip"){
                 if (checkInputBasis() == 0){
                     if (checkInputVervoermiddel() == 0){
-                         Vervoermiddel vervoermiddelTemp = VervoermiddelFactory.createVervoermiddel(
+                         Schip schipTemp = SchipFactory.createSchip(
                                  new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
                                  Double.parseDouble(snelheid.getText()),
                                  Double.parseDouble(grootte.getText()),
@@ -150,9 +152,24 @@ public class MainWindowController {
                                  Integer.parseInt(personenAanboord.getText()),
                                  Double.parseDouble(koers.getText()),
                                  detailType.getValue(),
-                                 db.CalculateState(status.getValue()),
-                                 hoofdType.getValue());
-                        db.addVervoermiddel(vervoermiddelTemp, hoofdType.getValue());
+                                 db.CalculateState(status.getValue()));
+                        db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                    }
+                }
+            }
+            else {
+                if (checkInputBasis() == 0){
+                    if (checkInputVervoermiddel() == 0){
+                        Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
+                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
+                                Double.parseDouble(snelheid.getText()),
+                                Double.parseDouble(grootte.getText()),
+                                Double.parseDouble(wendbaarheid.getText()),
+                                Integer.parseInt(personenAanboord.getText()),
+                                Double.parseDouble(koers.getText()),
+                                detailType.getValue(),
+                                db.CalculateState(status.getValue()));
+                        db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
                     }
                 }
             }

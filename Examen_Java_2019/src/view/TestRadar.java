@@ -1,8 +1,8 @@
 package view;
 
 import factory.HulpdienstFactory;
+import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
-import factory.VervoermiddelFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -59,7 +59,7 @@ public class TestRadar extends Application {
         for(int i=0; i<5; i++){
             schipTypeTemp = generator.generateTypeSchip();
             Status statusTemp = new Beschikbaar();
-            Schip schipTemp = VervoermiddelFactory.createSchip(
+            Schip schipTemp = SchipFactory.createSchip(
                     generator.generateLocatie(),
                     generator.generateSnelheid(schipTypeTemp),
                     generator.generateGrootte(schipTypeTemp),
