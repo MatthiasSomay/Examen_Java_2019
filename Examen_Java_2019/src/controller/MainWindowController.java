@@ -30,100 +30,37 @@ public class MainWindowController {
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     DatabaseQueries db = new DatabaseQueries();
 
-    @FXML
-    private Pane mapDisplay;
-
-    @FXML
-    private ListView<String> listData;
-
-    @FXML
-    private Button toonAlleVerkeerstorens;
-
-    @FXML
-    private Button toonAllehulpdiensten;
-
-    @FXML
-    private Button toonAlleSchepen;
-
-    @FXML
-    private Button toonAlles;
-
-    @FXML
-    private Label labelSnelheid;
-
-    @FXML
-    private Label labelKoers;
-
-    @FXML
-    private Label labelPersonenAanBoord;
-
-    @FXML
-    private Label labelWendbaarheid;
-
-    @FXML
-    private TextField ID;
-
-    @FXML
-    private TextField locatieLengte;
-
-    @FXML
-    private TextField locatieBreedte;
-
-    @FXML
-    private TextField snelheid;
-
-    @FXML
-    private TextField wendbaarheid;
-
-    @FXML
-    private TextField grootte;
-
-    @FXML
-    private TextField personenAanboord;
-
-    @FXML
-    private TextField koers;
-
-    @FXML
-    private ComboBox<String> detailType;
-
-    @FXML
-    private Label labelGrootte;
-
-    @FXML
-    private Label labelStatus;
-
-
-    @FXML
-    private Label labelZeemijlUur;
-
-    @FXML
-    private Label labelSecondeGraad;
-
-    @FXML
-    private Label labelM;
-
-    @FXML
-    private Label labelGradenTovNoorden;
-
-    @FXML
-    private ComboBox<String> status;
-
-    @FXML
-    private ComboBox<String> hoofdType;
-
-
-    @FXML
-    private Button slaOp;
-
-    @FXML
-    private Button Verwijder;
-
-    @FXML
-    private Button maakLeeg;
-
-    @FXML
-    private Button startRandomReddingsactie;
+    @FXML private Pane mapDisplay;
+    @FXML private ListView<String> listData;
+    @FXML private Button toonAlleVerkeerstorens;
+    @FXML private Button toonAllehulpdiensten;
+    @FXML private Button toonAlleSchepen;
+    @FXML private Button toonAlles;
+    @FXML private Label labelSnelheid;
+    @FXML private Label labelKoers;
+    @FXML private Label labelPersonenAanBoord;
+    @FXML private Label labelWendbaarheid;
+    @FXML private TextField ID;
+    @FXML private TextField locatieLengte;
+    @FXML private TextField locatieBreedte;
+    @FXML private TextField snelheid;
+    @FXML private TextField wendbaarheid;
+    @FXML private TextField grootte;
+    @FXML private TextField personenAanboord;
+    @FXML private TextField koers;
+    @FXML private ComboBox<String> detailType;
+    @FXML private Label labelGrootte;
+    @FXML private Label labelStatus;
+    @FXML private Label labelZeemijlUur;
+    @FXML private Label labelSecondeGraad;
+    @FXML private Label labelM;
+    @FXML private Label labelGradenTovNoorden;
+    @FXML private ComboBox<String> status;
+    @FXML private ComboBox<String> hoofdType;
+    @FXML private Button slaOp;
+    @FXML private Button Verwijder;
+    @FXML private Button maakLeeg;
+    @FXML private Button startRandomReddingsactie;
 
     @FXML
     void maakLeegButtonPressed(ActionEvent event) {
