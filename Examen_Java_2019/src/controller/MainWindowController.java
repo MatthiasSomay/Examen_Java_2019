@@ -9,11 +9,9 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import utilities.demodata.SchipTypeLijst;
 
 public class MainWindowController {
 
@@ -60,7 +58,7 @@ public class MainWindowController {
     private TextField koers;
 
     @FXML
-    private ComboBox<?> detailType;
+    private ComboBox<String> detailType;
 
     @FXML
     private TextField capaciteit;
@@ -83,6 +81,11 @@ public class MainWindowController {
     @FXML
     private Button startRandomReddingsactie;
 
+    public void setUp(){
+        SchipTypeLijst schipTypeLijst = new SchipTypeLijst();
+        detailType.getItems().setAll(schipTypeLijst.getSchipType());
+    }
+
     @FXML
     void maakLeegButtonPressed(ActionEvent event) {
 
@@ -90,6 +93,23 @@ public class MainWindowController {
 
     @FXML
     void slaOpButtonPressed(ActionEvent event) {
+
+
+        /*if (    carColor.getText().equals("") ||
+                carConstructor.getText().equals("") ||
+                carField.getText().equals("") ||
+                carModel.getText().equals("") ||
+                carYear.getText().equals("") ||
+                carMemberNumber.getText().equals(""))
+        {
+            displayAlert(Alert.AlertType.INFORMATION, "Please fill in all fields",
+                    "All fields are required.");
+            return 1;
+        }
+        else {
+            return checkCarYear();
+        }
+    }*/
 
     }
 
@@ -122,6 +142,12 @@ public class MainWindowController {
 
     }
 
+    private void displayAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }
 
