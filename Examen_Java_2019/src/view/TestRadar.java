@@ -21,7 +21,7 @@ import java.util.List;
 public class TestRadar extends Application {
 
     private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
-    private List<Hulpdienst> hulpdiensten = new ArrayList<>();
+    public List<Hulpdienst> hulpdiensten = new ArrayList<>();
     private List<Schip> schepen = new ArrayList<>();
     private Generator generator = new Generator();
 
@@ -106,14 +106,11 @@ public class TestRadar extends Application {
     }
 
     public static void main(String[] args) {
-
         TestRadar radar = new TestRadar();
         radar.setUp();
         radar.print();
         radar.randomReddingsactie();
-
-        /*launch(args);*/
-
+        launch(args);
     }
 
 
