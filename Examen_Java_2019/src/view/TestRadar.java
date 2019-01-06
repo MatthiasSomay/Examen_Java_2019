@@ -1,6 +1,5 @@
 package view;
 
-import db.DatabaseQueries;
 import factory.HulpdienstFactory;
 import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
@@ -24,7 +23,7 @@ import java.util.List;
 
 public class TestRadar extends Application {
 
-    DatabaseQueries db = new DatabaseQueries();
+    /*DatabaseQueries db = new DatabaseQueries();
 
     public DatabaseQueries getDb() {
         return db;
@@ -32,7 +31,7 @@ public class TestRadar extends Application {
 
     public void setDb(DatabaseQueries db) {
         this.db = db;
-    }
+    }*/
 
     public List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     public List<Hulpdienst> hulpdiensten = new ArrayList<>();

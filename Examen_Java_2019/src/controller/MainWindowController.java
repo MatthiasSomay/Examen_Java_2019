@@ -16,6 +16,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import model.*;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
@@ -27,6 +30,7 @@ public class MainWindowController {
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     DatabaseQueries db = new DatabaseQueries();
+    Paint brushColor = Color.BLACK;
 
     @FXML private Pane mapDisplay;
     @FXML private ListView<Actor> listData;
@@ -73,6 +77,10 @@ public class MainWindowController {
         creatieOrUpdateActor();
     }
 
+    public void drawActorOnPane(Actor actor, Integer radius){
+        Circle newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getBreedte(),radius,brushColor);
+        mapDisplay.getChildren().add(newCircle);
+    }
 
     public void creatieOrUpdateActor(){
         if (hoofdType.getValue() != null){
@@ -154,6 +162,10 @@ public class MainWindowController {
     @FXML
     void toonAlleSchepenButtonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getAllSchip());
+        for (Actor actor: listData.getItems()
+             ) {
+            drawActorOnPane(actor, 4);
+        }
     }
 
     @FXML
