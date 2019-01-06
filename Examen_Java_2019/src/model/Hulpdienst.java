@@ -17,7 +17,12 @@ public class Hulpdienst extends Vervoermiddel {
         super(locatie, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status, verkeerstorens);
     }
 
-    @Override
+    public Hulpdienst(Coördinaten locatie, Integer id, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status, List<Verkeerstoren> verkeerstorens) {
+        super(locatie, id, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status, verkeerstorens);
+
+
+
+        @Override
     public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){
         getDichtstbijzijndeVerkeerstoren().getHulpdiensten().add(this);
         if (oldVerkeerstoren != null){

@@ -97,7 +97,7 @@ public class DatabaseQueries {
                                     resultSet.getDouble("lengteLocatie"),
                                     resultSet.getDouble("breedteLocatie")
                             ),
-
+                            resultSet.getInt("ID"),
                             resultSet.getDouble("snelheid"),
                             resultSet.getDouble("grootte"),
                             resultSet.getDouble("wendbaarheid"),
@@ -125,6 +125,7 @@ public class DatabaseQueries {
                                 resultSet.getDouble("lengteLocatie"),
                                 resultSet.getDouble("breedteLocatie")
                         ),
+                        resultSet.getInt("ID"),
                         resultSet.getDouble("snelheid"),
                         resultSet.getDouble("grootte"),
                         resultSet.getDouble("wendbaarheid"),
@@ -152,6 +153,7 @@ public class DatabaseQueries {
                                 resultSet.getDouble("lengteLocatie"),
                                 resultSet.getDouble("breedteLocatie")
                         ),
+                        resultSet.getInt("ID"),
                         resultSet.getString("detailType"),
                         results
                 ));

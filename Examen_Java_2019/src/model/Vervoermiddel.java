@@ -45,6 +45,19 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         berekenDichtstbijzijndeVerkeerstoren();
     }
 
+    public Vervoermiddel(Coördinaten locatie, Integer id, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status, List<Verkeerstoren> verkeerstorens) {
+        super(locatie, id, verkeerstorens);
+        setSnelheid(snelheid);
+        setGrootte(grootte);
+        setWendbaarheid(wendbaarheid);
+        setPersonenAanBoord(personenAanBoord);
+        setKoers(koers);
+        setType(type);
+        setStatus(status);
+        berekenDichtstbijzijndeVerkeerstoren();
+    }
+
+
     public double berekenReactietijd(Actor actorInNood, double draaicirkel) {
         return (berekenWendbaarheidstijd(draaicirkel) + ((berekenAfstand(actorInNood)/getSnelheid())*60));
     }

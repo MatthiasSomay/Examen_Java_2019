@@ -33,6 +33,11 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         setType(type);
     }
 
+    public Verkeerstoren(Coördinaten locatie,Integer id, String type, List<Verkeerstoren> verkeerstorens) {
+        super(locatie, id, verkeerstorens);
+        setType(type);
+    }
+
     public void addSchipObserver(Schip schip) {
         schepen.add(schip);
     }

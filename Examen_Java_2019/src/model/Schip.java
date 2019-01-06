@@ -19,6 +19,10 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         super(locatie, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status, verkeerstorens);
     }
 
+    public Schip(Coördinaten locatie, Integer id, double snelheid, double grootte, double wendbaarheid, int personenAanBoord, double koers, String type, Status status, List<Verkeerstoren> verkeerstorens) {
+        super(locatie, id, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status, verkeerstorens);
+    }
+
 
     public void noodsituatieBericht() {
         Log.logger.warn(
