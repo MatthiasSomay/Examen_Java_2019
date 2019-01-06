@@ -12,6 +12,7 @@ import factory.HulpdienstFactory;
 import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -30,7 +31,6 @@ public class MainWindowController {
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     DatabaseQueries db = new DatabaseQueries();
-    Paint brushColor = Color.BLACK;
 
     @FXML private Pane mapDisplay;
     @FXML private ListView<Actor> listData;
@@ -77,9 +77,48 @@ public class MainWindowController {
         creatieOrUpdateActor();
     }
 
-    public void drawActorOnPane(Actor actor, Integer radius){
-        Circle newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getBreedte(),radius,brushColor);
-        mapDisplay.getChildren().add(newCircle);
+    public void drawActorOnPane(){
+        mapDisplay.getChildren().clear();
+        Paint brushColor;
+        Circle newCircle;
+        for (Actor actor: listData.getItems()
+        ) {
+            if (actor.getClass() == Schip.class){
+                brushColor = Color.BLACK;
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),6,brushColor);
+            }
+            else if (actor.getClass() == Hulpdienst.class){
+                brushColor = Color.BLUE;
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),6,brushColor);
+            }
+            else {
+                brushColor = Color.RED;
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),8,brushColor);
+            }
+            newCircle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if (actor.getClass() == Hulpdienst.class){
+                        toonDataHulpdienst((Hulpdienst)actor);
+                    }
+                    else if (actor.getClass() == Schip.class){
+                        toonDataSchip((Schip)actor);
+                    }
+                    else if (actor.getClass() == Verkeerstoren.class){
+                        toonDataVerkeerstoren((Verkeerstoren) actor);
+                    }
+                }
+            });
+            mapDisplay.getChildren().add(newCircle);
+        }
+    }
+
+    @FXML
+    void mapDisplayClicked(MouseEvent event) {
+        if (ID.getText().equals("")) {
+            locatieBreedte.setText(String.valueOf(event.getX()));
+            locatieLengte.setText(String.valueOf(event.getY()));
+        }
     }
 
     public void creatieOrUpdateActor(){
@@ -90,7 +129,7 @@ public class MainWindowController {
                             new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
                             detailType.getValue(),
                             db.getAllVerkeerstoren());
-                    if (ID.getText() == "") {
+                    if (ID.getText().equals("")) {
                         db.addVerkeerstoren(verkeerstorenTemp);
                     }
                     else {
@@ -113,7 +152,7 @@ public class MainWindowController {
                                 detailType.getValue(),
                                 db.CalculateState(status.getValue()),
                                 db.getAllVerkeerstoren());
-                        if (ID.getText() == "") {
+                        if (ID.getText().equals("")) {
                             db.addVervoermiddel(schipTemp, hoofdType.getValue());
                         }
                         else {
@@ -138,7 +177,7 @@ public class MainWindowController {
                                 detailType.getValue(),
                                 db.CalculateState(status.getValue()),
                                 db.getAllVerkeerstoren());
-                        if (ID.getText() == "") {
+                        if (ID.getText().equals("")) {
                             db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
                         }
                         else {
@@ -150,6 +189,7 @@ public class MainWindowController {
                     }
                 }
             }
+            toonAlleActors();
         }
         else checkInputBasis();
     }
@@ -162,27 +202,31 @@ public class MainWindowController {
     @FXML
     void toonAlleSchepenButtonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getAllSchip());
-        for (Actor actor: listData.getItems()
-             ) {
-            drawActorOnPane(actor, 4);
-        }
+        drawActorOnPane();
     }
 
     @FXML
     void toonAlleVerkeerstorensButttonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getAllVerkeerstoren());
+        drawActorOnPane();
     }
 
     @FXML
     void toonAllehulpdienstenButtonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getAllHulpdienst());
+        drawActorOnPane();
     }
 
     @FXML
     void toonAllesButtonPressed(ActionEvent event) {
+        toonAlleActors();
+    }
+
+    public void toonAlleActors(){
         listData.getItems().setAll(db.getAllVerkeerstoren());
         listData.getItems().addAll(db.getAllHulpdienst());
         listData.getItems().addAll(db.getAllSchip());
+        drawActorOnPane();
     }
 
     @FXML
@@ -191,19 +235,19 @@ public class MainWindowController {
             if (hoofdType.getSelectionModel().getSelectedItem() == "Verkeerstoren"){
                 db.deleteVerkeerstoren(Integer.parseInt(ID.getText()));
                 maakLeegButtonPressed(event);
-                toonAlleVerkeerstorensButttonPressed(event);
+                toonAlleActors();
             }
             else if (hoofdType.getSelectionModel().getSelectedItem() == "Schip"){
                 db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
                 clearInputVervoermiddel();
                 maakLeegButtonPressed(event);
-                toonAlleSchepenButtonPressed(event);
+                toonAlleActors();
             }
             else if (hoofdType.getSelectionModel().getSelectedItem() == "Hulpdienst"){
                 db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
                 clearInputVervoermiddel();
                 maakLeegButtonPressed(event);
-                toonAllehulpdienstenButtonPressed(event);
+                toonAlleActors();
             }
         }
     }
@@ -223,6 +267,7 @@ public class MainWindowController {
             }
         }
     }
+
 
     public void toonDataVerkeerstoren(Verkeerstoren verkeerstoren){
         ID.setText(String.valueOf(verkeerstoren.getId()));
@@ -268,10 +313,6 @@ public class MainWindowController {
 
     public void toonDataVervoermiddel(){
 
-    }
-
-    @FXML
-    void mapdisplayClicked(MouseEvent event) {
     }
 
     public void initialize(){
