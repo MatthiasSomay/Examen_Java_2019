@@ -15,10 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import model.Coördinaten;
-import model.Hulpdienst;
-import model.Schip;
-import model.Verkeerstoren;
+import model.*;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
@@ -31,7 +28,7 @@ public class MainWindowController {
     DatabaseQueries db = new DatabaseQueries();
 
     @FXML private Pane mapDisplay;
-    @FXML private ListView<String> listData;
+    @FXML private ListView<Actor> listData;
     @FXML private Button toonAlleVerkeerstorens;
     @FXML private Button toonAllehulpdiensten;
     @FXML private Button toonAlleSchepen;
@@ -129,17 +126,17 @@ public class MainWindowController {
 
     @FXML
     void toonAlleSchepenButtonPressed(ActionEvent event) {
-
+        listData.getItems().setAll(db.getAllSchip());
     }
 
     @FXML
     void toonAlleVerkeerstorensButttonPressed(ActionEvent event) {
-
+        listData.getItems().setAll(db.getAllVerkeerstoren());
     }
 
     @FXML
     void toonAllehulpdienstenButtonPressed(ActionEvent event) {
-
+        listData.getItems().setAll(db.getAllHulpdienst());
     }
 
     @FXML

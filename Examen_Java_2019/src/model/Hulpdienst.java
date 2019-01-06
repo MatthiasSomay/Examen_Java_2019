@@ -22,7 +22,7 @@ public class Hulpdienst extends Vervoermiddel {
 
     }
 
-        @Override
+    @Override
     public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){
         getDichtstbijzijndeVerkeerstoren().getHulpdiensten().add(this);
         if (oldVerkeerstoren != null){

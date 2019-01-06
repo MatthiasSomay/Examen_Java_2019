@@ -43,10 +43,10 @@ public class DatabaseQueries {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             selectAllSchip = connection.prepareStatement(
-                    "SELECT * FROM vervoermiddel WHERE type = schip");
+                    "SELECT * FROM vervoermiddel WHERE type = 'Schip'");
 
             selectAllHulpdienst = connection.prepareStatement(
-                    "SELECT * FROM vervoermiddel WHERE type = hulpdienst");
+                    "SELECT * FROM vervoermiddel WHERE type = 'Hulpdienst'");
 
             selectAllVerkeerstoren = connection.prepareStatement(
                     "SELECT * FROM verkeerstoren");
