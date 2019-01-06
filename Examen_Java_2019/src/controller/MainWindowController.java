@@ -414,7 +414,7 @@ public class MainWindowController {
             return 0;
         }
         catch (Exception e) {
-            displayAlert(Alert.AlertType.INFORMATION, "Input is incorrect",
+            displayAlert(Alert.AlertType.ERROR, "Input is incorrect",
                     "Inputvelden zijn allemaal numerieke waardes.");
             return 1;
         }
@@ -428,7 +428,7 @@ public class MainWindowController {
                koers.getText().equals("") ||
                status.getValue() == null)
         {
-            displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",
+            displayAlert(Alert.AlertType.ERROR, "Ontbrekende gegevens",
                     "Alle inputvelden zijn vereist.");
             return 1;
         }
@@ -444,7 +444,7 @@ public class MainWindowController {
             return 0;
         }
         catch (Exception e) {
-            displayAlert(Alert.AlertType.INFORMATION, "Input is incorrect",
+            displayAlert(Alert.AlertType.ERROR, "Input is incorrect",
                     "Inputvelden zijn allemaal numerieke waardes.");
             return 1;
         }
@@ -456,7 +456,7 @@ public class MainWindowController {
                 detailType.getValue() == null ||
                 hoofdType.getValue() == null)
         {
-            displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",
+            displayAlert(Alert.AlertType.ERROR, "Ontbrekende gegevens",
                     "Alle inputvelden zijn vereist.");
             return 1;
         }
