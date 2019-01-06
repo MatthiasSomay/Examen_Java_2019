@@ -37,6 +37,8 @@ public class DatabaseQueries {
     private PreparedStatement insertNewVerkeerstoren;
     private PreparedStatement deleteVervoermiddel;
     private PreparedStatement deleteVerkeerstoren;
+    private PreparedStatement updateVervoermiddel;
+    private PreparedStatement updateVerkeerstoren;
 
     public DatabaseQueries() {
         try {
@@ -67,6 +69,13 @@ public class DatabaseQueries {
 
             deleteVerkeerstoren = connection.prepareStatement(
                     "DELETE FROM verkeerstoren WHERE ID = ?");
+
+            updateVervoermiddel = connection.prepareStatement(
+                    "UPDATE vervoermiddel SET WHERE ID = ?");
+
+            updateVerkeerstoren = connection.prepareStatement(
+                    "UPDATE verkeerstoren WHERE ID = ?");
+
 
         } catch (Exception e) {
             e.printStackTrace();
