@@ -49,7 +49,7 @@ public class VerkeerstorenTest {
     }
 
     @Test
-    public void berekenAfstand() {
+    public void test_berekenAfstand_Geeft_Geldig_Resultaat() {
         double afstand = verkeerstoren.berekenAfstand(verkeerstoren2);
 
         assertEquals(58.309518948453004, afstand, 0);
