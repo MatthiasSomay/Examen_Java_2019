@@ -131,12 +131,17 @@ public class MainWindowController {
                             db.getAllVerkeerstoren());
                     if (ID.getText().equals("")) {
                         db.addVerkeerstoren(verkeerstorenTemp);
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Verkeerstore  is toegevoegd.");
                     }
                     else {
                         verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
                         db.updateVerkeerstoren(verkeerstorenTemp);
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Verkeerstore  is aangepast.");
                     }
                     clearInputBasis();
+
                 }
             }
             else if (hoofdType.getValue() == "Schip"){
@@ -154,13 +159,18 @@ public class MainWindowController {
                                 db.getAllVerkeerstoren());
                         if (ID.getText().equals("")) {
                             db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Schip is toegevoegd.");
                         }
                         else {
                             schipTemp.setId(Integer.parseInt(ID.getText()));
                             db.updateVervoermiddel(schipTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Schip is aangepast.");
                         }
                         clearInputBasis();
                         clearInputVervoermiddel();
+
                     }
                 }
             }
@@ -179,13 +189,18 @@ public class MainWindowController {
                                 db.getAllVerkeerstoren());
                         if (ID.getText().equals("")) {
                             db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Hulpdienst is toegevoegd.");
                         }
                         else {
                             hulpdienstTemp.setId(Integer.parseInt(ID.getText()));
                             db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Hulpdienst is aangepast.");
                         }
                         clearInputBasis();
                         clearInputVervoermiddel();
+
                     }
                 }
             }
@@ -236,18 +251,24 @@ public class MainWindowController {
                 db.deleteVerkeerstoren(Integer.parseInt(ID.getText()));
                 maakLeegButtonPressed(event);
                 toonAlleActors();
+                displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                        "Verkeerstoren is verwijderd.");
             }
             else if (hoofdType.getSelectionModel().getSelectedItem() == "Schip"){
                 db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
                 clearInputVervoermiddel();
                 maakLeegButtonPressed(event);
                 toonAlleActors();
+                displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                        "Schip is verwijderd.");
             }
             else if (hoofdType.getSelectionModel().getSelectedItem() == "Hulpdienst"){
                 db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
                 clearInputVervoermiddel();
                 maakLeegButtonPressed(event);
                 toonAlleActors();
+                displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                        "Hulpdienst is verwijderd.");
             }
         }
     }
