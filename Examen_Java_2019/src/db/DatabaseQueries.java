@@ -97,6 +97,7 @@ public class DatabaseQueries {
                                     resultSet.getDouble("lengteLocatie"),
                                     resultSet.getDouble("breedteLocatie")
                             ),
+
                             resultSet.getDouble("snelheid"),
                             resultSet.getDouble("grootte"),
                             resultSet.getDouble("wendbaarheid"),
