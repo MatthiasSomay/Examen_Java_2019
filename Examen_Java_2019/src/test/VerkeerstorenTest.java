@@ -8,15 +8,17 @@
 package test;
 
 import model.Coördinaten;
+import model.Hulpdienst;
 import model.Schip;
 import model.Verkeerstoren;
 import org.junit.Test;
+import utilities.states.Beschikbaar;
 import view.TestRadar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class VerkeerstorenTest {
 
@@ -25,6 +27,9 @@ public class VerkeerstorenTest {
     private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven", new ArrayList<>());
     private Verkeerstoren verkeerstoren2 = new Verkeerstoren(coordinaat2, "Vuurtoren", new ArrayList<>());
     private TestRadar testRadar = new TestRadar();
+    private Beschikbaar beschikbaar = new Beschikbaar();
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.verkeerstorens);
+
 
 
 
@@ -37,15 +42,18 @@ public class VerkeerstorenTest {
     }
 
     @Test
-    public void addSchipObserver() {
+    public void test_addSchipObserver_Doet_Correcte_Bewerking() {
+        verkeerstoren.addSchipObserver(schip);
+
+        assertTrue(verkeerstoren.getSchepen().contains(schip));
     }
 
     @Test
-    public void removeSchipObserver() {
-    }
+    public void test_removeSchipObserver_Doet_Correcte_Bewerking() {
+        verkeerstoren.addSchipObserver(schip);
+        verkeerstoren.removeSchipObserver(schip);
 
-    @Test
-    public void noodsituatieBroadcastBericht() {
+        assertFalse(verkeerstoren.getSchepen().contains(schip));
     }
 
     @Test
@@ -56,15 +64,18 @@ public class VerkeerstorenTest {
     }
 
     @Test
-    public void verleenHulp() {
-    }
-
-    @Test
-    public void setHulpdiensten() {
+    public void test_setHulpdiensten_Geldige_Waarde_Wordt_Aanvaard() {
         testRadar.setUp();
         verkeerstoren.setHulpdiensten(testRadar.hulpdiensten);
 
         assertEquals(testRadar.hulpdiensten, verkeerstoren.getHulpdiensten());
+
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void test_setHulpdiensten_Exception_Bij_Lege_Lijst() {
+        List<Hulpdienst> hulpdiensten = null;
+        verkeerstoren.setHulpdiensten(hulpdiensten);
 
     }
 
@@ -79,7 +90,7 @@ public class VerkeerstorenTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void test_setSchepen_Exception_Bij_Ongeldige_Waarde() {
+    public void test_setSchepen_Exception_Bij_Lege_Lijst() {
         List<Schip> schips = null;
         verkeerstoren.setSchepen(schips);
 
