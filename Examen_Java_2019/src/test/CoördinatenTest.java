@@ -11,8 +11,6 @@ package test;
 import model.Coördinaten;
 import org.junit.Test;
 
-import java.text.DecimalFormat;
-
 import static org.junit.Assert.*;
 
 public class CoördinatenTest {
@@ -27,13 +25,6 @@ public class CoördinatenTest {
 
         assertEquals(30, c.getLengte(), 0);
         assertEquals(40, c.getBreedte(), 0);
-    }
-
-    @Test
-    public void test_toString() {
-        DecimalFormat df = new DecimalFormat("0.00");
-        String expected = "Coördinaten(" + "Lengte: " + df.format(coordinaat.getLengte()) + "; " + "Breedte: " + df.format(coordinaat.getBreedte()) + ")";
-        assertEquals(expected, coordinaat.toString());
     }
 
     @Test
