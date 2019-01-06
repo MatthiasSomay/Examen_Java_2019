@@ -74,8 +74,10 @@ public class MainWindowController {
                 if (checkInputBasis() == 0){
                     Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
                             new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
-                            detailType.getValue());
+                            detailType.getValue(),
+                            db.getAllVerkeerstoren());
                     db.addVerkeerstoren(verkeerstorenTemp);
+                    clearInputBasis();
                 }
             }
             else if (hoofdType.getValue() == "Schip"){
@@ -89,8 +91,11 @@ public class MainWindowController {
                                  Integer.parseInt(personenAanboord.getText()),
                                  Double.parseDouble(koers.getText()),
                                  detailType.getValue(),
-                                 db.CalculateState(status.getValue()));
+                                 db.CalculateState(status.getValue()),
+                                 db.getAllVerkeerstoren());
                         db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                        clearInputBasis();
+                        clearInputVervoermiddel();
                     }
                 }
             }
@@ -105,8 +110,11 @@ public class MainWindowController {
                                 Integer.parseInt(personenAanboord.getText()),
                                 Double.parseDouble(koers.getText()),
                                 detailType.getValue(),
-                                db.CalculateState(status.getValue()));
+                                db.CalculateState(status.getValue()),
+                                db.getAllVerkeerstoren());
                         db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                        clearInputBasis();
+                        clearInputVervoermiddel();
                     }
                 }
             }
@@ -231,7 +239,6 @@ public class MainWindowController {
                grootte.getText().equals("") ||
                personenAanboord.getText().equals("") ||
                koers.getText().equals("") ||
-               detailType.getValue() == null ||
                status.getValue() == null)
         {
             displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",
@@ -259,6 +266,7 @@ public class MainWindowController {
     private int checkInputBasis(){
         if (    locatieLengte.getText().equals("") ||
                 locatieBreedte.getText().equals("") ||
+                detailType.getValue() == null ||
                 hoofdType.getValue() == null)
         {
             displayAlert(Alert.AlertType.INFORMATION, "Ontbrekende gegevens",

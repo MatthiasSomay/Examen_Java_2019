@@ -11,17 +11,19 @@ import model.Coördinaten;
 import model.Verkeerstoren;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class VerkeerstorenTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
-    private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven");
+    private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven", new ArrayList<>());
 
 
     @Test
     public void test_Constructor_Object_Wordt_Aangemaakt() {
-        Verkeerstoren v = new Verkeerstoren(coordinaat, "Vuurtoren");
+        Verkeerstoren v = new Verkeerstoren(coordinaat, "Vuurtoren", new ArrayList<>());
 
         assertEquals(coordinaat, v.getLocatie());
         assertEquals("Vuurtoren", v.getType());

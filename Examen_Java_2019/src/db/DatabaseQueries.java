@@ -25,7 +25,7 @@ public class DatabaseQueries {
     private static final String PASSWORD = "Elpsycongroo";
     */
 
-    private static final String URL = "jdbc:mysql://localhost:3306/radardb";
+    private static final String URL = "jdbc:mysql://localhost:3306/radardb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "kenneth0112*";
 
@@ -53,7 +53,7 @@ public class DatabaseQueries {
 
             insertNewVervoermiddel = connection.prepareStatement(
                     "INSERT INTO vervoermiddel " +
-                            "(lengteLocatie, breedteLocatie, type, detailType, snelheid, wendbaarheid, grootte, pesonenAanBoord, koers, status, verkeestoren)" +
+                            "(lengteLocatie, breedteLocatie, type, detailType, snelheid, wendbaarheid, grootte, personenAanBoord, koers, status, verkeerstoren)" +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             insertNewVerkeerstoren = connection.prepareStatement(
@@ -100,10 +100,11 @@ public class DatabaseQueries {
                             resultSet.getDouble("snelheid"),
                             resultSet.getDouble("grootte"),
                             resultSet.getDouble("wendbaarheid"),
-                            resultSet.getInt("pesonenAanBoord"),
+                            resultSet.getInt("personenAanBoord"),
                             resultSet.getDouble("koers"),
                             resultSet.getString("detailType"),
-                            CalculateState(resultSet.getString("status"))
+                            CalculateState(resultSet.getString("status")),
+                            getAllVerkeerstoren()
                     ));
                 }
                 return results;
@@ -129,7 +130,8 @@ public class DatabaseQueries {
                         resultSet.getInt("pesonenAanBoord"),
                         resultSet.getDouble("koers"),
                         resultSet.getString("detailType"),
-                        CalculateState(resultSet.getString("status"))
+                        CalculateState(resultSet.getString("status")),
+                        getAllVerkeerstoren()
                 ));
             }
             return results;
@@ -149,7 +151,8 @@ public class DatabaseQueries {
                                 resultSet.getDouble("lengteLocatie"),
                                 resultSet.getDouble("breedteLocatie")
                         ),
-                        resultSet.getString("detailType")
+                        resultSet.getString("detailType"),
+                        results
                 ));
             }
             return results;

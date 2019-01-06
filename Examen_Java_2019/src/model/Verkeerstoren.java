@@ -27,8 +27,8 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     private String type;
     private List<Vervoermiddel> hulpverleners = new ArrayList<>();
 
-    public Verkeerstoren(Coördinaten locatie, String type) {
-        super(locatie);
+    public Verkeerstoren(Coördinaten locatie, String type, List<Verkeerstoren> verkeerstorens) {
+        super(locatie,verkeerstorens);
         setType(type);
     }
 

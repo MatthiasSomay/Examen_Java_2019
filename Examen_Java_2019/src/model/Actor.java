@@ -10,23 +10,19 @@ package model;
 
 import utilities.interfaces.ILocaliseerbaar;
 import utilities.interfaces.IVerleenHulp;
-import view.TestRadar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
 
-    private TestRadar testRadar = new TestRadar();
-
     private int id;
     private Coördinaten locatie;
     private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
-    private IVerleenHulp hulpverlening;
 
-    public Actor(Coördinaten locatie) {
+    public Actor(Coördinaten locatie, List<Verkeerstoren> verkeerstorens) {
         setLocatie(locatie);
-        setVerkeerstorens(testRadar.verkeerstorens);
+        setVerkeerstorens(verkeerstorens);
     }
 
     public double berekenAfstand(Actor actor) {

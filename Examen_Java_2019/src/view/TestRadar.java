@@ -1,5 +1,6 @@
 package view;
 
+import db.DatabaseQueries;
 import factory.HulpdienstFactory;
 import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
@@ -20,6 +21,16 @@ import java.util.List;
 
 public class TestRadar extends Application {
 
+    DatabaseQueries db = new DatabaseQueries();
+
+    public DatabaseQueries getDb() {
+        return db;
+    }
+
+    public void setDb(DatabaseQueries db) {
+        this.db = db;
+    }
+
     public List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     public List<Hulpdienst> hulpdiensten = new ArrayList<>();
     private List<Schip> schepen = new ArrayList<>();
@@ -32,11 +43,11 @@ public class TestRadar extends Application {
         for(int i=0; i<10; i++) {
             Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
                     generator.generateLocatie(),
-                    generator.generateTypeVerkeerstoren()
+                    generator.generateTypeVerkeerstoren(),
+                    verkeerstorens
             );
             verkeerstorens.add(verkeerstorenTemp);
             verkeerstorenTemp.setId(i+1);
-            verkeerstorenTemp.setVerkeerstorens(verkeerstorens);
         }
         for(int i=0; i<5; i++){
             hulpdienstTypeTemp = generator.generateTypeHulpdienst();
@@ -49,12 +60,11 @@ public class TestRadar extends Application {
                     generator.generatePersonenAanBoord(hulpdienstTypeTemp),
                     generator.generateKoers(),
                     hulpdienstTypeTemp,
-                    statusTemp
+                    statusTemp,
+                    verkeerstorens
             );
             hulpdiensten.add(hulpdienstTemp);
             hulpdienstTemp.setId(i+1);
-            hulpdienstTemp.setVerkeerstorens(verkeerstorens);
-            hulpdienstTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
         for(int i=0; i<5; i++){
             schipTypeTemp = generator.generateTypeSchip();
@@ -67,12 +77,11 @@ public class TestRadar extends Application {
                     generator.generatePersonenAanBoord(schipTypeTemp),
                     generator.generateKoers(),
                     schipTypeTemp,
-                    statusTemp
+                    statusTemp,
+                    verkeerstorens
             );
             schepen.add(schipTemp);
             schipTemp.setId(i+1);
-            schipTemp.setVerkeerstorens(verkeerstorens);
-            schipTemp.berekenDichtstbijzijndeVerkeerstoren();
         }
     }
 
@@ -107,9 +116,9 @@ public class TestRadar extends Application {
 
     public static void main(String[] args) {
         TestRadar radar = new TestRadar();
-        radar.setUp();
+        /*radar.setUp();
         radar.print();
-        radar.randomReddingsactie();
+        radar.randomReddingsactie();*/
         launch(args);
     }
 
