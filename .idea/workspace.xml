@@ -4,7 +4,7 @@
     <list default="true" id="79a2fcb6-8805-46ff-b915-9e6e5155eee9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +46,13 @@
         <counts>
           <entry key="dummy" value="19" />
           <entry key="fxml" value="3" />
-          <entry key="java" value="11742" />
+          <entry key="java" value="11884" />
           <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11742" />
+          <entry key="JAVA" value="11884" />
           <entry key="PLAIN_TEXT" value="32" />
           <entry key="XML" value="3" />
         </counts>
@@ -61,7 +61,7 @@
         <counts>
           <entry key="class" value="6" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="102" />
+          <entry key="java" value="105" />
           <entry key="sql" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -69,7 +69,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
-          <entry key="JAVA" value="102" />
+          <entry key="JAVA" value="105" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -78,6 +78,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3759#3760#0" expanded="true" />
+                <element signature="e#3835#3836#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,17 +125,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="131" column="58" lean-forward="true" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
+            <state relative-caret-position="219">
+              <caret line="163" column="53" lean-forward="true" selection-start-line="163" selection-start-column="53" selection-end-line="163" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2437#2438#0" expanded="true" />
                 <element signature="e#2467#2468#0" expanded="true" />
-                <element signature="e#6852#6853#0" expanded="true" />
-                <element signature="e#6912#6913#0" expanded="true" />
                 <element signature="e#7133#7134#0" expanded="true" />
                 <element signature="e#7198#7199#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/Log.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -147,7 +168,7 @@
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="79" column="86" lean-forward="true" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
+              <caret line="79" column="86" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#5662#5677#0" expanded="true" />
@@ -195,6 +216,7 @@
       <find>maaklee</find>
       <find>ini</find>
       <find>slaop</find>
+      <find>map</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,7 +253,6 @@
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/utilities/Window/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/factory/VervoermiddelFactory.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/factory/SchipFactory.java" />
-        <option value="$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/factory/HulpdienstFactory.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/factory/VerkeerstorenFactory.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java" />
@@ -241,6 +262,7 @@
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Schip.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java" />
+        <option value="$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java" />
         <option value="$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java" />
       </list>
     </option>
@@ -354,7 +376,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546795374753" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546801411733" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -378,6 +400,118 @@
       <recent name="C:\Users\kennethvdb\Desktop\Examen_Java2019\Examen_Java_2019\src\utilities\Window" />
       <recent name="C:\Users\kennethvdb\Desktop\Examen_Java2019\Examen_Java_2019\src\utilities" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Examen_Java_2019/src/model/Verkeerstoren.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Examen_Java_2019/src/test/VerkeerstorenTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -507,14 +641,7 @@
       <workItem from="1545656503854" duration="9602000" />
       <workItem from="1545728815127" duration="61825000" />
       <workItem from="1546453117093" duration="13272000" />
-      <workItem from="1546768431204" duration="23202000" />
-    </task>
-    <task id="LOCAL-00007" summary="DB">
-      <created>1545401835344</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1545401835344</updated>
+      <workItem from="1546768431204" duration="24937000" />
     </task>
     <task id="LOCAL-00008" summary="Factory">
       <created>1545481419010</created>
@@ -852,7 +979,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546789281514</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Update">
+      <created>1546795453314</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1546795453314</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -888,7 +1022,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156281000" />
+    <option name="totallyTimeSpent" value="158016000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1021,7 +1155,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/states/Context.java" />
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/ILocaliseerbaar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1269,13 +1402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Actor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1392,13 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/test/DatabaseQueriesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -1417,7 +1536,7 @@
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="79" column="86" lean-forward="true" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
+          <caret line="79" column="86" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#5662#5677#0" expanded="true" />
@@ -1425,16 +1544,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/test/DatabaseQueriesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/view/TestRadar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3759#3760#0" expanded="true" />
+            <element signature="e#3835#3836#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="131" column="58" lean-forward="true" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
+        <state relative-caret-position="219">
+          <caret line="163" column="53" lean-forward="true" selection-start-line="163" selection-start-column="53" selection-end-line="163" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2437#2438#0" expanded="true" />
             <element signature="e#2467#2468#0" expanded="true" />
-            <element signature="e#6852#6853#0" expanded="true" />
-            <element signature="e#6912#6913#0" expanded="true" />
             <element signature="e#7133#7134#0" expanded="true" />
             <element signature="e#7198#7199#0" expanded="true" />
           </folding>
