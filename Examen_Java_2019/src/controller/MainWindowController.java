@@ -141,7 +141,9 @@ public class MainWindowController {
 
     @FXML
     void toonAllesButtonPressed(ActionEvent event) {
-
+        listData.getItems().setAll(db.getAllVerkeerstoren());
+        listData.getItems().addAll(db.getAllHulpdienst());
+        listData.getItems().addAll(db.getAllSchip());
     }
 
     @FXML

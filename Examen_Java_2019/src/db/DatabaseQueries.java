@@ -129,7 +129,7 @@ public class DatabaseQueries {
                         resultSet.getDouble("snelheid"),
                         resultSet.getDouble("grootte"),
                         resultSet.getDouble("wendbaarheid"),
-                        resultSet.getInt("pesonenAanBoord"),
+                        resultSet.getInt("personenAanBoord"),
                         resultSet.getDouble("koers"),
                         resultSet.getString("detailType"),
                         CalculateState(resultSet.getString("status")),
