@@ -89,18 +89,18 @@ public class TestRadar extends Application {
     }
 
     public void print() {
-        System.out.println("VERKEERSTORENS:");
-        System.out.println("---------------");
+        Log.logger.info("VERKEERSTORENS:");
+        Log.logger.info("---------------");
         for(int i=0; i<verkeerstorens.size(); i++)
-            System.out.println(verkeerstorens.get(i));
-        System.out.println("HULPDIENSTEN:");
-        System.out.println("-------------");
+            Log.logger.info(verkeerstorens.get(i));
+        Log.logger.info("HULPDIENSTEN:");
+        Log.logger.info("-------------");
         for(int i=0; i<hulpdiensten.size(); i++)
-            System.out.println(hulpdiensten.get(i));
-        System.out.println("SCHEPEN:");
-        System.out.println("--------");
+            Log.logger.info(hulpdiensten.get(i));
+        Log.logger.info("SCHEPEN:");
+        Log.logger.info("--------");
         for(int i=0; i<schepen.size(); i++)
-            System.out.println(schepen.get(i));
+            Log.logger.info(schepen.get(i));
     }
 
     public void randomReddingsactie(){
@@ -119,7 +119,7 @@ public class TestRadar extends Application {
 
     public static void main(String[] args) {
         BasicConfigurator.configure();
-        Log.logger.setLevel(Level.WARN);
+        Log.logger.setLevel(Level.ALL);
         TestRadar radar = new TestRadar();
         /*radar.setUp();
         radar.print();
