@@ -7,6 +7,7 @@
 
 package model;
 
+import utilities.Log;
 import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
@@ -84,19 +85,19 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
     public void verleenHulp(Schip schipInNood) {
         switch (getStatus().beschikbaarheid()){
             case 0:
-                System.out.println(
+                Log.logger.warn(
                             getType() +
                             ", ID: " + getId() +
                             " is momenteel niet beschikbaar.");
                 break;
             case 1:
-                System.out.println(
+                Log.logger.warn(
                             getType() +
                             ", ID: " + getId() +
                             " is in nood.");
                 break;
             case 2:
-                System.out.println(
+                Log.logger.info(
                         getType() +
                                 ", ID: " + getId() +
                                 " voegt zich bij de reddingsactie, reactietijd: " +

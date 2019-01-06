@@ -7,6 +7,7 @@
 
 package model;
 
+import utilities.Log;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
@@ -46,9 +47,9 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         }
     }
 
-    // TODO: 2018-12-19
-    private void detecteerNoodsituatie() {
 
+    private void detecteerNoodsituatie(Schip schipInNood) {
+        verleenHulp(schipInNood);
 
     }
 
@@ -89,11 +90,11 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         Collections.sort(hulpverleners, Comparator.comparingDouble(Vervoermiddel::getLaatsteReactieTijd));
 
         if (hulpverleners.size() == 0){
-            System.out.println(
+            Log.logger.warn(
                         "Geen hulpverleners beschikbaar bij de drie dichtsbijzijnde verkeerstorens.");
         }
         else {
-            System.out.println(
+            Log.logger.info(
                     hulpverleners.size() +
                     " mogelijke hulpverlener(s) beschikbaar bij de drie dichtsbijzijnde verkeerstorens.");
 
@@ -106,10 +107,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
                 else {break;}
             }
             if (schipInNood.getPersonenAanBoord() > 0){
-                System.out.println((opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
+                Log.logger.info((opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
             }
             else{
-                System.out.println("Alle " + (opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
+                Log.logger.info("Alle " + (opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
             }
         }
     }
