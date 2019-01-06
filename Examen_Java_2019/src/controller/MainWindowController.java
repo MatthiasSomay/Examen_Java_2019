@@ -70,6 +70,11 @@ public class MainWindowController {
 
     @FXML
     void slaOpButtonPressed(ActionEvent event) {
+        creatieOrUpdateActor();
+    }
+
+
+    public void creatieOrUpdateActor(){
         if (hoofdType.getValue() != null){
             if (hoofdType.getValue() == "Verkeerstoren"){
                 if (checkInputBasis() == 0){
@@ -77,24 +82,36 @@ public class MainWindowController {
                             new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
                             detailType.getValue(),
                             db.getAllVerkeerstoren());
-                    db.addVerkeerstoren(verkeerstorenTemp);
+                    if (ID.getText() == "") {
+                        db.addVerkeerstoren(verkeerstorenTemp);
+                    }
+                    else {
+                        verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
+                        db.updateVerkeerstoren(verkeerstorenTemp);
+                    }
                     clearInputBasis();
                 }
             }
             else if (hoofdType.getValue() == "Schip"){
                 if (checkInputBasis() == 0){
                     if (checkInputVervoermiddel() == 0){
-                         Schip schipTemp = SchipFactory.createSchip(
-                                 new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
-                                 Double.parseDouble(snelheid.getText()),
-                                 Double.parseDouble(grootte.getText()),
-                                 Double.parseDouble(wendbaarheid.getText()),
-                                 Integer.parseInt(personenAanboord.getText()),
-                                 Double.parseDouble(koers.getText()),
-                                 detailType.getValue(),
-                                 db.CalculateState(status.getValue()),
-                                 db.getAllVerkeerstoren());
-                        db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                        Schip schipTemp = SchipFactory.createSchip(
+                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
+                                Double.parseDouble(snelheid.getText()),
+                                Double.parseDouble(grootte.getText()),
+                                Double.parseDouble(wendbaarheid.getText()),
+                                Integer.parseInt(personenAanboord.getText()),
+                                Double.parseDouble(koers.getText()),
+                                detailType.getValue(),
+                                db.CalculateState(status.getValue()),
+                                db.getAllVerkeerstoren());
+                        if (ID.getText() == "") {
+                            db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                        }
+                        else {
+                            schipTemp.setId(Integer.parseInt(ID.getText()));
+                            db.updateVervoermiddel(schipTemp, hoofdType.getValue());
+                        }
                         clearInputBasis();
                         clearInputVervoermiddel();
                     }
@@ -113,7 +130,13 @@ public class MainWindowController {
                                 detailType.getValue(),
                                 db.CalculateState(status.getValue()),
                                 db.getAllVerkeerstoren());
-                        db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                        if (ID.getText() == "") {
+                            db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                        }
+                        else {
+                            hulpdienstTemp.setId(Integer.parseInt(ID.getText()));
+                            db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                        }
                         clearInputBasis();
                         clearInputVervoermiddel();
                     }
