@@ -4,7 +4,7 @@
     <list default="true" id="79a2fcb6-8805-46ff-b915-9e6e5155eee9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/Window/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/utilities/Window/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +46,13 @@
         <counts>
           <entry key="dummy" value="19" />
           <entry key="fxml" value="3" />
-          <entry key="java" value="11000" />
+          <entry key="java" value="11742" />
           <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11000" />
+          <entry key="JAVA" value="11742" />
           <entry key="PLAIN_TEXT" value="32" />
           <entry key="XML" value="3" />
         </counts>
@@ -61,7 +61,7 @@
         <counts>
           <entry key="class" value="6" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="100" />
+          <entry key="java" value="102" />
           <entry key="sql" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -69,7 +69,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
-          <entry key="JAVA" value="100" />
+          <entry key="JAVA" value="102" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -81,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="761">
+            <state relative-caret-position="251">
               <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -99,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -108,17 +108,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="163" column="39" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
+            <state relative-caret-position="204">
+              <caret line="131" column="58" lean-forward="true" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5362#5363#0" expanded="true" />
-                <element signature="e#5411#5412#0" expanded="true" />
-                <element signature="e#5643#5644#0" expanded="true" />
-                <element signature="e#5703#5704#0" expanded="true" />
+                <element signature="e#2437#2438#0" expanded="true" />
+                <element signature="e#2467#2468#0" expanded="true" />
+                <element signature="e#6852#6853#0" expanded="true" />
+                <element signature="e#6912#6913#0" expanded="true" />
+                <element signature="e#7133#7134#0" expanded="true" />
+                <element signature="e#7198#7199#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+            <state relative-caret-position="60">
+              <caret line="79" column="86" lean-forward="true" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#5662#5677#0" expanded="true" />
@@ -192,6 +194,7 @@
       <find>clea</find>
       <find>maaklee</find>
       <find>ini</find>
+      <find>slaop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -308,6 +311,13 @@
               <item name="Examen_Java2019" type="462c0819:PsiDirectoryNode" />
               <item name="Examen_Java_2019" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Examen_Java2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Examen_Java2019" type="462c0819:PsiDirectoryNode" />
+              <item name="Examen_Java_2019" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utilities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,7 +354,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546788753589" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546795374753" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -497,21 +507,7 @@
       <workItem from="1545656503854" duration="9602000" />
       <workItem from="1545728815127" duration="61825000" />
       <workItem from="1546453117093" duration="13272000" />
-      <workItem from="1546768431204" duration="17279000" />
-    </task>
-    <task id="LOCAL-00005" summary="queries">
-      <created>1544887626380</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1544887626380</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Aanmaak klasses en interfaces">
-      <created>1545246911311</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1545246911311</updated>
+      <workItem from="1546768431204" duration="23202000" />
     </task>
     <task id="LOCAL-00007" summary="DB">
       <created>1545401835344</created>
@@ -842,7 +838,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546778450575</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Update">
+      <created>1546788771699</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1546788771699</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Update">
+      <created>1546789281514</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1546789281514</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -878,7 +888,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150358000" />
+    <option name="totallyTimeSpent" value="156281000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1000,12 +1010,6 @@
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java</url>
-          <line>180</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -1017,7 +1021,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Test.java" />
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/states/Context.java" />
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/utilities/interfaces/ILocaliseerbaar.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1298,7 +1301,7 @@
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Hulpdienst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1324,21 +1327,6 @@
             <element signature="e#1131#1132#0" expanded="true" />
             <element signature="e#1183#1184#0" expanded="true" />
             <element signature="e#1220#1221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1733#1734#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1833#1834#0" expanded="true" />
-            <element signature="e#1910#1911#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1404,27 +1392,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/test/DatabaseQueriesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="163" column="39" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
+        <state relative-caret-position="264">
+          <caret line="62" column="46" lean-forward="true" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/model/Vervoermiddel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#5362#5363#0" expanded="true" />
-            <element signature="e#5411#5412#0" expanded="true" />
-            <element signature="e#5643#5644#0" expanded="true" />
-            <element signature="e#5703#5704#0" expanded="true" />
+            <element signature="e#1733#1734#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
+            <element signature="e#1833#1834#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/db/DatabaseQueries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+        <state relative-caret-position="60">
+          <caret line="79" column="86" lean-forward="true" selection-start-line="79" selection-start-column="86" selection-end-line="79" selection-end-column="86" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#5662#5677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examen_Java_2019/src/controller/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="131" column="58" lean-forward="true" selection-start-line="131" selection-start-column="58" selection-end-line="131" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2437#2438#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#6852#6853#0" expanded="true" />
+            <element signature="e#6912#6913#0" expanded="true" />
+            <element signature="e#7133#7134#0" expanded="true" />
+            <element signature="e#7198#7199#0" expanded="true" />
           </folding>
         </state>
       </provider>

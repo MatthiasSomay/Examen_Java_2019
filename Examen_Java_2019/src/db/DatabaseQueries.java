@@ -37,6 +37,8 @@ public class DatabaseQueries {
     private PreparedStatement insertNewVerkeerstoren;
     private PreparedStatement deleteVervoermiddel;
     private PreparedStatement deleteVerkeerstoren;
+    private PreparedStatement updateVervoermiddel;
+    private PreparedStatement updateVerkeerstoren;
 
     public DatabaseQueries() {
         try {
@@ -67,6 +69,17 @@ public class DatabaseQueries {
 
             deleteVerkeerstoren = connection.prepareStatement(
                     "DELETE FROM verkeerstoren WHERE ID = ?");
+
+            updateVervoermiddel = connection.prepareStatement(
+                    "UPDATE vervoermiddel SET " +
+                            "lengteLocatie = ?, breedteLocatie = ?, type = ?, detailType = ?, snelheid = ?, wendbaarheid = ?, grootte = ?, personenAanBoord = ?, koers = ?, status = ?, verkeerstoren = ? " +
+                            "WHERE ID = ?");
+
+            updateVerkeerstoren = connection.prepareStatement(
+                    "UPDATE verkeerstoren SET " +
+                            "lengteLocatie = ?, breedteLocatie = ?, detailType = ? " +
+                            " WHERE ID = ?");
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,52 +178,63 @@ public class DatabaseQueries {
         return null;
     }
 
-
-        public int addVervoermiddel(Vervoermiddel vervoermiddel, String hoofdType) {
-            try {
-                insertNewVervoermiddel.setDouble(1, vervoermiddel.getLocatie().getLengte());
-                insertNewVervoermiddel.setDouble(2, vervoermiddel.getLocatie().getBreedte());
-                insertNewVervoermiddel.setString(3, hoofdType);
-                insertNewVervoermiddel.setString(4, vervoermiddel.getType());
-                insertNewVervoermiddel.setDouble(5, vervoermiddel.getSnelheid());
-                insertNewVervoermiddel.setDouble(6, vervoermiddel.getWendbaarheid());
-                insertNewVervoermiddel.setDouble(7, vervoermiddel.getGrootte());
-                insertNewVervoermiddel.setInt(8, vervoermiddel.getPersonenAanBoord());
-                insertNewVervoermiddel.setDouble(9, vervoermiddel.getKoers());
-                insertNewVervoermiddel.setString(10, vervoermiddel.getStatus().toString());
-                insertNewVervoermiddel.setInt(11, vervoermiddel.getDichtstbijzijndeVerkeerstoren().getId());
-
-                return insertNewVervoermiddel.executeUpdate();
-            } catch (SQLException sqlException) {
-                sqlException.printStackTrace();
-                return 0;
-            }
-        }
-
-        public int addVerkeerstoren(double lengteLocatie, double breedtelocatie, String detailType) {
-            try {
-                insertNewVerkeerstoren.setDouble(1, lengteLocatie);
-                insertNewVerkeerstoren.setDouble(2, breedtelocatie);
-                insertNewVerkeerstoren.setString(3, detailType);
-
-                return insertNewVerkeerstoren.executeUpdate();
-            } catch (SQLException sqlException) {
-                sqlException.printStackTrace();
-                return 0;
-            }
-        }
-
-    public int addVerkeerstoren(Verkeerstoren verkeerstoren) {
+    public int vervoermiddelData(Vervoermiddel vervoermiddel, String hoofdType, PreparedStatement statement) {
         try {
-            insertNewVerkeerstoren.setDouble(1, verkeerstoren.getLocatie().getLengte());
-            insertNewVerkeerstoren.setDouble(2, verkeerstoren.getLocatie().getBreedte());
-            insertNewVerkeerstoren.setString(3, verkeerstoren.getType());
+            statement.setDouble(1, vervoermiddel.getLocatie().getLengte());
+            statement.setDouble(2, vervoermiddel.getLocatie().getBreedte());
+            statement.setString(3, hoofdType);
+            statement.setString(4, vervoermiddel.getType());
+            statement.setDouble(5, vervoermiddel.getSnelheid());
+            statement.setDouble(6, vervoermiddel.getWendbaarheid());
+            statement.setDouble(7, vervoermiddel.getGrootte());
+            statement.setInt(8, vervoermiddel.getPersonenAanBoord());
+            statement.setDouble(9, vervoermiddel.getKoers());
+            statement.setString(10, vervoermiddel.getStatus().toString());
+            statement.setInt(11, vervoermiddel.getDichtstbijzijndeVerkeerstoren().getId());
 
-            return insertNewVerkeerstoren.executeUpdate();
+            if (statement == updateVervoermiddel){
+                statement.setInt(12, vervoermiddel.getId());
+            }
+
+            return statement.executeUpdate();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             return 0;
         }
+    }
+
+    public int addVervoermiddel(Vervoermiddel vervoermiddel, String hoofdType) {
+        return vervoermiddelData(vervoermiddel, hoofdType, insertNewVervoermiddel);
+    }
+
+    public int updateVervoermiddel(Vervoermiddel vervoermiddel, String hoofdType) {
+        return vervoermiddelData(vervoermiddel, hoofdType, updateVervoermiddel);
+    }
+
+
+    public int verkeerstorenData(Verkeerstoren verkeerstoren, PreparedStatement statement) {
+        try {
+            statement.setDouble(1, verkeerstoren.getLocatie().getLengte());
+            statement.setDouble(2, verkeerstoren.getLocatie().getBreedte());
+            statement.setString(3, verkeerstoren.getType());
+
+            if (statement == updateVerkeerstoren){
+                statement.setInt(4, verkeerstoren.getId());
+            }
+
+            return statement.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int addVerkeerstoren(Verkeerstoren verkeerstoren) {
+        return verkeerstorenData(verkeerstoren, insertNewVerkeerstoren);
+    }
+
+    public int updateVerkeerstoren(Verkeerstoren verkeerstoren) {
+        return verkeerstorenData(verkeerstoren, updateVerkeerstoren);
     }
 
 
