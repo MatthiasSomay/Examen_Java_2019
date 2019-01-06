@@ -36,7 +36,7 @@ public class TestRadar extends Application {
 
     public List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     public List<Hulpdienst> hulpdiensten = new ArrayList<>();
-    private List<Schip> schepen = new ArrayList<>();
+    public  List<Schip> schepen = new ArrayList<>();
     private Generator generator = new Generator();
 
     public void setUp() {

@@ -144,8 +144,9 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void setSchepen(List<Schip> schepen) throws IllegalArgumentException {
-        if (schepen == null) {
+        if (schepen == null ) {
             throw new IllegalArgumentException("Lijst schepen ongeldig");
+
         }
         this.schepen = schepen;
     }
