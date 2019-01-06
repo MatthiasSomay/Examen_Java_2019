@@ -15,12 +15,12 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="mapDisplay" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: white;">
+            <Pane fx:id="mapDisplay" onMouseClicked="#mapdisplayClicked" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: white;">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Pane>
-            <ListView fx:id="listData" focusTraversable="false" GridPane.rowIndex="2">
+            <ListView fx:id="listData" focusTraversable="false" onMouseClicked="#listDataClicked" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
