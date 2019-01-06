@@ -1,10 +1,12 @@
 package test;
 
 import db.DatabaseQueries;
+import factory.VerkeerstorenFactory;
 import model.Coördinaten;
 import model.Schip;
 import model.Verkeerstoren;
 import org.junit.Test;
+import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
 import utilities.states.Status;
 
@@ -67,7 +69,20 @@ public class DatabaseQueriesTest {
                Status status = new Beschikbaar();
                List<Verkeerstoren> verkeerstorens = null;
 
+               Generator generator = new Generator();
+
+               for(int i=0; i<10; i++) {
+                   Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
+                           generator.generateLocatie(),
+                           generator.generateTypeVerkeerstoren(),
+                           verkeerstorens
+                   );
+                   verkeerstorens.add(verkeerstorenTemp);
+                   verkeerstorenTemp.setId(i+1);
+               }
+
                Schip schip = new Schip(new Coördinaten(lengteLocatie, breedteLocatie), snelheid, grootte, wendbaarheid, personenAanBoord, koers, detailType, status, verkeerstorens);
+               schip.berekenDichtstbijzijndeVerkeerstoren();
 
                assertEquals(lengteLocatie, schip.getLocatie().getLengte(), 0);
                assertEquals(breedteLocatie, schip.getLocatie().getBreedte(), 0);
