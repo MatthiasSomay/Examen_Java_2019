@@ -14,6 +14,7 @@ import factory.VerkeerstorenFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.*;
 import utilities.demodata.HulpdienstTypeLijst;
@@ -61,7 +62,10 @@ public class MainWindowController {
 
     @FXML
     void maakLeegButtonPressed(ActionEvent event) {
-
+        clearInputBasis();
+        clearInputVervoermiddel();
+        hoofdType.setDisable(false);
+        detailType.setDisable(false);
     }
 
     @FXML
@@ -148,11 +152,97 @@ public class MainWindowController {
 
     @FXML
     void verwijderButtonPressed(ActionEvent event) {
+        if (ID.getText() != null){
+            if (hoofdType.getSelectionModel().getSelectedItem() == "Verkeerstoren"){
+                db.deleteVerkeerstoren(Integer.parseInt(ID.getText()));
+                maakLeegButtonPressed(event);
+                toonAlleVerkeerstorensButttonPressed(event);
+            }
+            else if (hoofdType.getSelectionModel().getSelectedItem() == "Schip"){
+                db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
+                clearInputVervoermiddel();
+                maakLeegButtonPressed(event);
+                toonAlleSchepenButtonPressed(event);
+            }
+            else if (hoofdType.getSelectionModel().getSelectedItem() == "Hulpdienst"){
+                db.deleteVervoermiddel(Integer.parseInt(ID.getText()));
+                clearInputVervoermiddel();
+                maakLeegButtonPressed(event);
+                toonAllehulpdienstenButtonPressed(event);
+            }
+        }
+    }
+
+    @FXML
+    void listDataClicked(MouseEvent event) {
+        if (listData.getSelectionModel().getSelectedItem() != null) {
+            if (listData.getSelectionModel().getSelectedItem().getClass() == Schip.class) {
+                Schip schipTemp = (Schip) listData.getSelectionModel().getSelectedItem();
+                toonDataSchip(schipTemp);
+            } else if (listData.getSelectionModel().getSelectedItem().getClass() == Verkeerstoren.class) {
+                Verkeerstoren verkeerstorenTemp = (Verkeerstoren) listData.getSelectionModel().getSelectedItem();
+                toonDataVerkeerstoren(verkeerstorenTemp);
+            } else if (listData.getSelectionModel().getSelectedItem().getClass() == Hulpdienst.class) {
+                Hulpdienst hulpdienstTemp = (Hulpdienst) listData.getSelectionModel().getSelectedItem();
+                toonDataHulpdienst(hulpdienstTemp);
+            }
+        }
+    }
+
+    public void toonDataVerkeerstoren(Verkeerstoren verkeerstoren){
+        ID.setText(String.valueOf(verkeerstoren.getId()));
+        locatieBreedte.setText(String.valueOf(verkeerstoren.getLocatie().getBreedte()));
+        locatieLengte.setText(String.valueOf(verkeerstoren.getLocatie().getLengte()));
+        hoofdType.getSelectionModel().select("Verkeerstoren");
+        hoofdType.setDisable(true);
+        detailType.setValue(String.valueOf(verkeerstoren.getType()));
+        detailType.setDisable(true);
+    }
+
+    public void toonDataSchip(Schip schip){
+        ID.setText(String.valueOf(schip.getId()));
+        locatieBreedte.setText(String.valueOf(schip.getLocatie().getBreedte()));
+        locatieLengte.setText(String.valueOf(schip.getLocatie().getLengte()));
+        hoofdType.getSelectionModel().select("Schip");
+        hoofdType.setDisable(true);
+        detailType.setValue(String.valueOf(schip.getType()));
+        detailType.setDisable(true);
+        snelheid.setText(String.valueOf(schip.getSnelheid()));
+        wendbaarheid.setText(String.valueOf(schip.getWendbaarheid()));
+        grootte.setText(String.valueOf(schip.getGrootte()));
+        personenAanboord.setText(String.valueOf(schip.getPersonenAanBoord()));
+        koers.setText(String.valueOf(schip.getKoers()));
+        status.setValue(schip.getStatus().toString());
+    }
+
+    public void toonDataHulpdienst(Hulpdienst hulpdienst){
+        ID.setText(String.valueOf(hulpdienst.getId()));
+        locatieBreedte.setText(String.valueOf(hulpdienst.getLocatie().getBreedte()));
+        locatieLengte.setText(String.valueOf(hulpdienst.getLocatie().getLengte()));
+        hoofdType.getSelectionModel().select("Hulpdienst");
+        hoofdType.setDisable(true);
+        detailType.setValue(String.valueOf(hulpdienst.getType()));
+        detailType.setDisable(true);
+        snelheid.setText(String.valueOf(hulpdienst.getSnelheid()));
+        wendbaarheid.setText(String.valueOf(hulpdienst.getWendbaarheid()));
+        grootte.setText(String.valueOf(hulpdienst.getGrootte()));
+        personenAanboord.setText(String.valueOf(hulpdienst.getPersonenAanBoord()));
+        koers.setText(String.valueOf(hulpdienst.getKoers()));
+        status.setValue(hulpdienst.getStatus().toString());
+    }
+
+    public void toonDataVervoermiddel(){
+
+    }
+
+    @FXML
+    void mapdisplayClicked(MouseEvent event) {
     }
 
     public void initialize(){
         hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
         status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
+        ID.setDisable(true);
     }
 
     public void visibilityVervoermiddel(Boolean bool){
@@ -180,14 +270,15 @@ public class MainWindowController {
         grootte.clear();
         personenAanboord.clear();
         koers.clear();
-        detailType.getSelectionModel().clearSelection();
         status.getSelectionModel().clearSelection();
     }
 
     public void clearInputBasis(){
+        ID.clear();
         locatieBreedte.clear();
         locatieLengte.clear();
         hoofdType.getSelectionModel().clearSelection();
+        detailType.getSelectionModel().clearSelection();
     }
 
     @FXML
