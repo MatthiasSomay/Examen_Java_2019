@@ -52,11 +52,10 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         }
     }
 
-
-    private void detecteerNoodsituatie(Schip schipInNood) {
+    public void detecteerNoodsituatie(Schip schipInNood) {
         verleenHulp(schipInNood);
-
     }
+
 
     public void maakLijstHulpverleners(Verkeerstoren verkeerstoren){
         hulpverleners.addAll(verkeerstoren.schepen);
@@ -64,6 +63,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
     public void berekenHulpverleners(Verkeerstoren verkeerstoren){
+        hulpverleners.clear();
         maakLijstHulpverleners(verkeerstoren);
         List<Verkeerstoren> verkeerstorensTemp = getVerkeerstorens();
         verkeerstorensTemp.remove(verkeerstoren);

@@ -89,7 +89,6 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
             }
         }
         if (verkeerstoren != getDichtstbijzijndeVerkeerstoren()){
-            setDichtstbijzijndeVerkeerstoren(verkeerstoren);
             aanmeldenDichtstbijzijndeVerkeerstoren(verkeerstoren);
         }
     }
@@ -127,7 +126,7 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         }
     }
 
-    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){}
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren verkeerstoren){}
 
     @Override
     public String toString() {

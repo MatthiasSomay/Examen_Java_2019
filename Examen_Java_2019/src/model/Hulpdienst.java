@@ -23,10 +23,13 @@ public class Hulpdienst extends Vervoermiddel {
     }
 
     @Override
-    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren oldVerkeerstoren){
-        getDichtstbijzijndeVerkeerstoren().getHulpdiensten().add(this);
-        if (oldVerkeerstoren != null){
-            getDichtstbijzijndeVerkeerstoren().getHulpdiensten().remove(this);
+    public void aanmeldenDichtstbijzijndeVerkeerstoren(Verkeerstoren verkeerstoren){
+        if (verkeerstoren != null && verkeerstoren != getDichtstbijzijndeVerkeerstoren()){
+            if (getDichtstbijzijndeVerkeerstoren() != null) {
+                getDichtstbijzijndeVerkeerstoren().getHulpdiensten().remove(this);
+            }
+            verkeerstoren.getHulpdiensten().add(this);
+            setDichtstbijzijndeVerkeerstoren(verkeerstoren);
         }
     }
 }

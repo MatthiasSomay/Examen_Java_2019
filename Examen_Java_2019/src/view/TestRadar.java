@@ -110,8 +110,8 @@ public class TestRadar extends Application {
         Log.logger.setLevel(Level.ALL);
         TestRadar radar = new TestRadar();
         /*radar.setUp();*/
-        radar.print();/*
-        radar.randomReddingsactie();*/
+        radar.print();
+        /*radar.randomReddingsactie();*/
         launch(args);
     }
 
