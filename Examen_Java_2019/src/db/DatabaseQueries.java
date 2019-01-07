@@ -8,6 +8,7 @@
 package db;
 
 import model.*;
+import utilities.Log;
 import utilities.states.Beschikbaar;
 import utilities.states.InNood;
 import utilities.states.NietBeschikbaar;
@@ -105,21 +106,31 @@ public class DatabaseQueries {
     }
 
     public void refreshData(){
+        verkeerstorens.clear();
+        hulpdiensten.clear();
+        schepen.clear();
         verkeerstorens = getAllVerkeerstoren();
         hulpdiensten = getAllHulpdienst();
         schepen = getAllSchip();
-        for (Schip s: schepen
-        ) {
-            s.berekenDichtstbijzijndeVerkeerstoren();
-        }
-        for (Hulpdienst h: hulpdiensten
-        ) {
-            h.berekenDichtstbijzijndeVerkeerstoren();
-        }
-        for (Verkeerstoren v:  verkeerstorens
+        for (Verkeerstoren v:verkeerstorens
              ) {
-            setVerkeerstorens(verkeerstorens);
+            v.setVerkeerstorens(verkeerstorens);
         }
+    }
+
+    public void print() {
+        Log.logger.info("VERKEERSTORENS:");
+        Log.logger.info("---------------");
+        for(int i=0; i<getVerkeerstorens().size(); i++)
+            Log.logger.info(getVerkeerstorens().get(i));
+        Log.logger.info("HULPDIENSTEN:");
+        Log.logger.info("-------------");
+        for(int i=0; i<getHulpdiensten().size(); i++)
+            Log.logger.info(getHulpdiensten().get(i));
+        Log.logger.info("SCHEPEN:");
+        Log.logger.info("--------");
+        for(int i=0; i<getSchepen().size(); i++)
+            Log.logger.info(getSchepen().get(i));
     }
 
         public List<Schip> getAllSchip() {
@@ -212,8 +223,9 @@ public class DatabaseQueries {
             statement.setInt(8, vervoermiddel.getPersonenAanBoord());
             statement.setDouble(9, vervoermiddel.getKoers());
             statement.setString(10, vervoermiddel.getStatus().toString());
-            statement.setInt(11, vervoermiddel.getDichtstbijzijndeVerkeerstoren().getId());
-
+            if(vervoermiddel.getDichtstbijzijndeVerkeerstoren() != null){
+            statement.setInt(11, (vervoermiddel.getDichtstbijzijndeVerkeerstoren().getId()));}
+            else {statement.setNull(11, java.sql.Types.INTEGER);}
             if (statement == updateVervoermiddel){
                 statement.setInt(12, vervoermiddel.getId());
             }

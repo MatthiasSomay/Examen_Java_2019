@@ -23,6 +23,13 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         super(locatie, id, snelheid, grootte, wendbaarheid, personenAanBoord, koers, type, status, verkeerstorens);
     }
 
+    @Override
+    public void setStatus(Status status) {
+        super.setStatus(status);
+        if (status.toString().equals("In nood")){
+            noodsituatieBericht();
+        }
+    }
 
     public void noodsituatieBericht() {
         Log.logger.warn(

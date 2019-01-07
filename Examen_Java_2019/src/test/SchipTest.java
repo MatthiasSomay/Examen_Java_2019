@@ -1,5 +1,6 @@
 package test;
 
+import db.DatabaseQueries;
 import model.Coördinaten;
 import model.Schip;
 import model.Verkeerstoren;
@@ -17,8 +18,9 @@ public class SchipTest {
     private Coördinaten coordinaat = new Coördinaten(10,20);
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.db.getVerkeerstorens());
-    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.db.getVerkeerstorens());
+    private DatabaseQueries db = new DatabaseQueries();
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, db.getVerkeerstorens());
+    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, db.getVerkeerstorens());
 
 
     @Test

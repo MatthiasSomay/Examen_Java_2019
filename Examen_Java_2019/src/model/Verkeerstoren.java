@@ -119,6 +119,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
             else{
                 Log.logger.info("Alle " + (opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
             }
+            Log.logger.info("-------------------------------------------");
         }
     }
 

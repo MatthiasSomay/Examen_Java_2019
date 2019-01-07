@@ -25,6 +25,7 @@ import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
+import utilities.states.InNood;
 import view.TestRadar;
 
 public class MainWindowController {
@@ -82,6 +83,17 @@ public class MainWindowController {
         creatieOrUpdateActor();
     }
 
+    public void initialize(){
+        hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
+        status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
+        ID.setDisable(true);
+
+        // Method voor het vullen van de database.
+        /*generator.setUpRandomData(db);*/
+
+        db.refreshData();
+    }
+
     public void drawActorOnPane(){
         mapDisplay.getChildren().clear();
         Paint brushColor;
@@ -90,15 +102,15 @@ public class MainWindowController {
         ) {
             if (actor.getClass() == Schip.class){
                 brushColor = Color.BLACK;
-                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),6,brushColor);
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),5,brushColor);
             }
             else if (actor.getClass() == Hulpdienst.class){
                 brushColor = Color.BLUE;
-                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),6,brushColor);
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),5,brushColor);
             }
             else {
                 brushColor = Color.RED;
-                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),8,brushColor);
+                newCircle = new Circle(actor.getLocatie().getBreedte(), actor.getLocatie().getLengte(),7,brushColor);
             }
             newCircle.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -126,24 +138,32 @@ public class MainWindowController {
         }
     }
 
-    public void creatieOrUpdateActor(){
+    public void updateActor(){
         if (hoofdType.getValue() != null){
             if (hoofdType.getValue() == "Verkeerstoren"){
                 if (checkInputBasis() == 0){
-                    Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
-                            new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
-                            detailType.getValue(),
-                            db.getAllVerkeerstoren());
+                    Verkeerstoren verkeerstorenTemp = null;
+                    for (Verkeerstoren v: db.getVerkeerstorens()
+                         ) {
+                            if (v.getId() == Integer.parseInt(ID.getText())){
+                                verkeerstorenTemp = v;
+                                break;
+                            }
+                    }
+                    verkeerstorenTemp.getLocatie().setBreedte(Double.parseDouble(locatieBreedte.getText()));
+                    verkeerstorenTemp.getLocatie().setLengte(Double.parseDouble(locatieLengte.getText()));
+                    db.updateVerkeerstoren(verkeerstorenTemp);
+
                     if (ID.getText().equals("")) {
                         db.addVerkeerstoren(verkeerstorenTemp);
                         displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                "Verkeerstore  is toegevoegd.");
+                                "Verkeerstoren  is toegevoegd.");
                     }
                     else {
                         verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
                         db.updateVerkeerstoren(verkeerstorenTemp);
                         displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                "Verkeerstore  is aangepast.");
+                                "Verkeerstoren  is aangepast.");
                     }
                     clearInputBasis();
 
@@ -161,7 +181,7 @@ public class MainWindowController {
                                 Double.parseDouble(koers.getText()),
                                 detailType.getValue(),
                                 db.CalculateState(status.getValue()),
-                                db.getAllVerkeerstoren());
+                                db.getVerkeerstorens());
                         if (ID.getText().equals("")) {
                             db.addVervoermiddel(schipTemp, hoofdType.getValue());
                             displayAlert(Alert.AlertType.INFORMATION, "Informatie",
@@ -191,7 +211,7 @@ public class MainWindowController {
                                 Double.parseDouble(koers.getText()),
                                 detailType.getValue(),
                                 db.CalculateState(status.getValue()),
-                                db.getAllVerkeerstoren());
+                                db.getVerkeerstorens());
                         if (ID.getText().equals("")) {
                             db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
                             displayAlert(Alert.AlertType.INFORMATION, "Informatie",
@@ -209,6 +229,96 @@ public class MainWindowController {
                     }
                 }
             }
+            db.refreshData();
+            toonAlleActors();
+        }
+        else checkInputBasis();
+    }
+
+    public void creatieOrUpdateActor(){
+        if (hoofdType.getValue() != null){
+            if (hoofdType.getValue() == "Verkeerstoren"){
+                if (checkInputBasis() == 0){
+                    Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
+                            new Coördinaten(Double.parseDouble(locatieLengte.getText()),Double.parseDouble(locatieBreedte.getText())),
+                            detailType.getValue(),
+                            db.getVerkeerstorens());
+                    if (ID.getText().equals("")) {
+                        db.addVerkeerstoren(verkeerstorenTemp);
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Verkeerstoren  is toegevoegd.");
+                    }
+                    else {
+                        verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
+                        db.updateVerkeerstoren(verkeerstorenTemp);
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Verkeerstoren  is aangepast.");
+                    }
+                    clearInputBasis();
+
+                }
+            }
+            else if (hoofdType.getValue() == "Schip"){
+                if (checkInputBasis() == 0){
+                    if (checkInputVervoermiddel() == 0){
+                        Schip schipTemp = SchipFactory.createSchip(
+                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
+                                Double.parseDouble(snelheid.getText()),
+                                Double.parseDouble(grootte.getText()),
+                                Double.parseDouble(wendbaarheid.getText()),
+                                Integer.parseInt(personenAanboord.getText()),
+                                Double.parseDouble(koers.getText()),
+                                detailType.getValue(),
+                                db.CalculateState(status.getValue()),
+                                db.getVerkeerstorens());
+                        if (ID.getText().equals("")) {
+                            db.addVervoermiddel(schipTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Schip is toegevoegd.");
+                        }
+                        else {
+                            schipTemp.setId(Integer.parseInt(ID.getText()));
+                            db.updateVervoermiddel(schipTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Schip is aangepast.");
+                        }
+                        clearInputBasis();
+                        clearInputVervoermiddel();
+
+                    }
+                }
+            }
+            else {
+                if (checkInputBasis() == 0){
+                    if (checkInputVervoermiddel() == 0){
+                        Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
+                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
+                                Double.parseDouble(snelheid.getText()),
+                                Double.parseDouble(grootte.getText()),
+                                Double.parseDouble(wendbaarheid.getText()),
+                                Integer.parseInt(personenAanboord.getText()),
+                                Double.parseDouble(koers.getText()),
+                                detailType.getValue(),
+                                db.CalculateState(status.getValue()),
+                                db.getVerkeerstorens());
+                        if (ID.getText().equals("")) {
+                            db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Hulpdienst is toegevoegd.");
+                        }
+                        else {
+                            hulpdienstTemp.setId(Integer.parseInt(ID.getText()));
+                            db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                    "Hulpdienst is aangepast.");
+                        }
+                        clearInputBasis();
+                        clearInputVervoermiddel();
+
+                    }
+                }
+            }
+            db.refreshData();
             toonAlleActors();
         }
         else checkInputBasis();
@@ -216,24 +326,24 @@ public class MainWindowController {
 
     @FXML
     void startRandomReddingsactieButtonPressed(ActionEvent event) {
-        generator.generateRandomSchip(db.getSchepen()).noodsituatieBericht();
+        generator.generateRandomSchip(db.getSchepen()).setStatus(new InNood());
     }
 
     @FXML
     void toonAlleSchepenButtonPressed(ActionEvent event) {
-        listData.getItems().setAll(db.getAllSchip());
+        listData.getItems().setAll(db.getSchepen());
         drawActorOnPane();
     }
 
     @FXML
     void toonAlleVerkeerstorensButttonPressed(ActionEvent event) {
-        listData.getItems().setAll(db.getAllVerkeerstoren());
+        listData.getItems().setAll(db.getVerkeerstorens());
         drawActorOnPane();
     }
 
     @FXML
     void toonAllehulpdienstenButtonPressed(ActionEvent event) {
-        listData.getItems().setAll(db.getAllHulpdienst());
+        listData.getItems().setAll(db.getHulpdiensten());
         drawActorOnPane();
     }
 
@@ -243,9 +353,9 @@ public class MainWindowController {
     }
 
     public void toonAlleActors(){
-        listData.getItems().setAll(db.getAllVerkeerstoren());
-        listData.getItems().addAll(db.getAllHulpdienst());
-        listData.getItems().addAll(db.getAllSchip());
+        listData.getItems().setAll(db.getVerkeerstorens());
+        listData.getItems().addAll(db.getHulpdiensten());
+        listData.getItems().addAll(db.getSchepen());
         drawActorOnPane();
     }
 
@@ -336,14 +446,6 @@ public class MainWindowController {
         koers.setText(String.valueOf(hulpdienst.getKoers()));
         status.setValue(hulpdienst.getStatus().toString());
     }
-
-    public void initialize(){
-        hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
-        status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
-        ID.setDisable(true);
-        db.refreshData();
-    }
-
 
     public void visibilityVervoermiddel(Boolean bool){
         snelheid.setVisible(bool);

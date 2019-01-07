@@ -1,11 +1,19 @@
 package utilities.generator;
 
+import db.DatabaseQueries;
+import factory.HulpdienstFactory;
+import factory.SchipFactory;
+import factory.VerkeerstorenFactory;
 import model.Coördinaten;
+import model.Hulpdienst;
 import model.Schip;
+import model.Verkeerstoren;
 import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
+import utilities.states.Beschikbaar;
+import utilities.states.Status;
 
 import java.util.List;
 import java.util.Random;
@@ -34,7 +42,7 @@ public class Generator {
     }
 
     public Coördinaten generateLocatie(){
-        return new Coördinaten((1+ (Math.random()*1000)), (1+ (Math.random()*1000)));
+        return new Coördinaten((1+ (Math.random()*348)), (1+ (Math.random()*748)));
     }
 
     public double generateSnelheid(String Type){
@@ -107,6 +115,52 @@ public class Generator {
 
     public double generateDraaicirkel(){
         return ((Math.random()*360));
+    }
+
+    public void setUpRandomData(DatabaseQueries db) {
+        String hulpdienstTypeTemp;
+        String schipTypeTemp;
+
+        for(int i=0; i<10; i++) {
+            Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
+                    generateLocatie(),
+                    generateTypeVerkeerstoren(),
+                    db.getVerkeerstorens()
+            );
+            db.addVerkeerstoren(verkeerstorenTemp);
+        }
+        for(int i=0; i<20; i++){
+            hulpdienstTypeTemp = generateTypeHulpdienst();
+            Status statusTemp = new Beschikbaar();
+            Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
+                    generateLocatie(),
+                    generateSnelheid(hulpdienstTypeTemp),
+                    generateGrootte(hulpdienstTypeTemp),
+                    generateWendbaarheid(hulpdienstTypeTemp),
+                    generatePersonenAanBoord(hulpdienstTypeTemp),
+                    generateKoers(),
+                    hulpdienstTypeTemp,
+                    statusTemp,
+                    db.getVerkeerstorens()
+            );
+            db.addVervoermiddel(hulpdienstTemp, "Hulpdienst");
+        }
+        for(int i=0; i<60; i++){
+            schipTypeTemp = generateTypeSchip();
+            Status statusTemp = new Beschikbaar();
+            Schip schipTemp = SchipFactory.createSchip(
+                    generateLocatie(),
+                    generateSnelheid(schipTypeTemp),
+                    generateGrootte(schipTypeTemp),
+                    generateWendbaarheid(schipTypeTemp),
+                    generatePersonenAanBoord(schipTypeTemp),
+                    generateKoers(),
+                    schipTypeTemp,
+                    statusTemp,
+                    db.getVerkeerstorens()
+            );
+            db.addVervoermiddel(schipTemp, "Schip");
+        }
     }
 
 }
