@@ -63,32 +63,34 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         hulpverleners.addAll(verkeerstoren.hulpdiensten);
     }
 
-    public void berekenHulpverleners(Verkeerstoren hoofdVerkeerstoren, Schip schipInNood){
-        maakLijstHulpverleners(this);
+    public void berekenHulpverleners(Verkeerstoren verkeerstoren){
+        maakLijstHulpverleners(verkeerstoren);
         List<Verkeerstoren> verkeerstorensTemp = getVerkeerstorens();
-        verkeerstorensTemp.remove(this);
+        verkeerstorensTemp.remove(verkeerstoren);
 
         for(int i=0; i<2; i++) {
             Verkeerstoren hulpVerkeerstoren = null;
             double afstand = 0;
-            for (Verkeerstoren verkeerstoren : verkeerstorensTemp) {
-                double afstandTemp = berekenAfstand(verkeerstoren);
+            for (Verkeerstoren v : verkeerstorensTemp) {
+                double afstandTemp = berekenAfstand(v);
                 if (hulpVerkeerstoren == null && afstand == 0) {
-                    hulpVerkeerstoren = verkeerstoren;
+                    hulpVerkeerstoren = v;
                     afstand = afstandTemp;
                 } else if (afstand > afstandTemp) {
-                    hulpVerkeerstoren = verkeerstoren;
+                    hulpVerkeerstoren = v;
                     afstand = afstandTemp;
                 }
             }
-            maakLijstHulpverleners(hulpVerkeerstoren);
-            verkeerstorensTemp.remove(hulpVerkeerstoren);
+            if (hulpVerkeerstoren != null){
+                maakLijstHulpverleners(hulpVerkeerstoren);
+                verkeerstorensTemp.remove(hulpVerkeerstoren);
+            }
         }
     }
 
     @Override
     public void verleenHulp(Schip schipInNood) {
-        berekenHulpverleners(this, schipInNood);
+        berekenHulpverleners(schipInNood.getDichtstbijzijndeVerkeerstoren());
         noodsituatieBroadcastBericht(schipInNood);
         hulpverleners.remove(schipInNood);
 

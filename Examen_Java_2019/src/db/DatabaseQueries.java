@@ -40,6 +40,10 @@ public class DatabaseQueries {
     private PreparedStatement updateVervoermiddel;
     private PreparedStatement updateVerkeerstoren;
 
+    private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
+    private List<Hulpdienst> hulpdiensten = new ArrayList<>();
+    private  List<Schip> schepen = new ArrayList<>();
+
     public DatabaseQueries() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -100,6 +104,24 @@ public class DatabaseQueries {
         }
     }
 
+    public void refreshData(){
+        verkeerstorens = getAllVerkeerstoren();
+        hulpdiensten = getAllHulpdienst();
+        schepen = getAllSchip();
+        for (Schip s: schepen
+        ) {
+            s.berekenDichtstbijzijndeVerkeerstoren();
+        }
+        for (Hulpdienst h: hulpdiensten
+        ) {
+            h.berekenDichtstbijzijndeVerkeerstoren();
+        }
+        for (Verkeerstoren v:  verkeerstorens
+             ) {
+            setVerkeerstorens(verkeerstorens);
+        }
+    }
+
         public List<Schip> getAllSchip() {
             try (ResultSet resultSet = selectAllSchip.executeQuery()) {
                 List<Schip> results = new ArrayList<Schip>();
@@ -118,7 +140,7 @@ public class DatabaseQueries {
                             resultSet.getDouble("koers"),
                             resultSet.getString("detailType"),
                             CalculateState(resultSet.getString("status")),
-                            getAllVerkeerstoren()
+                            verkeerstorens
                     ));
                 }
                 return results;
@@ -146,7 +168,7 @@ public class DatabaseQueries {
                         resultSet.getDouble("koers"),
                         resultSet.getString("detailType"),
                         CalculateState(resultSet.getString("status")),
-                        getAllVerkeerstoren()
+                        verkeerstorens
                 ));
             }
             return results;
@@ -168,7 +190,7 @@ public class DatabaseQueries {
                         ),
                         resultSet.getInt("ID"),
                         resultSet.getString("detailType"),
-                        results
+                        verkeerstorens
                 ));
             }
             return results;
@@ -260,5 +282,27 @@ public class DatabaseQueries {
             }
         }
 
-
+    public List<Verkeerstoren> getVerkeerstorens() {
+        return verkeerstorens;
     }
+
+    public void setVerkeerstorens(List<Verkeerstoren> verkeerstorens) {
+        this.verkeerstorens = verkeerstorens;
+    }
+
+    public List<Hulpdienst> getHulpdiensten() {
+        return hulpdiensten;
+    }
+
+    public void setHulpdiensten(List<Hulpdienst> hulpdiensten) {
+        this.hulpdiensten = hulpdiensten;
+    }
+
+    public List<Schip> getSchepen() {
+        return schepen;
+    }
+
+    public void setSchepen(List<Schip> schepen) {
+        this.schepen = schepen;
+    }
+}

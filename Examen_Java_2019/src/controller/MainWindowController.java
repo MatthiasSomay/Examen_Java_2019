@@ -24,6 +24,8 @@ import model.*;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
+import utilities.generator.Generator;
+import view.TestRadar;
 
 public class MainWindowController {
 
@@ -31,6 +33,9 @@ public class MainWindowController {
     HulpdienstTypeLijst hulpdienstTypeLijst = new HulpdienstTypeLijst();
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     DatabaseQueries db = new DatabaseQueries();
+    Generator generator = new Generator();
+    TestRadar testRadar = new TestRadar();
+
 
     @FXML private Pane mapDisplay;
     @FXML private ListView<Actor> listData;
@@ -211,7 +216,7 @@ public class MainWindowController {
 
     @FXML
     void startRandomReddingsactieButtonPressed(ActionEvent event) {
-
+        generator.generateRandomSchip(db.getSchepen()).noodsituatieBericht();
     }
 
     @FXML
@@ -336,7 +341,9 @@ public class MainWindowController {
         hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
         status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
         ID.setDisable(true);
+        db.refreshData();
     }
+
 
     public void visibilityVervoermiddel(Boolean bool){
         snelheid.setVisible(bool);

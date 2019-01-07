@@ -1,5 +1,6 @@
 package view;
 
+import db.DatabaseQueries;
 import factory.HulpdienstFactory;
 import factory.SchipFactory;
 import factory.VerkeerstorenFactory;
@@ -18,27 +19,15 @@ import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
 import utilities.states.Status;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TestRadar extends Application {
 
-    /*DatabaseQueries db = new DatabaseQueries();
+    DatabaseQueries db = new DatabaseQueries();
 
-    public DatabaseQueries getDb() {
-        return db;
-    }
-
-    public void setDb(DatabaseQueries db) {
-        this.db = db;
-    }*/
-
-    public List<Verkeerstoren> verkeerstorens = new ArrayList<>();
-    public List<Hulpdienst> hulpdiensten = new ArrayList<>();
-    public  List<Schip> schepen = new ArrayList<>();
     private Generator generator = new Generator();
 
+
     public void setUp() {
+
         String hulpdienstTypeTemp;
         String schipTypeTemp;
 
@@ -46,9 +35,9 @@ public class TestRadar extends Application {
             Verkeerstoren verkeerstorenTemp = VerkeerstorenFactory.createVerkeerstoren(
                     generator.generateLocatie(),
                     generator.generateTypeVerkeerstoren(),
-                    verkeerstorens
+                    db.getVerkeerstorens()
             );
-            verkeerstorens.add(verkeerstorenTemp);
+            db.getVerkeerstorens().add(verkeerstorenTemp);
             verkeerstorenTemp.setId(i+1);
         }
         for(int i=0; i<5; i++){
@@ -63,9 +52,9 @@ public class TestRadar extends Application {
                     generator.generateKoers(),
                     hulpdienstTypeTemp,
                     statusTemp,
-                    verkeerstorens
+                    db.getVerkeerstorens()
             );
-            hulpdiensten.add(hulpdienstTemp);
+            db.getHulpdiensten().add(hulpdienstTemp);
             hulpdienstTemp.setId(i+1);
         }
         for(int i=0; i<5; i++){
@@ -80,9 +69,9 @@ public class TestRadar extends Application {
                     generator.generateKoers(),
                     schipTypeTemp,
                     statusTemp,
-                    verkeerstorens
+                    db.getVerkeerstorens()
             );
-            schepen.add(schipTemp);
+            db.getSchepen().add(schipTemp);
             schipTemp.setId(i+1);
         }
     }
@@ -90,20 +79,20 @@ public class TestRadar extends Application {
     public void print() {
         Log.logger.info("VERKEERSTORENS:");
         Log.logger.info("---------------");
-        for(int i=0; i<verkeerstorens.size(); i++)
-            Log.logger.info(verkeerstorens.get(i));
+        for(int i=0; i<db.getVerkeerstorens().size(); i++)
+            Log.logger.info(db.getVerkeerstorens().get(i));
         Log.logger.info("HULPDIENSTEN:");
         Log.logger.info("-------------");
-        for(int i=0; i<hulpdiensten.size(); i++)
-            Log.logger.info(hulpdiensten.get(i));
+        for(int i=0; i<db.getHulpdiensten().size(); i++)
+            Log.logger.info(db.getHulpdiensten().get(i));
         Log.logger.info("SCHEPEN:");
         Log.logger.info("--------");
-        for(int i=0; i<schepen.size(); i++)
-            Log.logger.info(schepen.get(i));
+        for(int i=0; i<db.getSchepen().size(); i++)
+            Log.logger.info(db.getSchepen().get(i));
     }
 
     public void randomReddingsactie(){
-        generator.generateRandomSchip(schepen).noodsituatieBericht();
+        generator.generateRandomSchip(db.getSchepen()).noodsituatieBericht();
     }
 
 
@@ -120,8 +109,8 @@ public class TestRadar extends Application {
         BasicConfigurator.configure();
         Log.logger.setLevel(Level.ALL);
         TestRadar radar = new TestRadar();
-        /*radar.setUp();
-        radar.print();
+        /*radar.setUp();*/
+        radar.print();/*
         radar.randomReddingsactie();*/
         launch(args);
     }

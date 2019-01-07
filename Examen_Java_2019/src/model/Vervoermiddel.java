@@ -71,27 +71,26 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
     }
 
     public void berekenDichtstbijzijndeVerkeerstoren(){
-        Verkeerstoren oldVerkeerstoren = getDichtstbijzijndeVerkeerstoren();
-        Verkeerstoren newVerkeerstoren = null;
+        Verkeerstoren verkeerstoren = getDichtstbijzijndeVerkeerstoren();
         double afstand = 0;
-        if (oldVerkeerstoren != null){
-            afstand = berekenAfstand(oldVerkeerstoren);
+        if (verkeerstoren != null){
+            afstand = berekenAfstand(verkeerstoren);
         }
-        for (Verkeerstoren verkeerstoren : getVerkeerstorens()
+        for (Verkeerstoren v : getVerkeerstorens()
         ) {
-            double afstandTemp = berekenAfstand(verkeerstoren);
-            if (oldVerkeerstoren == null && afstand == 0){
-                newVerkeerstoren = verkeerstoren;
+            double afstandTemp = berekenAfstand(v);
+            if (verkeerstoren == null && afstand == 0){
+                verkeerstoren = v;
                 afstand = afstandTemp;
             }
             else if (afstand > afstandTemp){
-                newVerkeerstoren = verkeerstoren;
+                verkeerstoren = v;
                 afstand = afstandTemp;
             }
         }
-        if (newVerkeerstoren != oldVerkeerstoren){
-            setDichtstbijzijndeVerkeerstoren(newVerkeerstoren);
-            aanmeldenDichtstbijzijndeVerkeerstoren(oldVerkeerstoren);
+        if (verkeerstoren != getDichtstbijzijndeVerkeerstoren()){
+            setDichtstbijzijndeVerkeerstoren(verkeerstoren);
+            aanmeldenDichtstbijzijndeVerkeerstoren(verkeerstoren);
         }
     }
 
