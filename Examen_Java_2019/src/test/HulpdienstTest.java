@@ -15,7 +15,6 @@ import static org.junit.Assert.assertEquals;
 public class HulpdienstTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
-    private Coördinaten coordinaat2 = new Coördinaten(40, 70);
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
     private Hulpdienst hulpdienst = new Hulpdienst(coordinaat, 19, 7, 17, 4, 40, "Seaking",beschikbaar, testRadar.db.getVerkeerstorens());
