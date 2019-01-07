@@ -223,7 +223,10 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         return laatsteReactieTijd;
     }
 
-    public void setLaatsteReactieTijd(double laatsteReactieTijd) {
+    public void setLaatsteReactieTijd(double laatsteReactieTijd) throws IllegalArgumentException {
+        if (laatsteReactieTijd <= 0) {
+            throw new IllegalArgumentException("Ongeldige reactietijd");
+        }
         this.laatsteReactieTijd = afronden.RondAfNaarGeheelGetal(laatsteReactieTijd);
     }
 
@@ -231,7 +234,10 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         return dichtstbijzijndeVerkeerstoren;
     }
 
-    public void setDichtstbijzijndeVerkeerstoren(Verkeerstoren dichtstbijzijndeVerkeerstoren) {
+    public void setDichtstbijzijndeVerkeerstoren(Verkeerstoren dichtstbijzijndeVerkeerstoren) throws IllegalArgumentException {
+        if (dichtstbijzijndeVerkeerstoren == null) {
+            throw new IllegalArgumentException("Ongeldige toren");
+        }
         this.dichtstbijzijndeVerkeerstoren = dichtstbijzijndeVerkeerstoren;
     }
 }
