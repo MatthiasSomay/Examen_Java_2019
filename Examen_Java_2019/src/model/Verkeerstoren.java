@@ -11,6 +11,7 @@ import utilities.Log;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
+import utilities.states.Beschikbaar;
 import utilities.states.NietBeschikbaar;
 
 import java.util.ArrayList;
@@ -120,6 +121,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
                 Log.logger.info("Alle " + (opvarendenTeRedden - schipInNood.getPersonenAanBoord()) + " opvarenden zijn gered.");
             }
             Log.logger.info("-------------------------------------------");
+            schipInNood.setStatus(new Beschikbaar());
         }
     }
 

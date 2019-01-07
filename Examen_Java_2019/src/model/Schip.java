@@ -38,6 +38,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
                     " is in nood, " +
                     getLocatie().toString() +
                     " SOS!");
+        berekenDichtstbijzijndeVerkeerstoren();
         getDichtstbijzijndeVerkeerstoren().detecteerNoodsituatie(this);
     }
 

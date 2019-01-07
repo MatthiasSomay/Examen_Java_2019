@@ -80,7 +80,12 @@ public class MainWindowController {
 
     @FXML
     void slaOpButtonPressed(ActionEvent event) {
-        creatieOrUpdateActor();
+        if(ID.getText().equals("")){
+            creatieActor();
+        }
+        else{
+            updateActor();
+        }
     }
 
     public void initialize(){
@@ -153,89 +158,69 @@ public class MainWindowController {
                     verkeerstorenTemp.getLocatie().setBreedte(Double.parseDouble(locatieBreedte.getText()));
                     verkeerstorenTemp.getLocatie().setLengte(Double.parseDouble(locatieLengte.getText()));
                     db.updateVerkeerstoren(verkeerstorenTemp);
-
-                    if (ID.getText().equals("")) {
-                        db.addVerkeerstoren(verkeerstorenTemp);
-                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                "Verkeerstoren  is toegevoegd.");
-                    }
-                    else {
-                        verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
-                        db.updateVerkeerstoren(verkeerstorenTemp);
-                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                "Verkeerstoren  is aangepast.");
-                    }
-                    clearInputBasis();
-
+                    displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                            "Verkeerstoren  is aangepast.");
                 }
             }
             else if (hoofdType.getValue() == "Schip"){
                 if (checkInputBasis() == 0){
                     if (checkInputVervoermiddel() == 0){
-                        Schip schipTemp = SchipFactory.createSchip(
-                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
-                                Double.parseDouble(snelheid.getText()),
-                                Double.parseDouble(grootte.getText()),
-                                Double.parseDouble(wendbaarheid.getText()),
-                                Integer.parseInt(personenAanboord.getText()),
-                                Double.parseDouble(koers.getText()),
-                                detailType.getValue(),
-                                db.CalculateState(status.getValue()),
-                                db.getVerkeerstorens());
-                        if (ID.getText().equals("")) {
-                            db.addVervoermiddel(schipTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Schip is toegevoegd.");
+                        Schip schipTemp = null;
+                        for (Schip s: db.getSchepen()
+                        ) {
+                            if (s.getId() == Integer.parseInt(ID.getText())){
+                                schipTemp = s;
+                                break;
+                            }
                         }
-                        else {
-                            schipTemp.setId(Integer.parseInt(ID.getText()));
-                            db.updateVervoermiddel(schipTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Schip is aangepast.");
-                        }
-                        clearInputBasis();
-                        clearInputVervoermiddel();
-
+                        schipTemp.getLocatie().setBreedte(Double.parseDouble(locatieBreedte.getText()));
+                        schipTemp.getLocatie().setLengte(Double.parseDouble(locatieLengte.getText()));
+                        schipTemp.setSnelheid(Double.parseDouble(snelheid.getText()));
+                        schipTemp.setGrootte(Double.parseDouble(grootte.getText()));
+                        schipTemp.setWendbaarheid(Double.parseDouble(wendbaarheid.getText()));
+                        schipTemp.setPersonenAanBoord(Integer.parseInt(personenAanboord.getText()));
+                        schipTemp.setKoers(Double.parseDouble(koers.getText()));
+                        schipTemp.setStatus(db.CalculateState(status.getValue()));
+                        db.updateVervoermiddel(schipTemp, hoofdType.getValue());
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Schip is aangepast.");
                     }
                 }
             }
             else {
                 if (checkInputBasis() == 0){
                     if (checkInputVervoermiddel() == 0){
-                        Hulpdienst hulpdienstTemp = HulpdienstFactory.createHulpdienst(
-                                new Coördinaten(Double.parseDouble(locatieLengte.getText()), Double.parseDouble(locatieBreedte.getText())),
-                                Double.parseDouble(snelheid.getText()),
-                                Double.parseDouble(grootte.getText()),
-                                Double.parseDouble(wendbaarheid.getText()),
-                                Integer.parseInt(personenAanboord.getText()),
-                                Double.parseDouble(koers.getText()),
-                                detailType.getValue(),
-                                db.CalculateState(status.getValue()),
-                                db.getVerkeerstorens());
-                        if (ID.getText().equals("")) {
-                            db.addVervoermiddel(hulpdienstTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Hulpdienst is toegevoegd.");
+                        Hulpdienst hulpdienstTemp = null;
+                        for (Hulpdienst h: db.getHulpdiensten()
+                        ) {
+                            if (h.getId() == Integer.parseInt(ID.getText())){
+                                hulpdienstTemp = h;
+                                break;
+                            }
                         }
-                        else {
-                            hulpdienstTemp.setId(Integer.parseInt(ID.getText()));
-                            db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Hulpdienst is aangepast.");
-                        }
-                        clearInputBasis();
-                        clearInputVervoermiddel();
-
+                        hulpdienstTemp.getLocatie().setBreedte(Double.parseDouble(locatieBreedte.getText()));
+                        hulpdienstTemp.getLocatie().setLengte(Double.parseDouble(locatieLengte.getText()));
+                        hulpdienstTemp.setSnelheid(Double.parseDouble(snelheid.getText()));
+                        hulpdienstTemp.setGrootte(Double.parseDouble(grootte.getText()));
+                        hulpdienstTemp.setWendbaarheid(Double.parseDouble(wendbaarheid.getText()));
+                        hulpdienstTemp.setPersonenAanBoord(Integer.parseInt(personenAanboord.getText()));
+                        hulpdienstTemp.setKoers(Double.parseDouble(koers.getText()));
+                        hulpdienstTemp.setStatus(db.CalculateState(status.getValue()));
+                        db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
+                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
+                                "Schip is aangepast.");
                     }
                 }
             }
+            clearInputBasis();
+            clearInputVervoermiddel();
             db.refreshData();
             toonAlleActors();
         }
         else checkInputBasis();
     }
 
-    public void creatieOrUpdateActor(){
+    public void creatieActor(){
         if (hoofdType.getValue() != null){
             if (hoofdType.getValue() == "Verkeerstoren"){
                 if (checkInputBasis() == 0){
@@ -248,14 +233,6 @@ public class MainWindowController {
                         displayAlert(Alert.AlertType.INFORMATION, "Informatie",
                                 "Verkeerstoren  is toegevoegd.");
                     }
-                    else {
-                        verkeerstorenTemp.setId(Integer.parseInt(ID.getText()));
-                        db.updateVerkeerstoren(verkeerstorenTemp);
-                        displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                "Verkeerstoren  is aangepast.");
-                    }
-                    clearInputBasis();
-
                 }
             }
             else if (hoofdType.getValue() == "Schip"){
@@ -276,15 +253,6 @@ public class MainWindowController {
                             displayAlert(Alert.AlertType.INFORMATION, "Informatie",
                                     "Schip is toegevoegd.");
                         }
-                        else {
-                            schipTemp.setId(Integer.parseInt(ID.getText()));
-                            db.updateVervoermiddel(schipTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Schip is aangepast.");
-                        }
-                        clearInputBasis();
-                        clearInputVervoermiddel();
-
                     }
                 }
             }
@@ -306,18 +274,11 @@ public class MainWindowController {
                             displayAlert(Alert.AlertType.INFORMATION, "Informatie",
                                     "Hulpdienst is toegevoegd.");
                         }
-                        else {
-                            hulpdienstTemp.setId(Integer.parseInt(ID.getText()));
-                            db.updateVervoermiddel(hulpdienstTemp, hoofdType.getValue());
-                            displayAlert(Alert.AlertType.INFORMATION, "Informatie",
-                                    "Hulpdienst is aangepast.");
-                        }
-                        clearInputBasis();
-                        clearInputVervoermiddel();
-
                     }
                 }
             }
+            clearInputBasis();
+            clearInputVervoermiddel();
             db.refreshData();
             toonAlleActors();
         }
