@@ -7,13 +7,14 @@
 
 package test;
 
+import db.DatabaseQueries;
 import model.Coördinaten;
 import model.Hulpdienst;
 import model.Schip;
 import model.Verkeerstoren;
 import org.junit.Test;
+import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
-import view.TestRadar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,12 @@ public class VerkeerstorenTest {
     private Coördinaten coordinaat2 = new Coördinaten(40, 70);
     private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven", new ArrayList<>());
     private Verkeerstoren verkeerstoren2 = new Verkeerstoren(coordinaat2, "Vuurtoren", new ArrayList<>());
-    private TestRadar testRadar = new TestRadar();
+
+    private DatabaseQueries db = new DatabaseQueries();
+    private Generator generator = new Generator();
+
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.db.getVerkeerstorens());
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, new ArrayList<>());
 
 
 
@@ -65,10 +69,10 @@ public class VerkeerstorenTest {
 
     @Test
     public void test_setHulpdiensten_Geldige_Waarde_Wordt_Aanvaard() {
-        testRadar.setUp();
-        verkeerstoren.setHulpdiensten(testRadar.db.getHulpdiensten());
+        generator.setUpRandomData(db);
+        verkeerstoren.setHulpdiensten(db.getHulpdiensten());
 
-        assertEquals(testRadar.db.getHulpdiensten(), verkeerstoren.getHulpdiensten());
+        assertEquals(db.getHulpdiensten(), verkeerstoren.getHulpdiensten());
 
     }
 
@@ -81,10 +85,10 @@ public class VerkeerstorenTest {
 
     @Test
     public void test_setSchepen_Geldige_Waarde_Wordt_Aanvaard() {
-        testRadar.setUp();
-       verkeerstoren.setSchepen(testRadar.db.getSchepen());
+        generator.setUpRandomData(db);
+       verkeerstoren.setSchepen(db.getSchepen());
 
-       assertEquals(testRadar.db.getSchepen(), verkeerstoren.getSchepen());
+       assertEquals(db.getSchepen(), verkeerstoren.getSchepen());
 
 
     }

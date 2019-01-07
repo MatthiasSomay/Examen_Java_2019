@@ -1,12 +1,20 @@
+/**
+ * @Autor: Matthias Somay & Kenneth Van De Borne
+ * @Date: 05/01/2019
+ * @Project: Examen_Java_2019
+ * @Purpose: Hulpdienst testklasse
+ */
+
 package test;
 
+import db.DatabaseQueries;
 import model.Coördinaten;
 import model.Hulpdienst;
 import model.Schip;
 import model.Verkeerstoren;
 import org.junit.Test;
+import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
-import view.TestRadar;
 
 import java.util.ArrayList;
 
@@ -15,15 +23,19 @@ import static org.junit.Assert.assertEquals;
 public class HulpdienstTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
-    private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Hulpdienst hulpdienst = new Hulpdienst(coordinaat, 19, 7, 17, 4, 40, "Seaking",beschikbaar, testRadar.db.getVerkeerstorens());
-    private Schip schip = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.db.getVerkeerstorens());
+
+    private DatabaseQueries db = new DatabaseQueries();
+    private Generator generator = new Generator();
+
+    private Hulpdienst hulpdienst = new Hulpdienst(coordinaat, 19, 7, 17, 4, 40, "Seaking",beschikbaar, new ArrayList<Verkeerstoren>());
+    private Schip schip = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar,  new ArrayList<Verkeerstoren>());
 
 
 
     @Test
     public void test_berekenReactietijd_Geeft_Correct_Resultaat() {
+
         assertEquals(25.5,(hulpdienst.berekenReactietijd(schip, 90)), 0);
 
     }
@@ -161,10 +173,11 @@ public class HulpdienstTest {
 
     @Test
     public void test_setVerkeerstorens_Geldige_Waarde_Wordt_Aanvaard() {
-        testRadar.setUp();
-        hulpdienst.setVerkeerstorens(testRadar.db.getVerkeerstorens());
+        generator.setUpRandomData(db);
+        hulpdienst.setVerkeerstorens(db.getVerkeerstorens());
+        schip.setVerkeerstorens(db.getVerkeerstorens());
 
-        assertEquals(testRadar.db.getVerkeerstorens(), hulpdienst.getVerkeerstorens());
+        assertEquals(db.getVerkeerstorens(), hulpdienst.getVerkeerstorens());
 
 
     }

@@ -8,7 +8,7 @@
 package db;
 
 import model.*;
-import utilities.Log;
+import utilities.log.Log;
 import utilities.states.Beschikbaar;
 import utilities.states.InNood;
 import utilities.states.NietBeschikbaar;
@@ -20,17 +20,18 @@ import java.util.List;
 
 public class DatabaseQueries {
 
-    /*
-    private static final String URL = "jdbc:mysql://localhost:3306/Examen_Java";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "Elpsycongroo";
-    */
 
+    public static final String URL = "jdbc:mysql://localhost:3306/Examen_Java";
+    public static final String USERNAME = "root";
+    public static final String PASSWORD = "Elpsycongroo";
+
+
+    /*
     private static final String URL = "jdbc:mysql://localhost:3306/radardb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "kenneth0112*";
-
-    private Connection connection;
+*/
+    public Connection connection;
     private PreparedStatement selectAllSchip;
     private PreparedStatement selectAllVerkeerstoren;
     private PreparedStatement selectAllHulpdienst;
@@ -43,7 +44,7 @@ public class DatabaseQueries {
 
     private List<Verkeerstoren> verkeerstorens = new ArrayList<>();
     private List<Hulpdienst> hulpdiensten = new ArrayList<>();
-    private  List<Schip> schepen = new ArrayList<>();
+    private List<Schip> schepen = new ArrayList<>();
 
     public DatabaseQueries() {
         try {
@@ -133,6 +134,7 @@ public class DatabaseQueries {
             Log.logger.info(getSchepen().get(i));
     }
 
+    // Stopt alle schepen in de database in een List
         public List<Schip> getAllSchip() {
             try (ResultSet resultSet = selectAllSchip.executeQuery()) {
                 List<Schip> results = new ArrayList<Schip>();
@@ -161,6 +163,7 @@ public class DatabaseQueries {
             return null;
         }
 
+    // Stopt alle hulpdiensten in de database in een List
     public List<Hulpdienst> getAllHulpdienst() {
         try (ResultSet resultSet = selectAllHulpdienst.executeQuery()) {
             List<Hulpdienst> results = new ArrayList<Hulpdienst>();
@@ -189,6 +192,7 @@ public class DatabaseQueries {
         return null;
     }
 
+    // Stopt alle verkeerstorens in de database in een List
     public List<Verkeerstoren> getAllVerkeerstoren() {
         try (ResultSet resultSet = selectAllVerkeerstoren.executeQuery()) {
             List<Verkeerstoren> results = new ArrayList<Verkeerstoren>();

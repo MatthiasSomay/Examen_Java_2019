@@ -7,11 +7,11 @@
 
 package model;
 
-import utilities.Log;
 import utilities.afronden.Afronden;
 import utilities.demodata.HulpdienstTypeLijst;
 import utilities.demodata.SchipTypeLijst;
 import utilities.interfaces.IVerleenHulp;
+import utilities.log.Log;
 import utilities.states.Status;
 
 import java.util.List;
@@ -70,6 +70,7 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         return (int) Math.round(getGrootte() - getPersonenAanBoord());
     }
 
+    // Controleert of er een verkeerstoren dichterbij is dan de huidige en meldt zich hier aan
     public void berekenDichtstbijzijndeVerkeerstoren(){
         Verkeerstoren verkeerstoren = getDichtstbijzijndeVerkeerstoren();
         double afstand = 0;
@@ -93,6 +94,7 @@ public abstract class Vervoermiddel extends Actor implements IVerleenHulp {
         }
     }
 
+    // Vervoermiddel doet mee met reddingsactie indien beschikbaa
     public void verleenHulp(Schip schipInNood) {
         switch (getStatus().beschikbaarheid()){
             case 0:

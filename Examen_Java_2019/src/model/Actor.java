@@ -31,6 +31,7 @@ public abstract class Actor implements ILocaliseerbaar, IVerleenHulp {
         setVerkeerstorens(verkeerstorens);
     }
 
+    // berekent de afstand tussen twee actoren aan de hand van hun locatie
     public double berekenAfstand(Actor actor) {
         double dx = this.getLocatie().getBreedte() - actor.getLocatie().getBreedte();
         double dy = this.getLocatie().getLengte() - actor.getLocatie().getLengte();

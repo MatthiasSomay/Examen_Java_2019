@@ -7,8 +7,8 @@
 
 package model;
 
-import utilities.Log;
 import utilities.interfaces.IVerkeerstorenObserver;
+import utilities.log.Log;
 import utilities.states.Status;
 
 import java.util.List;
@@ -42,7 +42,7 @@ public class Schip extends Vervoermiddel implements IVerkeerstorenObserver {
         getDichtstbijzijndeVerkeerstoren().detecteerNoodsituatie(this);
     }
 
-    // TODO: 2018-12-19
+    // Niet gebruikt
     public void stuurLaatsteVaargegevens() {
 
     }

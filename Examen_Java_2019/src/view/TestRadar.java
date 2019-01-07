@@ -1,3 +1,10 @@
+/**
+ * @Autor: Matthias Somay & Kenneth Van De Borne
+ * @Date: 21/12/2018
+ * @Project: Examen_Java_2019
+ * @Purpose: JavaFX application start
+ */
+
 package view;
 
 import javafx.application.Application;
@@ -7,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
-import utilities.Log;
+import utilities.log.Log;
 
 public class TestRadar extends Application {
 

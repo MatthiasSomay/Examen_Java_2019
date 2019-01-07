@@ -7,10 +7,10 @@
 
 package model;
 
-import utilities.Log;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.interfaces.IVerkeerstorenSubject;
+import utilities.log.Log;
 import utilities.states.Beschikbaar;
 import utilities.states.NietBeschikbaar;
 
@@ -58,11 +58,13 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
 
+    // vult lijst met hulpverleners met alle schepen in hulpdiensten
     public void maakLijstHulpverleners(Verkeerstoren verkeerstoren){
         hulpverleners.addAll(verkeerstoren.schepen);
         hulpverleners.addAll(verkeerstoren.hulpdiensten);
     }
 
+    // herberekent de nabijheid van schepen en hulpdiensten bij wijziging locatie van deze en voegt deze toe aan de lijst hulpverleners
     public void berekenHulpverleners(Verkeerstoren verkeerstoren){
         hulpverleners.clear();
         maakLijstHulpverleners(verkeerstoren);
@@ -89,6 +91,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
         }
     }
 
+    // Poging tot organisatie reddingsactie, succesvol als er genoeg hulpverleners zijn om de opvarenden te redden
     @Override
     public void verleenHulp(Schip schipInNood) {
         berekenHulpverleners(schipInNood.getDichtstbijzijndeVerkeerstoren());

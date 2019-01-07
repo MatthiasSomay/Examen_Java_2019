@@ -1,3 +1,10 @@
+/**
+ * @Autor: Matthias Somay & Kenneth Van De Borne
+ * @Date: 05/01/2019
+ * @Project: Examen_Java_2019
+ * @Purpose: Schip testklasse
+ */
+
 package test;
 
 import db.DatabaseQueries;
@@ -5,8 +12,9 @@ import model.Coördinaten;
 import model.Schip;
 import model.Verkeerstoren;
 import org.junit.Test;
+import utilities.generator.Generator;
 import utilities.states.Beschikbaar;
-import utilities.states.InNood;
+import utilities.states.NietBeschikbaar;
 import view.TestRadar;
 
 import java.util.ArrayList;
@@ -18,9 +26,12 @@ public class SchipTest {
     private Coördinaten coordinaat = new Coördinaten(10,20);
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
+
     private DatabaseQueries db = new DatabaseQueries();
-    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, db.getVerkeerstorens());
-    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, db.getVerkeerstorens());
+    private Generator generator = new Generator();
+
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, new ArrayList<Verkeerstoren>());
+    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, new ArrayList<Verkeerstoren>());
 
 
     @Test
@@ -119,11 +130,11 @@ public class SchipTest {
 
     @Test
     public void test_setStatus_Geldige_Waarde_Wordt_Aanvaard() {
-        InNood inNood = new InNood();
+        NietBeschikbaar nietBeschikbaar = new NietBeschikbaar();
 
-        schip.setStatus(inNood);
+        schip.setStatus(nietBeschikbaar);
 
-        assertEquals(inNood, schip.getStatus());
+        assertEquals(nietBeschikbaar, schip.getStatus());
     }
 
     @Test
@@ -162,10 +173,10 @@ public class SchipTest {
 
     @Test
     public void test_setVerkeerstorens_Geldige_Waarde_Wordt_Aanvaard() {
-        testRadar.setUp();
-        schip.setVerkeerstorens(testRadar.db.getVerkeerstorens());
+        generator.setUpRandomData(db);
+        schip.setVerkeerstorens(db.getVerkeerstorens());
 
-        assertEquals(testRadar.db.getVerkeerstorens(), schip.getVerkeerstorens());
+        assertEquals(db.getVerkeerstorens(), schip.getVerkeerstorens());
 
 
     }
