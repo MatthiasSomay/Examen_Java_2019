@@ -26,7 +26,6 @@ import utilities.demodata.SchipTypeLijst;
 import utilities.demodata.VerkeerstorenTypeLijst;
 import utilities.generator.Generator;
 import utilities.states.InNood;
-import view.TestRadar;
 
 public class MainWindowController {
 
@@ -35,7 +34,6 @@ public class MainWindowController {
     VerkeerstorenTypeLijst verkeerstorenTypeLijst = new VerkeerstorenTypeLijst();
     DatabaseQueries db = new DatabaseQueries();
     Generator generator = new Generator();
-    TestRadar testRadar = new TestRadar();
 
 
     @FXML private Pane mapDisplay;
@@ -70,6 +68,7 @@ public class MainWindowController {
     @FXML private Button maakLeeg;
     @FXML private Button startRandomReddingsactie;
 
+    // maakt inputvelden leeg
     @FXML
     void maakLeegButtonPressed(ActionEvent event) {
         clearInputBasis();
@@ -78,6 +77,7 @@ public class MainWindowController {
         detailType.setDisable(false);
     }
 
+    // Creërt nieuwe actor wanneer ID veld leeg is, update actor in het andere geval
     @FXML
     void slaOpButtonPressed(ActionEvent event) {
         if(ID.getText().equals("")){
@@ -88,6 +88,7 @@ public class MainWindowController {
         }
     }
 
+    // initialiseert comboboxs en schakelt het veld "ID" uit
     public void initialize(){
         hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
         status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
@@ -100,6 +101,7 @@ public class MainWindowController {
         db.print();
     }
 
+    //Geeft elke actor weer op de kaart met een eigen kleur, wanneer er op een actor geklikt wordt, worden zijn eigenschappen getoond
     public void drawActorOnPane(){
         mapDisplay.getChildren().clear();
         Paint brushColor;
@@ -136,6 +138,7 @@ public class MainWindowController {
         }
     }
 
+    // Geeft locatie aan van de geselecteerde actor op de kaart
     @FXML
     void mapDisplayClicked(MouseEvent event) {
         if (ID.getText().equals("")) {
@@ -144,6 +147,7 @@ public class MainWindowController {
         }
     }
 
+    // method voor het updaten van een geselecteerde actor
     public void updateActor(){
         if (hoofdType.getValue() != null){
             if (hoofdType.getValue() == "Verkeerstoren"){
@@ -221,6 +225,7 @@ public class MainWindowController {
         else checkInputBasis();
     }
 
+    // method voor de creatie van actor aan de hand van het gekozen type
     public void creatieActor(){
         if (hoofdType.getValue() != null){
             if (hoofdType.getValue() == "Verkeerstoren"){
@@ -286,34 +291,40 @@ public class MainWindowController {
         else checkInputBasis();
     }
 
+    // start een reddingsactie met een random schip op de kaart
     @FXML
     void startRandomReddingsactieButtonPressed(ActionEvent event) {
         generator.generateRandomSchip(db.getSchepen()).setStatus(new InNood());
     }
 
+    // toont enkel de schepen in de lijst
     @FXML
     void toonAlleSchepenButtonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getSchepen());
         drawActorOnPane();
     }
 
+    // toont enkel de verkeerstorens in de lijst
     @FXML
     void toonAlleVerkeerstorensButttonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getVerkeerstorens());
         drawActorOnPane();
     }
 
+    // toont enkel de hulpdiensten in de lijst
     @FXML
     void toonAllehulpdienstenButtonPressed(ActionEvent event) {
         listData.getItems().setAll(db.getHulpdiensten());
         drawActorOnPane();
     }
 
+    // toont alle actoren in de lijst m.b.v. toonAlleActors()
     @FXML
     void toonAllesButtonPressed(ActionEvent event) {
         toonAlleActors();
     }
 
+    // vult de lijst met alle actoren
     public void toonAlleActors(){
         listData.getItems().setAll(db.getVerkeerstorens());
         listData.getItems().addAll(db.getHulpdiensten());
@@ -321,6 +332,7 @@ public class MainWindowController {
         drawActorOnPane();
     }
 
+    // verwijdert actor aan de hand van de gekozen actor in de lijst, lijst wordt vernieuwd na elke bewerking
     @FXML
     void verwijderButtonPressed(ActionEvent event) {
         if (ID.getText() != null){
@@ -350,6 +362,7 @@ public class MainWindowController {
         }
     }
 
+    // vult invulvelden in met de eigenschappen van de geselecteerde actor om eventueel aan te passen
     @FXML
     void listDataClicked(MouseEvent event) {
         if (listData.getSelectionModel().getSelectedItem() != null) {
@@ -366,7 +379,7 @@ public class MainWindowController {
         }
     }
 
-
+    // vult invulvelden in met de eigenschappen van de geselecteerde actor om eventueel aan te passen
     public void toonDataVerkeerstoren(Verkeerstoren verkeerstoren){
         ID.setText(String.valueOf(verkeerstoren.getId()));
         locatieBreedte.setText(String.valueOf(verkeerstoren.getLocatie().getBreedte()));
@@ -377,6 +390,7 @@ public class MainWindowController {
         detailType.setDisable(true);
     }
 
+    // vult invulvelden in met de eigenschappen van de geselecteerde actor om eventueel aan te passen
     public void toonDataSchip(Schip schip){
         ID.setText(String.valueOf(schip.getId()));
         locatieBreedte.setText(String.valueOf(schip.getLocatie().getBreedte()));
@@ -393,6 +407,7 @@ public class MainWindowController {
         status.setValue(schip.getStatus().toString());
     }
 
+    // vult invulvelden in met de eigenschappen van de geselecteerde actor om eventueel aan te passen
     public void toonDataHulpdienst(Hulpdienst hulpdienst){
         ID.setText(String.valueOf(hulpdienst.getId()));
         locatieBreedte.setText(String.valueOf(hulpdienst.getLocatie().getBreedte()));
@@ -409,6 +424,7 @@ public class MainWindowController {
         status.setValue(hulpdienst.getStatus().toString());
     }
 
+    // toont enkel deze  velden als het om een Vervoermiddel gaat
     public void visibilityVervoermiddel(Boolean bool){
         snelheid.setVisible(bool);
         wendbaarheid.setVisible(bool);
@@ -428,6 +444,7 @@ public class MainWindowController {
         labelStatus.setVisible(bool);
     }
 
+    // maakt alle velden met betrekking tot Vervoermiddel leeg
     public void clearInputVervoermiddel(){
         snelheid.clear();
         wendbaarheid.clear();
@@ -437,6 +454,7 @@ public class MainWindowController {
         status.getSelectionModel().clearSelection();
     }
 
+    // maakt alle basisvelden voor elke actor leeg
     public void clearInputBasis(){
         ID.clear();
         locatieBreedte.clear();
@@ -445,6 +463,7 @@ public class MainWindowController {
         detailType.getSelectionModel().clearSelection();
     }
 
+    // wijzigt de ingave van een actor aan de hand van het gekozen Hoofdtype
     @FXML
     void hoofdTypeClicked(ActionEvent event) {
         if (hoofdType.getValue() != null){
@@ -471,6 +490,7 @@ public class MainWindowController {
         else {visibilityVervoermiddel(true);}
     }
 
+    // valideert de input voor Vervoermiddel die numeriek moeten zijn
     private int validatieVervoermiddel(){
         try {
             Double.parseDouble(snelheid.getText().replace(",","."));
@@ -487,6 +507,7 @@ public class MainWindowController {
         }
     }
 
+    // checkt of alle tekstvelden met betrekking tot Vervoermiddel zijn ingevuld
    private int checkInputVervoermiddel(){
        if (    snelheid.getText().equals("") ||
                wendbaarheid.getText().equals("") ||
@@ -504,6 +525,7 @@ public class MainWindowController {
         }
     }
 
+    // checkt of alle input velden met betrekking tot locatie numerieke waarden zijn
     private int validatieBasis(){
         try {
             Double.parseDouble(locatieLengte.getText().replace(",","."));
@@ -517,6 +539,7 @@ public class MainWindowController {
         }
     }
 
+    // checkt of inputvelden niet leeg zijn
     private int checkInputBasis(){
         if (    locatieLengte.getText().equals("") ||
                 locatieBreedte.getText().equals("") ||
