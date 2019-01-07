@@ -311,10 +311,6 @@ public class MainWindowController {
         status.setValue(hulpdienst.getStatus().toString());
     }
 
-    public void toonDataVervoermiddel(){
-
-    }
-
     public void initialize(){
         hoofdType.getItems().addAll("Verkeerstoren", "Schip", "Hulpdienst");
         status.getItems().addAll("Beschikbaar", "Niet beschikbaar", "In nood");
