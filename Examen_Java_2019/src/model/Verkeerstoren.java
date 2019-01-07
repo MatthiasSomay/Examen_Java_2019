@@ -53,7 +53,7 @@ public class Verkeerstoren extends Actor implements IVerkeerstorenSubject {
     }
 
 
-    private void detecteerNoodsituatie(Schip schipInNood) {
+    public void detecteerNoodsituatie(Schip schipInNood) {
         verleenHulp(schipInNood);
 
     }

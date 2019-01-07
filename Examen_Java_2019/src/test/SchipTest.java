@@ -17,8 +17,8 @@ public class SchipTest {
     private Coördinaten coordinaat = new Coördinaten(10,20);
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.verkeerstorens);
-    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.verkeerstorens);
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.db.getVerkeerstorens());
+    private Schip schip2 = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.db.getVerkeerstorens());
 
 
     @Test
@@ -161,9 +161,9 @@ public class SchipTest {
     @Test
     public void test_setVerkeerstorens_Geldige_Waarde_Wordt_Aanvaard() {
         testRadar.setUp();
-        schip.setVerkeerstorens(testRadar.verkeerstorens);
+        schip.setVerkeerstorens(testRadar.db.getVerkeerstorens());
 
-        assertEquals(testRadar.verkeerstorens, schip.getVerkeerstorens());
+        assertEquals(testRadar.db.getVerkeerstorens(), schip.getVerkeerstorens());
 
 
     }

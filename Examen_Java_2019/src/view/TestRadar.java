@@ -21,7 +21,7 @@ import utilities.states.Status;
 
 public class TestRadar extends Application {
 
-    DatabaseQueries db = new DatabaseQueries();
+    public DatabaseQueries db = new DatabaseQueries();
 
     private Generator generator = new Generator();
 

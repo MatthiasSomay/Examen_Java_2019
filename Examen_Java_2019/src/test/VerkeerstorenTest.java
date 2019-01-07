@@ -28,7 +28,7 @@ public class VerkeerstorenTest {
     private Verkeerstoren verkeerstoren2 = new Verkeerstoren(coordinaat2, "Vuurtoren", new ArrayList<>());
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.verkeerstorens);
+    private Schip schip = new Schip(coordinaat, 19, 7, 17, 4, 40, "Speedboot", beschikbaar, testRadar.db.getVerkeerstorens());
 
 
 
@@ -66,9 +66,9 @@ public class VerkeerstorenTest {
     @Test
     public void test_setHulpdiensten_Geldige_Waarde_Wordt_Aanvaard() {
         testRadar.setUp();
-        verkeerstoren.setHulpdiensten(testRadar.hulpdiensten);
+        verkeerstoren.setHulpdiensten(testRadar.db.getHulpdiensten());
 
-        assertEquals(testRadar.hulpdiensten, verkeerstoren.getHulpdiensten());
+        assertEquals(testRadar.db.getHulpdiensten(), verkeerstoren.getHulpdiensten());
 
     }
 
@@ -82,9 +82,9 @@ public class VerkeerstorenTest {
     @Test
     public void test_setSchepen_Geldige_Waarde_Wordt_Aanvaard() {
         testRadar.setUp();
-       verkeerstoren.setSchepen(testRadar.schepen);
+       verkeerstoren.setSchepen(testRadar.db.getSchepen());
 
-       assertEquals(testRadar.schepen, verkeerstoren.getSchepen());
+       assertEquals(testRadar.db.getSchepen(), verkeerstoren.getSchepen());
 
 
     }

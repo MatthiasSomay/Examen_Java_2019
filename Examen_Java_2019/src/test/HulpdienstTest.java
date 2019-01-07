@@ -16,12 +16,10 @@ public class HulpdienstTest {
 
     private Coördinaten coordinaat = new Coördinaten(10,20);
     private Coördinaten coordinaat2 = new Coördinaten(40, 70);
-    private Verkeerstoren verkeerstoren = new Verkeerstoren(coordinaat, "Zeehaven", new ArrayList<>());
-    private Verkeerstoren verkeerstoren2 = new Verkeerstoren(coordinaat2, "Vuurtoren", new ArrayList<>());
     private TestRadar testRadar = new TestRadar();
     private Beschikbaar beschikbaar = new Beschikbaar();
-    private Hulpdienst hulpdienst = new Hulpdienst(coordinaat, 19, 7, 17, 4, 40, "Seaking",beschikbaar, testRadar.verkeerstorens);
-    private Schip schip = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.verkeerstorens);
+    private Hulpdienst hulpdienst = new Hulpdienst(coordinaat, 19, 7, 17, 4, 40, "Seaking",beschikbaar, testRadar.db.getVerkeerstorens());
+    private Schip schip = new Schip(coordinaat, 89, 17, 9, 2, 80, "Zeilboot", beschikbaar, testRadar.db.getVerkeerstorens());
 
 
 
@@ -165,9 +163,9 @@ public class HulpdienstTest {
     @Test
     public void test_setVerkeerstorens_Geldige_Waarde_Wordt_Aanvaard() {
         testRadar.setUp();
-        hulpdienst.setVerkeerstorens(testRadar.verkeerstorens);
+        hulpdienst.setVerkeerstorens(testRadar.db.getVerkeerstorens());
 
-        assertEquals(testRadar.verkeerstorens, hulpdienst.getVerkeerstorens());
+        assertEquals(testRadar.db.getVerkeerstorens(), hulpdienst.getVerkeerstorens());
 
 
     }
