@@ -97,6 +97,7 @@ public class MainWindowController {
         /*generator.setUpRandomData(db);*/
 
         db.refreshData();
+        db.print();
     }
 
     public void drawActorOnPane(){
